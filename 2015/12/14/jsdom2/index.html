@@ -1,0 +1,856 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Tips,Dom,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="今天看了两章，记录在册！每天都要学习，每天才能进步。这两章有一部分内容其实已经过期了，但是因为都是很基础的东西，而且主要讲述的是一种思想一种思路。学习的重点就在于此！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dom编程艺术学习笔记2">
+<meta property="og:url" content="http://crossingmay.github.io/2015/12/14/jsdom2/index.html">
+<meta property="og:site_name" content="Crossing's Blog">
+<meta property="og:description" content="今天看了两章，记录在册！每天都要学习，每天才能进步。这两章有一部分内容其实已经过期了，但是因为都是很基础的东西，而且主要讲述的是一种思想一种思路。学习的重点就在于此！">
+<meta property="og:updated_time" content="2015-12-14T14:41:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dom编程艺术学习笔记2">
+<meta name="twitter:description" content="今天看了两章，记录在册！每天都要学习，每天才能进步。这两章有一部分内容其实已经过期了，但是因为都是很基础的东西，而且主要讲述的是一种思想一种思路。学习的重点就在于此！">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Dom编程艺术学习笔记2 | Crossing's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70792175-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crossing's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">NOT Genius but Try Best</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Dom编程艺术学习笔记2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-14T11:18:31+08:00" content="2015-12-14">
+              2015-12-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">Web前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/14/jsdom2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/14/jsdom2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天看了两章，记录在册！每天都要学习，每天才能进步。这两章有一部分内容其实已经过期了，但是因为都是很基础的东西，而且主要讲述的是一种思想一种思路。学习的重点就在于此！<br><a id="more"></a></p>
+<h2 id="Chapter4-图片库"><a href="#Chapter4-图片库" class="headerlink" title="Chapter4 图片库"></a>Chapter4 图片库</h2><ul>
+<li><p>给函数命名的时候，应该起一个能描述函数的用途，简明扼要的名字。</p>
+</li>
+<li><p>setAttribute 是 DOM1 的组成部分，可以设置任意元素节点的任意属性。</p>
+</li>
+<li><p>DOM1的优势是可移植性更好，如果想要用到Web浏览器以外的应用环境，严格遵守DOM1能够避免与兼容性有关的任何问题。（<strong>So , What DOM1 include?</strong>）</p>
+</li>
+<li><p>img,script,css等资源分门别类，或者统一放到src下。</p>
+</li>
+<li><p>事件处理函数：特定事件发生时调用特定的js代码。onmouseover,onmouseout,onclick等。</p>
+</li>
+<li><p>当我们把onclick事件处理函数嵌入到一个链接中时，需要把这个链接本身用作该函数的参数。使用this关键字可以有效的做到这点，<code>showPic(this)</code>。</p>
+</li>
+<li><p>添加事件处理函数的语法<code>onclick = &quot;JavaScript statement(s)&quot;</code>，如<code>onclick = &quot;showPic(this);&quot;</code>。</p>
+</li>
+<li><p>点击链接时，showPic函数会被调用，但是链接点击的默认行为也会被调用，为了不被带到新窗口，我们需要阻止这个默认行为<code>onclick = &quot;return false&quot;</code>。</p>
+</li>
+<li><p>获取任何一个元素的所有子元素<code>element.childNodes</code></p>
+</li>
+<li><p>获取节点的nodeType属性：<code>node.nodeType</code>。<em>元素节点</em>的值时是1，<em>属性节点</em>的值是2，<em>文本节点</em>的值是3。可以根据根据nodeType的值，让函数只对特定类型的节点进行处理。</p>
+</li>
+<li><p>nodeValue属性<code>node.nodevalue</code>。<em>注意细节：用nodevlue属性获取description对象的值是，得到的并不是包含在这个段落里的文本，p本身的nodeValue的值是空值，逍遥获得p元素里的文本是另一个节点，是p元素的第一个节点。</em>因此我们要获得文本：<code>descprtion.childNodes[0].nodeValue;</code></p>
+</li>
+<li><p><code>node.firstChild</code>==<code>node.childNodes[0]</code></p>
+</li>
+<li><p><code>node.lastChild</code>==<code>node.childNodes[node.childNodes.length-1]</code></p>
+</li>
+</ul>
+<h2 id="Chapter5-最佳实践"><a href="#Chapter5-最佳实践" class="headerlink" title="Chapter5 最佳实践"></a>Chapter5 最佳实践</h2><p>1.平稳退化(graceful degradation)：确保网页在没有JavaScript的情况下也能正常工作。</p>
+<ul>
+<li>JS用<code>window.open(url,name,features)</code>打开新的浏览器窗口。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">popUp</span>(<span class="params">withURL</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.open(winURL,<span class="string">"popup"</span>,<span class="string">"width=320,height=480"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过”javascript:”伪协议或内嵌的事件处理函数来调用都不能很好做到平稳退化。</li>
+</ul>
+<p>“javascript:”伪协议:<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:popUp('http://www.example.com/');"</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>内嵌事件处理函数:<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">onclick</span>=<span class="string">"popUp('http://www.example.com/'); return false;"</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>之所以强调平稳退化，最主要是为了搜索引擎的排名。</p>
+</li>
+<li><p>预留退路的方法：在链接里把href属性设置为真实存在的URL地址，让它成为一个有效的链接。把href设置为真实存在的URL地址后，即使js被禁用，或者遇到搜索机器人，这个链接都是可用的。只是在功能上打了折扣，不能在新窗口打开。这是一个经典的平稳退化的例子。</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.example.com/"</span> <span class="attr">onclick</span>=<span class="string">"popUp(this.href; return false;"</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2.分离JavaScript：把网页的结构和内容与JavaScript脚本的动作行为分开。</p>
+<ul>
+<li><p>结构和样式分离：CSS技术。文档结构和文档样式的分离可以确保网页都能平稳退化。</p>
+</li>
+<li><p>渐进增强：用额外的信息层去包裹原始数据。按照渐进增强原则创建出的网页几乎都符合平稳退化原则。</p>
+</li>
+<li><p>JS不要求事件必须在HTML文档里处理，可以在外部的JS文件里吧一个事件添加到HTML文档的某个元素上：<code>element.event = action...</code></p>
+</li>
+<li><p>利用class或id属性确定获取事件的元素。把一个事件添加到某个带有特定id属性的元素上，用getElementsByTagName和getAttribute把事件添加到有着特定属性的一组元素上。具体步骤：</p>
+<ul>
+<li>把文档里的所有链接全放入一个数组里。</li>
+<li>便利数组。</li>
+<li>如果某个链接的class属性等于popup，就表示这个链接在被点击时应该调用popUp()函数。<ul>
+<li>A.把这个链接的href属性值传递给popUP()函数。</li>
+<li>取消这个链接的默认行为，不让这个链接把访问者带离当前窗口。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> links = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"a"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;links.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (links[i].getAttribute(<span class="string">"class"</span>) == <span class="string">"popup"</span>)&#123;</span><br><span class="line">        popUp(<span class="keyword">this</span>.getAttribute(<span class="string">"href"</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>以上代码存在问题，如果放置到外部的js文件，会先于html文档之前加载到浏览器里。没有完整的DOM，getElementsByTagName等方法就无法正常工作。</p>
+<p>解决办法：把代码打包到函数prepareLinks里，并添加到window对象触发的onload事件上。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = prepareLinks;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">prepareLinks</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> links = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"a"</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;links.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (links[i].getAttribute(<span class="string">"class"</span>) == <span class="string">"popup"</span>)&#123;</span><br><span class="line">            popUp(<span class="keyword">this</span>.getAttribute(<span class="string">"href"</span>));</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">popUp</span>(<span class="params">winURL</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.open(winURL,<span class="string">"popup"</span>,<span class="string">"width=320,height=480"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.向后兼容：确保老版本的浏览器不会因为你的JavaScript脚本而死掉。</p>
+<ul>
+<li>对象检测：在使用对象检测时，一定要删掉方法后的圆括号，如果不删掉，测试的将是方法的结果，无论方法是否存在。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!method) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>如果需要测试多个方法或属性是否存在，可以使用”逻辑或”操作符将其合并<code>if (!getElementyById || !getElementsByTagName) return false</code></p>
+</li>
+<li><p>让脚本有良好的向后兼容性。给网页添加有关行为时，始终遵循渐进增强原则，可以确切的知道新添的那些都能平稳退化，在古老的浏览器里也能正常浏览。</p>
+</li>
+<li><p>浏览器嗅探（browser sniffung）：通过提取浏览器供应商提供的信息来解决向后兼容问题。不过正在被更简单更健壮的对象检测技术所取代。(这一点可以无视了)</p>
+</li>
+</ul>
+<p>4.性能考虑：确定脚本执行的性能最优。</p>
+<ul>
+<li>尽量少访问DOM。访问DOM的方式对脚本性能会产生非常大的影响。使用两次getElementsByTagName方法，相当于浪费了一次搜索，更好的办法应该是把第一次搜索的结果保存在一个变量中，然后在循环里重用该结果。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> links = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"a"</span>);</span><br><span class="line"><span class="keyword">if</span> (links.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;links.length; i++)&#123;</span><br><span class="line">        <span class="comment">//对每个链接做点处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在多个函数都会去的一组类似元素的情况下，可以考虑重构代码，把搜索结果保存在一个全局变量里，或者把一组元素直接以参数形式传递给函数。</p>
+</li>
+<li><p>尽量减少文档中的标记数量。过多不必要的元素只会增加DOM树的规模，进而增加遍历查找的时间。</p>
+</li>
+<li><p>合并和放置脚本：包含脚本的最佳方式是使用外部脚本，因为外部文件与标记能清晰的分离开。但是不要引用多个脚本，合理的情况应该是合成到一个脚本里，减少请求。<strong>减少请求数量通常是性能优化首先要考虑的。</strong></p>
+</li>
+<li><p>把所有<code>&lt;script&gt;</code>标签都放到文档末尾，<code>&lt;/body&gt;</code>标签之前，就可以让页面变得更快。即使这样，在加载脚本时，window对象的load时间依然可以执行对文档的各项操作。<em>(<code>&lt;script&gt;</code>放哪，对此的争论似乎不少，但是参看google首页，发现，google用的就是这个标准)</em></p>
+</li>
+<li><p>压缩脚本：把脚本中不必要的字节，如空格和注释，统统删除，从而达到压缩的目的。</p>
+</li>
+<li><p>准备两个版本，一个是工作副本，可以修改代码并添加注释；一个是精简副本，放在服务器上的。一般为了区分，在精简的副本的文件名上加上min字样：<code>&lt;script src=&quot;scripts/scritpName.min.js&gt;&lt;/script&gt;&quot;</code></p>
+</li>
+</ul>
+<p><em><a href="https://github.com/pandamicro/Javascript-Compressors-Analyse" title="Javascript压缩混淆工具比较分析" target="_blank" rel="external">目前常用的代码精简工具有？</a></em></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xootj.com1.z0.glb.clouddn.com/alids1.jpg" alt="Crossingmay Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="copyright" style="clear:both;">
+           <p><span>本文标题:</span><a href="/2015/12/14/jsdom2/">Dom编程艺术学习笔记2</a></p>
+           <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
+           <p><span>发布时间:</span>2015年12月14日 - 11时12分</p>
+           <p><span>最后更新:</span>2015年12月14日 - 22时12分</p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有2,934字</span></p>
+           <p><span>原始链接:</span><a href="/2015/12/14/jsdom2/" title="Dom编程艺术学习笔记2">http://crossingmay.github.io/2015/12/14/jsdom2/</a></p>
+           <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
+           <p><span>转载请保留以上信息。</span></p>
+        </div>
+      
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tips/" rel="tag">#Tips</a>
+          
+            <a href="/tags/Dom/" rel="tag">#Dom</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/12/nodecantus/" rel="next" title="更新OSX10.11.2后node命令无法使用解决办法">
+                <i class="fa fa-chevron-left"></i> 更新OSX10.11.2后node命令无法使用解决办法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/15/jsdom3/" rel="prev" title="Dom编程艺术学习笔记3">
+                Dom编程艺术学习笔记3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xootj.com1.z0.glb.clouddn.com/x-head1.jpg"
+               alt="Crossingmay" />
+          <p class="site-author-name" itemprop="name">Crossingmay</p>
+          <p class="site-description motion-element" itemprop="description">Memo my learning process everyday and to share</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crossingmay" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/crossingmay" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/crossingmay" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/crossingmay" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://ixiusama.com/" title="ixiusama" target="_blank">ixiusama</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter4-图片库"><span class="nav-number">1.</span> <span class="nav-text">Chapter4 图片库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter5-最佳实践"><span class="nav-number">2.</span> <span class="nav-text">Chapter5 最佳实践</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crossingmay</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共56.7k字</span>
+  
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'crossingmay';
+      var disqus_identifier = '2015/12/14/jsdom2/';
+      var disqus_title = 'Dom编程艺术学习笔记2';
+      var disqus_url = 'http://crossingmay.github.io/2015/12/14/jsdom2/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

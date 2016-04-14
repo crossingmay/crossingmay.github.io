@@ -1,0 +1,981 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Mac,环境配置," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="从去年11月入手rmbp，把玩了一年多，只是熟悉了一些基本操作。迟钝之余，终于想到用文字来记录下自己的经验感想。感慨一下，上一次码字又是何时了呢？按下不表，先回正题。
+本文主题是前端开发环境的配置指南，也就是记录从刚拿到MacBook开始应该做的一些易用性配置以及应用、浏览器、本地服务器、插件和快捷键等等一系列入门指南。虽然这一次已经不是新机器啦，但是借着升级到OS X 10.11 EI Capt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="私属前端开发环境配置指南">
+<meta property="og:url" content="http://crossingmay.github.io/2015/11/28/frontendevset/index.html">
+<meta property="og:site_name" content="Crossing's Blog">
+<meta property="og:description" content="从去年11月入手rmbp，把玩了一年多，只是熟悉了一些基本操作。迟钝之余，终于想到用文字来记录下自己的经验感想。感慨一下，上一次码字又是何时了呢？按下不表，先回正题。
+本文主题是前端开发环境的配置指南，也就是记录从刚拿到MacBook开始应该做的一些易用性配置以及应用、浏览器、本地服务器、插件和快捷键等等一系列入门指南。虽然这一次已经不是新机器啦，但是借着升级到OS X 10.11 EI Capt">
+<meta property="og:updated_time" content="2016-01-07T12:37:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="私属前端开发环境配置指南">
+<meta name="twitter:description" content="从去年11月入手rmbp，把玩了一年多，只是熟悉了一些基本操作。迟钝之余，终于想到用文字来记录下自己的经验感想。感慨一下，上一次码字又是何时了呢？按下不表，先回正题。
+本文主题是前端开发环境的配置指南，也就是记录从刚拿到MacBook开始应该做的一些易用性配置以及应用、浏览器、本地服务器、插件和快捷键等等一系列入门指南。虽然这一次已经不是新机器啦，但是借着升级到OS X 10.11 EI Capt">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 私属前端开发环境配置指南 | Crossing's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70792175-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crossing's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">NOT Genius but Try Best</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                私属前端开发环境配置指南
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-28T23:54:54+08:00" content="2015-11-28">
+              2015-11-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/磨刀霍霍/" itemprop="url" rel="index">
+                    <span itemprop="name">磨刀霍霍</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/28/frontendevset/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/28/frontendevset/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>从去年11月入手rmbp，把玩了一年多，只是熟悉了一些基本操作。迟钝之余，终于想到用文字来记录下自己的经验感想。感慨一下，上一次码字又是何时了呢？按下不表，先回正题。</p>
+<p>本文主题是前端开发环境的配置指南，也就是记录从刚拿到MacBook开始应该做的一些易用性配置以及应用、浏览器、本地服务器、插件和快捷键等等一系列入门指南。虽然这一次已经不是新机器啦，但是借着升级到OS X 10.11 EI Caption的东风，重新配置了开发环境，也解决一下之前新手入门时期的完全生涩。</p>
+<p>尽管在网络上能搜索到很多相关的指南。但是终究觉得还是写一篇自己的用得顺手，如果有幸让读者感到有所收获，自然更是欣喜。</p>
+<p>建议每一个入门级的开发者都能写一篇属于自己的开发环境配置指南。</p>
+<a id="more"></a>
+<h2 id="易用性设置"><a href="#易用性设置" class="headerlink" title="易用性设置"></a>易用性设置</h2><p>包括Trackpad、Dock栏、Finder、菜单栏、Spotlight、互联网账户的设置</p>
+<h2 id="xcode"><a href="#xcode" class="headerlink" title="xcode"></a>xcode</h2><p>苹果应用商店下载，切勿去第三方。</p>
+<h2 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h2><p>ps：打开终端运行(CMD+T可新建tab页)</p>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ruby <span class="_">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>环境变量设置</li>
+</ul>
+<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> 'export <span class="built_in">PATH</span>="/usr/local/bin:$<span class="built_in">PATH</span>"' &gt;&gt; ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<h2 id="Homebrew基本使用"><a href="#Homebrew基本使用" class="headerlink" title="Homebrew基本使用"></a>Homebrew基本使用</h2><p>安装一个包：<code>$  brew install &lt;package_name&gt;</code></p>
+<p>更新包目录：<code>$ brew update</code></p>
+<p>如果更新命令失败，我们可以尝试用下面的代码：</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">$ cd /usr/<span class="built_in">local</span></span><br><span class="line">$ git fetch <span class="built_in">origin</span></span><br><span class="line">$ git <span class="built_in">reset</span> --hard <span class="built_in">origin</span>/master</span><br></pre></td></tr></table></figure>
+<p>查看是否需要更新：<code>$ brew outdated</code></p>
+<p>更新包：<code>$ brew upgrade &lt;package_name&gt;</code></p>
+<p>清理旧版本包缓存：<code>$ brew cleanup</code></p>
+<p>查看安装过的包列表：<code>$ brew list --versions</code></p>
+<h2 id="Homebrew-Cask"><a href="#Homebrew-Cask" class="headerlink" title="Homebrew Cask"></a>Homebrew Cask</h2><p><em>使用cask安装管理OSX图形界面程序</em></p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line">$ <span class="keyword">brew </span>install caskroom/cask/<span class="keyword">brew-cask</span><br><span class="line"></span>$ <span class="keyword">brew </span>cask install google-chrome</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line">$ <span class="keyword">brew </span>tap caskroom/cask  // 添加 Github 上的 caskroom/cask 库</span><br><span class="line">$ <span class="keyword">brew </span>install <span class="keyword">brew-cask </span> // 安装 <span class="keyword">brew-cask</span><br><span class="line"></span>$ <span class="keyword">brew </span>cask install google-chrome // 安装 Google 浏览器</span><br><span class="line">$ <span class="keyword">brew </span>update &amp;&amp; <span class="keyword">brew </span>upgrade <span class="keyword">brew-cask </span>&amp;&amp; <span class="keyword">brew </span>cleanup // 更新</span><br></pre></td></tr></table></figure>
+<ul>
+<li>搜索</li>
+</ul>
+<p>搜索app是否支持brew cask 安装查看：<a href="http://caskroom.io/" target="_blank" rel="external">caskroom.io</a></p>
+<ul>
+<li>quicklook 插件</li>
+</ul>
+<p><em>语法高亮、markdown渲染、json预览等</em></p>
+<p>常用<a href="https://github.com/sindresorhus/quick-look-plugins" target="_blank" rel="external">quicklook插件</a>安装</p>
+<p><a href="http://www.quicklookplugins.com/" target="_blank" rel="external">QuickLook Plugins List</a></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">How to <span class="keyword">Install</span></span><br><span class="line"><span class="keyword">To</span> <span class="keyword">install</span> QuickLook plugins, you should copy the “*.qlgenerator” <span class="keyword">file</span> <span class="keyword">into</span> /<span class="keyword">Library</span>/QuickLook/ <span class="keyword">or</span> ~/<span class="keyword">Library</span>/QuickLook/. Note that “*” <span class="keyword">in</span> the filename will vary based <span class="keyword">on</span> exactly which QuickLook item you <span class="keyword">choose</span> <span class="keyword">to</span> install.</span><br><span class="line"></span><br><span class="line"><span class="keyword">If</span> a QuickLook folder <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">present</span>, feel free <span class="keyword">to</span> <span class="keyword">create</span> one.</span><br><span class="line"></span><br><span class="line"><span class="keyword">After</span> copying the <span class="keyword">file</span> <span class="keyword">into</span> the <span class="keyword">directory</span> you will need <span class="keyword">to</span> logout <span class="keyword">and</span> <span class="keyword">then</span> back <span class="keyword">in</span> <span class="keyword">to</span> your <span class="keyword">account</span> <span class="keyword">for</span> it <span class="keyword">to</span> become active. Alternatively, you can prevent <span class="keyword">having</span> <span class="keyword">to</span> logout <span class="keyword">by</span> running the <span class="keyword">following</span> command <span class="keyword">in</span> Terminal:</span><br><span class="line"></span><br><span class="line">qlmanage -r</span><br><span class="line"></span><br><span class="line">This will <span class="keyword">force</span> OS X <span class="keyword">to</span> <span class="keyword">search</span> /<span class="keyword">Library</span>/QuickLook <span class="keyword">and</span> ~/<span class="keyword">Library</span>/QuickLook <span class="keyword">for</span> plugins <span class="keyword">and</span> <span class="keyword">load</span> them accordingly.</span><br></pre></td></tr></table></figure>
+<h2 id="iTerm2"><a href="#iTerm2" class="headerlink" title="iTerm2"></a>iTerm2</h2><p>安装iterm2终端:<code>brew cask install iterm2</code></p>
+<p>设置快捷键：隐藏和显示的快捷键</p>
+<p>安装zsh:<code>brew install zsh zsh-completions</code></p>
+<p>改变默认shell:<code>chsh -s /bin/zsh</code></p>
+<p>装完zsh之后，安装oh-my-zsh:</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">curl -L http<span class="variable">s:</span>//github.<span class="keyword">com</span>/robbyrussell/oh-my-zsh/raw/master/tools/install.<span class="keyword">sh</span> | <span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<p>安装主题：下载 <a href="https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized" target="_blank" rel="external">Solarized dark iterm colors</a>，在 Profiles -&gt; Default -&gt; Colors -&gt; Load Presets 将其导入，作为默认颜色。</p>
+<p>使文字颜色生效：在Preference -&gt; Text -&gt; Text Rendering -&gt; uncheck Draw Bold</p>
+<p>编辑<code>.zshrc</code></p>
+<figure class="highlight monkey"><table><tr><td class="code"><pre><span class="line">ZSH_THEME=pygmalion<span class="meta"></span><br><span class="line"># Use sublimetext for editing config files</span></span><br><span class="line"><span class="keyword">alias</span> <span class="title">zshconfig</span>=<span class="string">"subl ~/.zshrc"</span></span><br><span class="line"><span class="keyword">alias</span> <span class="title">envconfig</span>=<span class="string">"subl ~/Projects/config/env.sh"</span></span><br><span class="line">plugins=(git colored-man colorize github jira vagrant virtualenv pip python brew osx zsh-syntax-highlighting)</span><br><span class="line"><span class="keyword">alias</span> -<span class="title">s</span> <span class="title">html</span>=subl<span class="meta">   # 在命令行直接输入后缀为 html 的文件名，会在 sublime 中打开</span></span><br><span class="line"><span class="keyword">alias</span> -<span class="title">s</span> <span class="title">rb</span>=subl<span class="meta">     # 在命令行直接输入 ruby 文件，会在 sublime 中打开</span></span><br><span class="line"><span class="keyword">alias</span> -<span class="title">s</span> <span class="title">py</span>=subl<span class="meta">       # 在命令行直接输入 python 文件，会用 sublime 中打开，以下类似</span></span><br><span class="line"><span class="keyword">alias</span> -<span class="title">s</span> <span class="title">js</span>=subl</span><br><span class="line"><span class="keyword">alias</span> -<span class="title">s</span> <span class="title">txt</span>=subl</span><br></pre></td></tr></table></figure>
+<p><code>env.sh</code> 用于维护别名（aliases），输出（exports）和路径改变（path changes）等等，以免影响 ~/.zshrc</p>
+<p>（Ps:需要brew install添加python和ruby模块，并且不能另外再安装python在外面（除系统自带的python和ruby以外）否则运行会出错，virtualenvwrapper.sh不会在该在的目录下。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/zsh</span><br><span class="line"></span></span><br><span class="line"><span class="comment"># PATH</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">"/usr/local/share/python:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"</span></span><br><span class="line"><span class="built_in">export</span> EDITOR=<span class="string">'subl -w'</span></span><br><span class="line"><span class="comment"># export PYTHONPATH=$PYTHONPATH</span></span><br><span class="line"><span class="comment"># export MANPATH="/usr/local/man:$MANPATH"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Virtual Environment</span></span><br><span class="line"><span class="built_in">export</span> WORKON_HOME=<span class="variable">$HOME</span>/.virtualenvs</span><br><span class="line"><span class="built_in">export</span> PROJECT_HOME=<span class="variable">$HOME</span>/Projects</span><br><span class="line"><span class="built_in">source</span> /usr/<span class="built_in">local</span>/bin/virtualenvwrapper.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># Owner</span></span><br><span class="line"><span class="built_in">export</span> USER_NAME=<span class="string">"YOUR NAME"</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(rbenv init -)</span>"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># FileSearch</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">f</span></span>() &#123; find . -iname <span class="string">"*<span class="variable">$1</span>*"</span> <span class="variable">$&#123;@:2&#125;</span> &#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">r</span></span>() &#123; grep <span class="string">"<span class="variable">$1</span>"</span> <span class="variable">$&#123;@:2&#125;</span> -R . &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#mkdir and cd</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">mkcd</span></span>() &#123; mkdir -p <span class="string">"<span class="variable">$@</span>"</span> &amp;&amp; <span class="built_in">cd</span> <span class="string">"<span class="variable">$_</span>"</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># Aliases</span></span><br><span class="line"><span class="built_in">alias</span> cppcompile=<span class="string">'c++ -std=c++11 -stdlib=libc++'</span></span><br></pre></td></tr></table></figure>
+<p><em>iTerm2使用:<a href="http://pengjunjie.com/articles/mac-soft-iterm2/" target="_blank" rel="external">iTerm2使用指南</a></em></p>
+<p><em>zsh使用:池建强<a href="http://macshuo.com/?p=676" target="_blank" rel="external">终极shell</a></em></p>
+<p><strong>Important:</strong> 新增、修改环境变量，都需要source；删除则需要exit之后logout，重新打开shell并login。</p>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>安装:<code>brew install git</code></p>
+<p>通过<code>which git</code>来确定安装在目录<code>/usr/local/bin/git</code></p>
+<p>git设置:这些信息都会被添加到<code>.gitconfig</code></p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="meta"># 设置用户名和邮箱，同github</span></span><br><span class="line">$ git <span class="built_in">config</span> --global user.name <span class="string">"Your Name Here"</span></span><br><span class="line">$ git <span class="built_in">config</span> --global user.email <span class="string">"your_email@youremail.com"</span></span><br><span class="line"><span class="meta"># 读取osx里的密码，不用每次都输入帐号密码</span></span><br><span class="line">$ git <span class="built_in">config</span> --global credential.helper osxkeychain</span><br></pre></td></tr></table></figure>
+<p>设置sublime作为默认的mergetool</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">$ git config --global mergetool<span class="selector-class">.sublime</span><span class="selector-class">.cmd</span> <span class="string">"subl -w \$MERGED"</span></span><br><span class="line">$ git config --global mergetool<span class="selector-class">.sublime</span><span class="selector-class">.trustExitCode</span> false </span><br><span class="line">$ git config --global merge<span class="selector-class">.tool</span> sublime</span><br><span class="line">$ git mergetool -y</span><br></pre></td></tr></table></figure>
+<p>创建 <code>~/.gitignore</code>设置<code>.gitignore</code></p>
+<figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="meta"># Folder view configuration files</span></span><br><span class="line">.DS_Store</span><br><span class="line">Desktop.ini</span><br><span class="line"></span><br><span class="line"><span class="meta"># Thumbnail cache files</span></span><br><span class="line">._*</span><br><span class="line">Thumbs.db</span><br><span class="line"></span><br><span class="line"><span class="meta"># Files that might appear on external disks</span></span><br><span class="line">.Spotlight-V100</span><br><span class="line">.Trashes</span><br><span class="line"></span><br><span class="line"><span class="meta"># Compiled Python files</span></span><br><span class="line">*.pyc</span><br><span class="line"></span><br><span class="line"><span class="meta"># Compiled C++ files</span></span><br><span class="line">*.out</span><br><span class="line"></span><br><span class="line"><span class="meta"># Application specific files</span></span><br><span class="line">venv</span><br><span class="line">node_modules</span><br><span class="line">.sass-cache</span><br></pre></td></tr></table></figure>
+<h2 id="Sublime-Text-3"><a href="#Sublime-Text-3" class="headerlink" title="Sublime Text 3"></a>Sublime Text 3</h2><h3 id="安装和配置"><a href="#安装和配置" class="headerlink" title="安装和配置"></a>安装和配置</h3><ul>
+<li>安装</li>
+</ul>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">brew </span>tap caskroom/versions</span><br><span class="line"><span class="keyword">brew </span>cask install <span class="keyword">sublime-text3</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置</li>
+</ul>
+<p>配置信息分为<code>Default</code>和<code>User</code>两个版本，通过修改<code>User</code>的配置来完成个性化配置</p>
+<ul>
+<li><a href="https://packagecontrol.io/installation" target="_blank" rel="external">Install Package Control</a></li>
+</ul>
+<p>通过<em>ctrl+`</em>打开控制台，输入以下代码</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = <span class="string">'2915d1851351e5ee549c20394736b442'</span> + <span class="string">'8bc59f460fa1548d1514676163dafc88'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); <span class="keyword">by</span> = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.<span class="built_in">replace</span>(<span class="string">' '</span>, <span class="string">'%20'</span>)).<span class="built_in">read</span>(); dh = hashlib.sha256(<span class="keyword">by</span>).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> <span class="built_in">open</span>(os.path.join( ipp, pf), <span class="string">'wb'</span> ).<span class="built_in">write</span>(<span class="keyword">by</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><figure class="highlight xl"><table><tr><td class="code"><pre><span class="line">E<span class="function"><span class="title">mmet</span> -&gt;</span> 代码缩写、补完</span><br><span class="line">D<span class="function"><span class="title">ocBlock</span> -&gt;</span> 注释模版</span><br><span class="line">S<span class="function"><span class="title">ideBarEnhancementsn</span> -&gt;</span> 侧边栏增强</span><br><span class="line">C<span class="function"><span class="title">olorPicker</span> -&gt;</span> 拾色器 cmd＋shift＋c</span><br><span class="line">B<span class="function"><span class="title">racketHighlighter</span> -&gt;</span> 括号匹配提示</span><br><span class="line">L<span class="function"><span class="title">iveReload</span> -&gt;</span> 免刷新 (已经不能用了)</span><br><span class="line">C<span class="function"><span class="title">olorHighlighter</span> -&gt;</span> css颜色代码显示颜色</span><br><span class="line">L<span class="function"><span class="title">iveStyle</span> -&gt;</span> css实时改变</span><br><span class="line">J<span class="function"><span class="title">sFormat</span> -&gt;</span> Js／JSON格式化 ctrl＋alt＋f</span><br><span class="line">A<span class="function"><span class="title">utoFileName</span> -&gt;</span> 自动补充文件名</span><br><span class="line">G<span class="function"><span class="title">it</span> -&gt;</span> 版本管理</span><br><span class="line">G<span class="function"><span class="title">itGutter</span> -&gt;</span> git diff 图像化</span><br><span class="line">M<span class="function"><span class="title">arkdown</span> Editing -&gt;</span> Markdown编辑</span><br><span class="line">O<span class="function"><span class="title">mniMarkupPreviewer</span> -&gt;</span> markdown预览</span><br><span class="line">S<span class="function"><span class="title">ublimeLinter</span> -&gt;</span> 配合其余几个语法检测插件使用</span><br><span class="line">T<span class="function"><span class="title">erminal</span> -&gt;</span> 终端工具</span><br></pre></td></tr></table></figure>
+<ul>
+<li>LiveReload实时预览</li>
+</ul>
+<p>事实上，最简单的办法是通过package control安装。</p>
+<p><strong>OSX users</strong>安装</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">cd <span class="regexp">~/Library/</span>Application\ Support<span class="regexp">/Sublime\ Text\ 3/</span>Packages/</span><br><span class="line"></span><br><span class="line">rm -rf LiveReload</span><br><span class="line">git clone <span class="string">https:</span><span class="comment">//github.com/Grafikart/ST3-LiveReload.git LiveReload</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://livereload.com/extensions/" target="_blank" rel="external">浏览器插件下载</a></p>
+<p>chrome浏览器下需要配置liveReload插件:勾选<strong>允许访问文件网址</strong></p>
+<p><strong>在sublime text3 配置LiveReload</strong></p>
+<p>方法一:</p>
+<p><code>preferences -&gt; Packge Settings -&gt; LiveReload -&gt; Settings -&gt; User</code>:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"enabled_plugins"</span>: [</span><br><span class="line">        <span class="string">"SimpleReloadPlugin"</span>,</span><br><span class="line">        <span class="string">"SimpleRefresh"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法二:</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1. </span>ctrl+shift+p</span><br><span class="line"><span class="bullet">2. </span>LiveReload: Enable/disable plugins</span><br><span class="line"><span class="bullet">3. </span>Enable - SimpleReload</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><a href="http://www.icyfire.me/2014/10/28/sublime-text-plugin-jsformat.html" target="_blank" rel="external">JsFormat</a></p>
+<p>  默认的快捷键为Ctrl + Alt + f</p>
+</li>
+</ul>
+<ul>
+<li>SublimeLinter Settings</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"user"</span>: &#123;</span><br><span class="line">        <span class="attr">"debug"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"delay"</span>: <span class="number">0.25</span>,</span><br><span class="line">        <span class="attr">"error_color"</span>: <span class="string">"D02000"</span>,</span><br><span class="line">        <span class="attr">"gutter_theme"</span>: <span class="string">"none"</span>,</span><br><span class="line">        <span class="attr">"gutter_theme_excludes"</span>: [],</span><br><span class="line">        <span class="attr">"lint_mode"</span>: <span class="string">"background"</span>,</span><br><span class="line">        <span class="attr">"linters"</span>: &#123;</span><br><span class="line">            <span class="attr">"pep8"</span>: &#123;</span><br><span class="line">                <span class="attr">"@disable"</span>: <span class="literal">false</span>,</span><br><span class="line">                <span class="attr">"args"</span>: [],</span><br><span class="line">                <span class="attr">"disable"</span>: <span class="string">""</span>,</span><br><span class="line">                <span class="attr">"enable"</span>: <span class="string">""</span>,</span><br><span class="line">                <span class="attr">"excludes"</span>: [],</span><br><span class="line">                <span class="attr">"ignore"</span>: <span class="string">""</span>,</span><br><span class="line">                <span class="attr">"max-line-length"</span>: <span class="literal">null</span>,</span><br><span class="line">                <span class="attr">"rcfile"</span>: <span class="string">""</span>,</span><br><span class="line">                <span class="attr">"select"</span>: <span class="string">""</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"mark_style"</span>: <span class="string">"outline"</span>,</span><br><span class="line">        <span class="attr">"no_column_highlights_line"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"paths"</span>: &#123;</span><br><span class="line">            <span class="attr">"linux"</span>: [],</span><br><span class="line">            <span class="attr">"osx"</span>: [</span><br><span class="line">                <span class="string">"/usr/local/bin/"</span>   //换成自己的目录</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"windows"</span>: []</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"python_paths"</span>: &#123;</span><br><span class="line">            <span class="attr">"linux"</span>: [],</span><br><span class="line">            <span class="attr">"osx"</span>: [</span><br><span class="line">                <span class="string">"/usr/local/bin/"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"windows"</span>: []</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"rc_search_limit"</span>: <span class="number">3</span>,</span><br><span class="line">        <span class="attr">"shell_timeout"</span>: <span class="number">10</span>,</span><br><span class="line">        <span class="attr">"show_errors_on_save"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"show_marks_in_minimap"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"syntax_map"</span>: &#123;</span><br><span class="line">            <span class="attr">"html (django)"</span>: <span class="string">"html"</span>,</span><br><span class="line">            <span class="attr">"html (rails)"</span>: <span class="string">"html"</span>,</span><br><span class="line">            <span class="attr">"html 5"</span>: <span class="string">"html"</span>,</span><br><span class="line">            <span class="attr">"php"</span>: <span class="string">"html"</span>,</span><br><span class="line">            <span class="attr">"python django"</span>: <span class="string">"python"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"warning_color"</span>: <span class="string">"DDB700"</span>,</span><br><span class="line">        <span class="attr">"wrap_find"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="我的快捷键设置"><a href="#我的快捷键设置" class="headerlink" title="我的快捷键设置"></a>我的快捷键设置</h3><p>基本上使用默认配置，但是因为有些按键冲突了，比如在终端中打开的快捷键和打开最近关闭的一个文件的快捷键就冲突啦，需要自己重新设置一下。</p>
+<p>Preferences -&gt; Key Bindings - Users</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[</span><br><span class="line">    // Format HTML/CSS simply, and jsformat.</span><br><span class="line">    &#123; <span class="attr">"keys"</span>: [<span class="string">"super+shift+r"</span>], <span class="attr">"command"</span>: <span class="string">"reindent"</span> , <span class="attr">"args"</span>: &#123; <span class="attr">"single_line"</span>: <span class="literal">false</span> &#125; &#125;,</span><br><span class="line">    //在浏览器中打开当前文件</span><br><span class="line">    &#123; <span class="attr">"keys"</span>: [<span class="string">"super+shift+8"</span>], <span class="attr">"command"</span>: <span class="string">"open_in_browser"</span>&#125;,</span><br><span class="line">    //打开最近关闭的一个文件</span><br><span class="line">    &#123; <span class="attr">"keys"</span>: [<span class="string">"super+shift+o"</span>], <span class="attr">"command"</span>: <span class="string">"reopen_last_file"</span> &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="本地服务器"><a href="#本地服务器" class="headerlink" title="本地服务器"></a>本地服务器</h2><p>基本上配置一个mac自带的本地apache服务器就足够前端开发用啦！我在配置本地服务器的时候遇到了不能访问<a href="http://localhost/~username/" target="_blank" rel="external">http://localhost/~username/</a>的问题。下面是我的解决过程。</p>
+<p>启动Apache:<code>$ sudo apachectl start</code></p>
+<p>查看Apache版本:<code>$ httpd -v</code></p>
+<p>访问<a href="http://localhost/~username/" target="_blank" rel="external">http://localhost/~username/</a>,提示<strong>Not Found</strong></p>
+<p><strong>我们需要以下步骤:</strong></p>
+<p>首先配置<strong>username.conf</strong>(需要管理员权限,<code>sudo</code>):<br><code>/etc/apache2/users/username.conf</code></p>
+<p>将以下代码保存到<strong>conf</strong>文件中:<br><figure class="highlight mathematica"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">Directory</span> <span class="string">"/Users/yang/Sites/"</span>&gt;</span><br><span class="line">    <span class="keyword">Options</span> Indexes MultiViews</span><br><span class="line">    AllowOverride <span class="keyword">None</span></span><br><span class="line">    Require all granted</span><br><span class="line">&lt;/<span class="keyword">Directory</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>给权限:<code>$ sudo chmod 755 /etc/apache2/users/username.conf</code></p>
+<p>启用几个支持:在<code>/etc/apache2/httpd.conf</code>中</p>
+<p>查找并去掉代码行前边的#，启用如下:</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">LoadModule authz_core_module libexec<span class="regexp">/apache2/m</span>od_authz_core.so</span><br><span class="line">LoadModule authz_host_module libexec<span class="regexp">/apache2/m</span>od_authz_host.so</span><br><span class="line">LoadModule userdir_module libexec<span class="regexp">/apache2/m</span>od_userdir.so</span><br><span class="line"><span class="keyword">Include</span> <span class="regexp">/private/</span>etc<span class="regexp">/apache2/</span>extra<span class="regexp">/httpd-userdir.conf</span></span><br></pre></td></tr></table></figure>
+<p>接着运行:<code>$ sudo nano /etc/apache2/extra/httpd-userdir.conf</code></p>
+<p>开启:<code>Include /private/etc/apache2/users/*.conf</code></p>
+<p>重启Apache:<code>$ sudo apachectl restart</code></p>
+<p>此时，就能进入<a href="http://localhost/~username/" target="_blank" rel="external">http://localhost/~username/</a>啦！</p>
+<p><a href="http://stackoverflow.com/questions/24583859/apache-localhost-username-not-working/" target="_blank" rel="external">Apache localhost/~username/ not working</a></p>
+<p><a href="http://yangjunwei.com/a/1568.html" target="_blank" rel="external">Mac OS X Yosemite 10.10 配置 Apache+PHP 教程注意事项</a></p>
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><h3 id="nvm-安装"><a href="#nvm-安装" class="headerlink" title="nvm 安装"></a>nvm 安装</h3><p><strong>方法一:</strong></p>
+<p>用<code>$ brew install nvm</code>安裝nvm</p>
+<p>这个时候需要注意这个问题，重启终端，node系统环境变量会失效，所以需要下面的步骤。</p>
+<p><code>$ brew info nvm</code>会输出一段信息，根据提示操作</p>
+<ol>
+<li><p>创建 .nvm 文件:<code>mkdir ~/.nvm</code></p>
+</li>
+<li><p>然后把 nvm-exec 文件拷贝到新建的 .nvm 目录下</p>
+<p> <code>cp $(brew --prefix nvm)/nvm-exec ~/.nvm/</code></p>
+</li>
+<li><p>然后去编辑<code>bash</code>配置文件<code>$ ~/.bash_profile</code>,</p>
+<p> 如果使用<code>zsh</code>那么编辑 <code>$~/.zshrc</code>配置文件</p>
+<p> <code>open ~/.bash_profile</code>或<code>open ~/.zshrc</code></p>
+</li>
+<li><p>把下面的内容粘贴进去</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=~/.nvm</span><br><span class="line"><span class="built_in">source</span> $(brew --prefix nvm)/nvm.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后让你的 shell 配置及时生效</p>
+<p> <code>source ~/.bash_profile</code>或<code>source ~/.zshrc</code></p>
+<p> 这样之后不会再出现关闭终端重启,或者重启机器发现 node ,npm 等系统环境变量失效的问题了.</p>
+</li>
+</ol>
+<p><strong>方法二:(推荐)</strong></p>
+<p>CUrl方式安装</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">curl -<span class="keyword">o</span>- http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/creationix/nvm/v0.<span class="number">29.0</span>/install.<span class="keyword">sh</span> | bash</span><br></pre></td></tr></table></figure>
+<p>编辑 <code>$~/.zshrc</code>配置文件,写入下面这两行代码，保存后<code>source ~/.zshrc</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=~/.nvm</span><br><span class="line">[ <span class="_">-s</span> <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; . <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> <span class="comment"># This loads nvm</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用nvm安装node-js"><a href="#使用nvm安装node-js" class="headerlink" title="使用nvm安装node.js"></a>使用nvm安装node.js</h3><pre><code>用`$ nvm ls-remote`指令看一下有哪些版本可以安裝
+
+用`$ nvm install &lt;version&gt;`安装指定版本
+
+`$ nvm ls`查看安装的版本
+
+设置默认版本`$ nvm alias default &lt;version&gt;`　
+</code></pre><h3 id="Npm-Usage"><a href="#Npm-Usage" class="headerlink" title="Npm Usage"></a>Npm Usage</h3><pre><code>安装包:
+
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> &lt;package&gt;     <span class="comment"># 安装在本地项目中</span></span><br><span class="line">$ npm <span class="keyword">install</span> -g &lt;package&gt;  <span class="comment"># 安装在全局</span></span><br></pre></td></tr></table></figure>
+
+推荐全局安装的包:
+
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">$ npm <span class="keyword">install </span>-g coffee-<span class="keyword">script</span><br><span class="line"></span>$ npm <span class="keyword">install </span>-g grunt-cli</span><br></pre></td></tr></table></figure>
+
+
+
+
+安装包，并且将其保存你项目中的 package.json 文件:
+`$ npm install &lt;package&gt; --save`
+
+查看 npm 安装的内容:
+
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">$ npm <span class="built_in">list</span>     <span class="comment"># 本地</span></span><br><span class="line">$ npm <span class="built_in">list</span> -g  <span class="comment"># 全局</span></span><br></pre></td></tr></table></figure>
+
+查看过期的包（本地或全局）:`$ npm outdated [-g]`
+
+更新全部或特别指定一个包:`$ npm update [&lt;package&gt;]`
+
+卸载包:`$ npm uninstall &lt;package&gt;`
+</code></pre><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/creationix/nvm" target="_blank" rel="external">Node Version Manager</a></p>
+<p><a href="https://github.com/alsotang/node-lessons/tree/master/lesson0" target="_blank" rel="external">搭建 Node.js 开发环境</a></p>
+<p><a href="http://yijiebuyi.com/blog/b1328ffe88cdde6b4102894635cf8f11.html" target="_blank" rel="external">node.js 版本控制 nvm 和 n 使用 及 nvm 重启终端失效的解决方法</a></p>
+<p><a href="http://icarus4.logdown.com/posts/175092-nodejs-installation-guide" target="_blank" rel="external">Node.js 安裝與版本切換教學 (for MAC)</a></p>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><ul>
+<li>安装</li>
+</ul>
+<p>为了不污染系统自带的Python，我们得通过homebrew安装属于私有的Python</p>
+<p><code>$ brew install python</code></p>
+<p>装完之后通过<code>$ which python</code>查看所在目录应该在<code>/usr/local/bin/python</code></p>
+<p>这种方法装完python之后同时也会把<em>Pip</em>(依赖<em>Setuptools</em>)装好.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">$ pip <span class="keyword">install</span> <span class="comment">--upgrade setuptools</span></span><br><span class="line">$ pip <span class="keyword">install</span> <span class="comment">--upgrade pip</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Pip Usage</li>
+</ul>
+<p>安装包:<code>$ pip install &lt;package&gt;</code></p>
+<p>更新包:<code>$ pip install --upgrade &lt;package&gt;</code></p>
+<p>查看包:<code>$ pip freeze</code></p>
+<p>卸载包:<code>$ pip uninstall &lt;package&gt;</code></p>
+<ul>
+<li>Virtualenv</li>
+</ul>
+<p>Install:<code>$ pip install virtualenv</code></p>
+<p>Usage:</p>
+<p>建立一个虚拟目录</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>cd myproject/</span><br><span class="line"><span class="variable">$ </span>virtualenv venv --distribute</span><br></pre></td></tr></table></figure>
+<p>如果需要继承全局环境下安装的包，使用</p>
+<p><code>$ virtualenv venv --distribute --system-site-packages</code></p>
+<p>首先需要激活一下：<code>$ source venv/bin/activate</code></p>
+<p>然后再运行<code>$ pip install &lt;package&gt;</code>，就会安装到<code>venv</code>文件夹里，并且不会影响到其他项目。</p>
+<p><code>$ deactivate</code>离开虚拟环境。</p>
+<p><em>Important:</em>记住在<code>venv</code>里添加<code>.gitignore</code>文件，避免源代码混入奇怪的东西。</p>
+<ul>
+<li><a href="http://virtualenvwrapper.readthedocs.org/en/latest/install.html" target="_blank" rel="external">Virtualenvwrapper</a></li>
+</ul>
+<p>安装:<code>$ pip install virtualenvwrapper</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> WORKON_HOME=<span class="variable">$HOME</span>/.virtualenvs</span><br><span class="line"><span class="built_in">export</span> PROJECT_HOME=<span class="variable">$HOME</span>/Devel</span><br><span class="line"><span class="built_in">source</span> /usr/<span class="built_in">local</span>/bin/virtualenvwrapper.sh</span><br></pre></td></tr></table></figure>
+<p>在<code>.zshrc</code>中的这段就是这里的配置信息</p>
+<h2 id="Ruby"><a href="#Ruby" class="headerlink" title="Ruby"></a>Ruby</h2><p>同样的，为了不污染系统自带ruby，我们得自己再通过homebrew安装一个ruby</p>
+<figure class="highlight gams"><table><tr><td class="code"><pre><span class="line"><span class="symbol">$</span> brew install rbenv ruby-build rbenv-gem-rehash rbenv-default-gems</span><br><span class="line"><span class="symbol">$</span> echo <span class="string">'eval "$(rbenv init -)"'</span> &gt;&gt; ~/Projects/config/env.sh</span><br><span class="line"><span class="symbol">$</span> sourcezsh</span><br></pre></td></tr></table></figure>
+<h2 id="常用应用"><a href="#常用应用" class="headerlink" title="常用应用"></a>常用应用</h2><ul>
+<li><p>开发工具:</p>
+<p>  Sublime Text 3,iTerm2,Github,Chrome,Firefox,Parallels</p>
+</li>
+<li><p>日常应用:</p>
+<p>  The Unarchiver,BetterZip3,PhotoShop CC,Movist,Evernote,Skitch,Rime</p>
+<p>  Karabiner,Noizio,MacDown,Mou,<a href="http://www.mediaatelier.com/CheatSheet/" target="_blank" rel="external">CheatSheet</a></p>
+</li>
+</ul>
+<h2 id="参考-1"><a href="#参考-1" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.gitbook.com/book/aaaaaashu/mac-dev-setup/details" target="_blank" rel="external">mac日常开发环境指南</a></p>
+<p><a href="http://sourabhbajaj.com/mac-setup/" target="_blank" rel="external">Mac OS X Setup Guide</a></p>
+<p><a href="https://mba811.gitbooks.io/mac-dev/content/" target="_blank" rel="external">Mac 开发配置学习手册</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>尽管网络上有这么多的资源，各种blog，论坛，问答。但是最好的手册是官网。基本上按照官网提供的方法来，就会少出这样那样的问题了。而且官方文档也大都提供了各类的解决方案。也许有人要说了，我不懂英文。但是身为一个做技术的，哪怕硬着头皮也要上呀！而且绝大多数官方都用比较浅显易懂的文字表述清楚了，所以不要怕！</p>
+<p>本来以为写这篇东西会很快，但是结果发现还是多多少少遇到了各种问题。毕竟不是完全干净的系统了，里面还是残留了不少之前的痕迹，导致了各种的问题。诸如Python、nvm安装的一些问题。好在，最终都成功解决了。看着手中经过擦拭打磨后越发锋利的剑，那是必须开怀大笑😄！</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xootj.com1.z0.glb.clouddn.com/alids1.jpg" alt="Crossingmay Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="copyright" style="clear:both;">
+           <p><span>本文标题:</span><a href="/2015/11/28/frontendevset/">私属前端开发环境配置指南</a></p>
+           <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
+           <p><span>发布时间:</span>2015年11月28日 - 23时11分</p>
+           <p><span>最后更新:</span>2016年1月7日 - 20时01分</p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有7,283字</span></p>
+           <p><span>原始链接:</span><a href="/2015/11/28/frontendevset/" title="私属前端开发环境配置指南">http://crossingmay.github.io/2015/11/28/frontendevset/</a></p>
+           <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
+           <p><span>转载请保留以上信息。</span></p>
+        </div>
+      
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mac/" rel="tag">#Mac</a>
+          
+            <a href="/tags/环境配置/" rel="tag">#环境配置</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/29/hexotips/" rel="prev" title="Hexo使用小贴士">
+                Hexo使用小贴士 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xootj.com1.z0.glb.clouddn.com/x-head1.jpg"
+               alt="Crossingmay" />
+          <p class="site-author-name" itemprop="name">Crossingmay</p>
+          <p class="site-description motion-element" itemprop="description">Memo my learning process everyday and to share</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crossingmay" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/crossingmay" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/crossingmay" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/crossingmay" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://ixiusama.com/" title="ixiusama" target="_blank">ixiusama</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#易用性设置"><span class="nav-number">1.</span> <span class="nav-text">易用性设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xcode"><span class="nav-number">2.</span> <span class="nav-text">xcode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew"><span class="nav-number">3.</span> <span class="nav-text">Homebrew</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew基本使用"><span class="nav-number">4.</span> <span class="nav-text">Homebrew基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew-Cask"><span class="nav-number">5.</span> <span class="nav-text">Homebrew Cask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iTerm2"><span class="nav-number">6.</span> <span class="nav-text">iTerm2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git"><span class="nav-number">7.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sublime-Text-3"><span class="nav-number">8.</span> <span class="nav-text">Sublime Text 3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装和配置"><span class="nav-number">8.1.</span> <span class="nav-text">安装和配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插件"><span class="nav-number">8.2.</span> <span class="nav-text">插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我的快捷键设置"><span class="nav-number">8.3.</span> <span class="nav-text">我的快捷键设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地服务器"><span class="nav-number">9.</span> <span class="nav-text">本地服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js"><span class="nav-number">10.</span> <span class="nav-text">Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nvm-安装"><span class="nav-number">10.1.</span> <span class="nav-text">nvm 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用nvm安装node-js"><span class="nav-number">10.2.</span> <span class="nav-text">使用nvm安装node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Npm-Usage"><span class="nav-number">10.3.</span> <span class="nav-text">Npm Usage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">10.4.</span> <span class="nav-text">参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python"><span class="nav-number">11.</span> <span class="nav-text">Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ruby"><span class="nav-number">12.</span> <span class="nav-text">Ruby</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用应用"><span class="nav-number">13.</span> <span class="nav-text">常用应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考-1"><span class="nav-number">14.</span> <span class="nav-text">参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">15.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crossingmay</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共56.7k字</span>
+  
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'crossingmay';
+      var disqus_identifier = '2015/11/28/frontendevset/';
+      var disqus_title = '私属前端开发环境配置指南';
+      var disqus_url = 'http://crossingmay.github.io/2015/11/28/frontendevset/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

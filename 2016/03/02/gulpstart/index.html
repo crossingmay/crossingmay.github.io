@@ -1,0 +1,783 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Gulp,MD5,版本," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="由于工作的需要，最近都在研究gulp打包，昨天终于完成最终版本，今天上传了分支。总结记录一些笔记。有需要的同学可以拿去用用哟！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用gulp构建打包工具">
+<meta property="og:url" content="http://crossingmay.github.io/2016/03/02/gulpstart/index.html">
+<meta property="og:site_name" content="Crossing's Blog">
+<meta property="og:description" content="由于工作的需要，最近都在研究gulp打包，昨天终于完成最终版本，今天上传了分支。总结记录一些笔记。有需要的同学可以拿去用用哟！">
+<meta property="og:updated_time" content="2016-03-07T06:21:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用gulp构建打包工具">
+<meta name="twitter:description" content="由于工作的需要，最近都在研究gulp打包，昨天终于完成最终版本，今天上传了分支。总结记录一些笔记。有需要的同学可以拿去用用哟！">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 使用gulp构建打包工具 | Crossing's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70792175-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crossing's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">NOT Genius but Try Best</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用gulp构建打包工具
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-02T14:27:58+08:00" content="2016-03-02">
+              2016-03-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">Web前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/02/gulpstart/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/02/gulpstart/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>由于工作的需要，最近都在研究gulp打包，昨天终于完成最终版本，今天上传了分支。<br>总结记录一些笔记。有需要的同学可以拿去用用哟！</p>
+<a id="more"></a>
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><pre><code>js&amp;css压缩{输出}
+
+--&gt; js&amp;css计算MD5并修改文件名
+
+--&gt; 图片压缩{输出}
+
+--&gt; 替换HTML里的js&amp;css文件名
+
+--&gt; 压缩HTML代码{输出}
+
+--&gt; 将打包后输出的js&amp;css文件上传至cdn
+</code></pre><h2 id="如何开始"><a href="#如何开始" class="headerlink" title="如何开始"></a>如何开始</h2><p>1 首先你得已经安装了nodejs环境，然后依次按照下面的命令进行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g gulp               <span class="comment"># 全局安装gulp</span></span><br><span class="line"></span><br><span class="line">$ npm init                          <span class="comment"># 初始化一些信息，项目名、作者等等，可以先随便填</span></span><br><span class="line"></span><br><span class="line">$ npm install --save-dev gulp       <span class="comment"># 本地安装gulp,参数--save-dev会在package写入依赖</span></span><br><span class="line"></span><br><span class="line">$ npm install --save-dev gulp-csso del gulp-rev <span class="comment"># 根据gulpfile.js安装要用到的插件</span></span><br></pre></td></tr></table></figure>
+<p>2 项目目录结构<br><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">目录结构</span><br><span class="line">.</span><br><span class="line">├── app</span><br><span class="line">│   ├── css                 <span class="comment">// css下可以放外部导入css库，dist下可放页面样式</span></span><br><span class="line">│   │   ├── <span class="selector-tag">a</span><span class="selector-class">.css</span></span><br><span class="line">│   │   ├── <span class="selector-tag">b</span><span class="selector-class">.css</span></span><br><span class="line">│   │   └── dist</span><br><span class="line">│   │       └── c<span class="selector-class">.css</span></span><br><span class="line">│   ├── <span class="selector-tag">img</span></span><br><span class="line">│   │   └── tg<span class="selector-class">.png</span></span><br><span class="line">│   └── js                  <span class="comment">// js下放jq之类的外部库，pages下放页面js</span></span><br><span class="line">│       ├── <span class="selector-tag">a</span><span class="selector-class">.js</span></span><br><span class="line">│       ├── main<span class="selector-class">.js</span></span><br><span class="line">│       └── pages</span><br><span class="line">│           └── aa<span class="selector-class">.js</span></span><br><span class="line">├── config                  <span class="comment">// 插件需要的配置文件，json里设置upyun信息</span></span><br><span class="line">│   └── default<span class="selector-class">.json</span></span><br><span class="line">├── dist                    <span class="comment">// 自动生成的输出目录</span></span><br><span class="line">├── gulpfile<span class="selector-class">.js</span></span><br><span class="line">├── index<span class="selector-class">.html</span></span><br><span class="line">├── node_modules</span><br><span class="line">├── package<span class="selector-class">.json</span> </span><br><span class="line">└── rev                     <span class="comment">// rev插件生成的文件，记录带了md5信息的文件</span></span><br><span class="line">    ├── css</span><br><span class="line">    │   └── rev-manifest<span class="selector-class">.json</span></span><br><span class="line">    └── js</span><br><span class="line">        └── rev-manifest.json</span><br></pre></td></tr></table></figure></p>
+<h2 id="gulpfile-js"><a href="#gulpfile-js" class="headerlink" title="gulpfile.js"></a>gulpfile.js</h2><p>注释的比较详细了，应该新手也能看懂！</p>
+<h3 id="优化部分"><a href="#优化部分" class="headerlink" title="优化部分"></a>优化部分</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">    del = <span class="built_in">require</span>(<span class="string">'del'</span>),                   <span class="comment">// 删除插件</span></span><br><span class="line">    rev = <span class="built_in">require</span>(<span class="string">'gulp-rev'</span>),              <span class="comment">// 给文件增加md5后缀</span></span><br><span class="line">    revCollector = <span class="built_in">require</span>(<span class="string">'gulp-rev-collector'</span>),<span class="comment">// 根据rev替换文件名</span></span><br><span class="line">    htmlmin = <span class="built_in">require</span>(<span class="string">'gulp-htmlmin'</span>),      <span class="comment">// html压缩</span></span><br><span class="line">    uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>),        <span class="comment">// js混淆压缩</span></span><br><span class="line">    csso = <span class="built_in">require</span>(<span class="string">'gulp-csso'</span>),            <span class="comment">// 压缩Css</span></span><br><span class="line">    cache = <span class="built_in">require</span>(<span class="string">'gulp-cache'</span>),          <span class="comment">// 缓存插件，使图片仅更新缓存中不一样的图片</span></span><br><span class="line">    imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>),    <span class="comment">// 压缩图片</span></span><br><span class="line">    runSequence = <span class="built_in">require</span>(<span class="string">'run-sequence'</span>);  <span class="comment">// 改变任务优先级</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// js压缩，替换为md5文件名</span></span><br><span class="line">gulp.task(<span class="string">'jsmin'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'app/**/*.js'</span>)</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(rev())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'dist/app'</span>))</span><br><span class="line">        .pipe(rev.manifest())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'rev/js'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// css压缩，替换为md5文件名　</span></span><br><span class="line">gulp.task(<span class="string">'cssmin'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'app/**/*.css'</span>)</span><br><span class="line">        .pipe(csso())</span><br><span class="line">        .pipe(rev())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'dist/app'</span>))</span><br><span class="line">        .pipe(rev.manifest())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'rev/css'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换html里的js和css链接，压缩html</span></span><br><span class="line">gulp.task(<span class="string">'rev'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src([<span class="string">'rev/**/*.json'</span>,<span class="string">'*.html'</span>])</span><br><span class="line">    .pipe(revCollector())</span><br><span class="line">    .pipe(htmlmin(&#123;</span><br><span class="line">      removeComments: <span class="literal">true</span>,        <span class="comment">// 去除注释</span></span><br><span class="line">      collapseWhitespace: <span class="literal">true</span>,    <span class="comment">// 去除空格 </span></span><br><span class="line">      minifyJS: <span class="literal">true</span>,              <span class="comment">// 优化行内JS</span></span><br><span class="line">      minifyCSS: <span class="literal">true</span>             <span class="comment">// 优化行内样式</span></span><br><span class="line">    &#125;))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 图片压缩优化</span></span><br><span class="line">gulp.task(<span class="string">'imagemin'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'app/img/**/*.&#123;png,jpg,gif,ico,svg&#125;'</span>)</span><br><span class="line">        .pipe(cache(imagemin(&#123;</span><br><span class="line">            optimizationLevel: <span class="number">5</span>, <span class="comment">//类型：Number  默认：3  取值范围：0-7（优化等级）</span></span><br><span class="line">            progressive: <span class="literal">true</span>, <span class="comment">//类型：Boolean 默认：false 无损压缩jpg图片</span></span><br><span class="line">            interlaced: <span class="literal">true</span>, <span class="comment">//类型：Boolean 默认：false 隔行扫描gif进行渲染</span></span><br><span class="line">            multipass: <span class="literal">true</span> <span class="comment">//类型：Boolean 默认：false 多次优化svg直到完全优化</span></span><br><span class="line">        &#125;)))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'dist/app/img'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="清理文件"><a href="#清理文件" class="headerlink" title="清理文件"></a>清理文件</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Clean</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// clean:bulid</span></span><br><span class="line"><span class="comment">// 删除dist里除了图片以外的资源</span></span><br><span class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">    del([<span class="string">'dist/**/*'</span>, <span class="string">'!dist/app'</span>,<span class="string">'!dist/app/img'</span>,<span class="string">'!dist/app/img/**/*.&#123;jpg,png,gif,ico,svg&#125;'</span>],callback);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 清除dist所有资源</span></span><br><span class="line">gulp.task(<span class="string">'cleanAll'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">    del(<span class="string">'dist'</span>)</span><br><span class="line">    <span class="keyword">return</span> cache.clearAll(callback);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="上传至又拍云"><a href="#上传至又拍云" class="headerlink" title="上传至又拍云"></a>上传至又拍云</h3><p>这里采用的是gulp-upyun插件，加上config，配置用户名密码。当然用户名和密码也可以直接写在gulpfile.js里。但是多少有点怪，所以我采取了使用config插件来配置，如果有什么更好的方式请务必要告诉我！：）真诚脸！</p>
+<p>此外，一般来说我们管理cdn上的资源会采取ftp上管理，所以这里下载和删除可以省去，仅留下上传部分的代码既可。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * UPYUN CDN</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">'config'</span>);</span><br><span class="line"><span class="keyword">var</span> upyunSrc = <span class="built_in">require</span>(<span class="string">'gulp-upyun'</span>).upyunSrc;   <span class="comment">//获源</span></span><br><span class="line"><span class="keyword">var</span> upyunDest = <span class="built_in">require</span>(<span class="string">'gulp-upyun'</span>).upyunDest; <span class="comment">//上传</span></span><br><span class="line"><span class="keyword">var</span> upyunRimraf = <span class="built_in">require</span>(<span class="string">'gulp-upyun'</span>).upyunRimraf; <span class="comment">//删除</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 下载</span></span><br><span class="line">gulp.task(<span class="string">'upyundown'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  upyunSrc(<span class="string">'gulpcs/dist/**/*'</span>,[<span class="string">'!/gulpcs/dist/**/*.&#123;png,jpg,gif,ico,svg&#125;'</span>],&#123;</span><br><span class="line">      username: config.cdn.upyun.username,</span><br><span class="line">      password: config.cdn.upyun.password</span><br><span class="line">    &#125;)</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'out'</span>));</span><br><span class="line">  &#125;)</span><br><span class="line"><span class="comment">// 上传</span></span><br><span class="line">gulp.task(<span class="string">'upyuncdn'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'dist/**/*'</span>)</span><br><span class="line">        .pipe(upyunDest(<span class="string">'gulpcs/'</span> + config.cdn.upyun.folder, &#123;</span><br><span class="line">            username: config.cdn.upyun.username,</span><br><span class="line">            password: config.cdn.upyun.password</span><br><span class="line">        &#125;));</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 删除</span></span><br><span class="line">gulp.task(<span class="string">'upyundel'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">    upyunSrc(<span class="string">'gulpcs/dist/**/*'</span>,&#123;</span><br><span class="line">      username: config.cdn.upyun.username,</span><br><span class="line">      password: config.cdn.upyun.password</span><br><span class="line">      &#125;)</span><br><span class="line">      .pipe(upyunRimraf(&#123;</span><br><span class="line">        username: config.cdn.upyun.username,</span><br><span class="line">        password: config.cdn.upyun.password</span><br><span class="line">        &#125;))</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="把任务组合到build、deploy中"><a href="#把任务组合到build、deploy中" class="headerlink" title="把任务组合到build、deploy中"></a>把任务组合到build、deploy中</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Build</span><br><span class="line"> */</span></span><br><span class="line"><span class="comment">// only modify file build test</span></span><br><span class="line">gulp.task(<span class="string">'build'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        runSequence(<span class="string">'clean'</span>, </span><br><span class="line">            [<span class="string">'extendlib'</span>, <span class="string">'jsmin'</span>, <span class="string">'cssmin'</span>, <span class="string">'mjsmin'</span>, <span class="string">'mcssmin'</span>, <span class="string">'imgmin'</span>],</span><br><span class="line">            [<span class="string">'htmlrev'</span>,<span class="string">'mhtmlrev'</span>],</span><br><span class="line">            callback)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Build All</span></span><br><span class="line">gulp.task(<span class="string">'deploy'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">  runSequence(<span class="string">'build'</span>,</span><br><span class="line">    [<span class="string">'upyuncdn'</span>],</span><br><span class="line">    callback)</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这些都只是普通的简单应用，在简单的小型项目中使用也基本足够。我们还能使用gulp在开发过程中完成less或scss预处理，自动刷新等。具体过程可以查看参考链接。</p>
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><p><a href="https://github.com/gulpjs/gulp/blob/master/docs/API.md#user-content-gulpwatchglob-opts-cb" target="_blank" rel="external">gulp API docs</a></p>
+<p><a href="http://www.w3ctrain.com/2015/12/22/gulp-for-beginners/#more" target="_blank" rel="external">Gulp新手入门教程</a></p>
+<p><a href="http://www.cnblogs.com/2050/p/4198792.html" target="_blank" rel="external">前端构建工具gulpjs的使用介绍及技巧</a></p>
+<p><a href="http://qingtong234.github.io/2015/09/06/gulp%E6%89%93%E9%80%A0%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81/" target="_blank" rel="external">gulp打造前端自动化工作流</a></p>
+<p><a href="http://www.gbtags.com/gb/share/5503.htm?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">用gulp做一个略完整的前端打包工作~</a></p>
+<p><a href="https://segmentfault.com/a/1190000002955996#articleHeader6" target="_blank" rel="external">gulp简易入坑</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xootj.com1.z0.glb.clouddn.com/alids1.jpg" alt="Crossingmay Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="copyright" style="clear:both;">
+           <p><span>本文标题:</span><a href="/2016/03/02/gulpstart/">使用gulp构建打包工具</a></p>
+           <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
+           <p><span>发布时间:</span>2016年3月2日 - 14时03分</p>
+           <p><span>最后更新:</span>2016年3月7日 - 14时03分</p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有3,149字</span></p>
+           <p><span>原始链接:</span><a href="/2016/03/02/gulpstart/" title="使用gulp构建打包工具">http://crossingmay.github.io/2016/03/02/gulpstart/</a></p>
+           <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
+           <p><span>转载请保留以上信息。</span></p>
+        </div>
+      
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Gulp/" rel="tag">#Gulp</a>
+          
+            <a href="/tags/MD5/" rel="tag">#MD5</a>
+          
+            <a href="/tags/版本/" rel="tag">#版本</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/10/weekreport110/" rel="next" title="周报1.4-1.10">
+                <i class="fa fa-chevron-left"></i> 周报1.4-1.10
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/01/whyfoobar/" rel="prev" title="foo和bar到底是什么东东">
+                foo和bar到底是什么东东 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xootj.com1.z0.glb.clouddn.com/x-head1.jpg"
+               alt="Crossingmay" />
+          <p class="site-author-name" itemprop="name">Crossingmay</p>
+          <p class="site-description motion-element" itemprop="description">Memo my learning process everyday and to share</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crossingmay" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/crossingmay" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/crossingmay" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/crossingmay" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://ixiusama.com/" title="ixiusama" target="_blank">ixiusama</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何开始"><span class="nav-number">2.</span> <span class="nav-text">如何开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gulpfile-js"><span class="nav-number">3.</span> <span class="nav-text">gulpfile.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优化部分"><span class="nav-number">3.1.</span> <span class="nav-text">优化部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清理文件"><span class="nav-number">3.2.</span> <span class="nav-text">清理文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传至又拍云"><span class="nav-number">3.3.</span> <span class="nav-text">上传至又拍云</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把任务组合到build、deploy中"><span class="nav-number">3.4.</span> <span class="nav-text">把任务组合到build、deploy中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Links"><span class="nav-number">5.</span> <span class="nav-text">Links</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crossingmay</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共56.7k字</span>
+  
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'crossingmay';
+      var disqus_identifier = '2016/03/02/gulpstart/';
+      var disqus_title = '使用gulp构建打包工具';
+      var disqus_url = 'http://crossingmay.github.io/2016/03/02/gulpstart/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

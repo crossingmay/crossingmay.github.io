@@ -1,0 +1,999 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Tips,CSS,JavaScript,HTML,iMooc," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="学习慕课网上的一些重点记录。比较基础的，记录下来以免忘记，学而时习之！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="慕课网前端课程学习笔记">
+<meta property="og:url" content="http://crossingmay.github.io/2015/12/27/imoochtmlcss/index.html">
+<meta property="og:site_name" content="Crossing's Blog">
+<meta property="og:description" content="学习慕课网上的一些重点记录。比较基础的，记录下来以免忘记，学而时习之！">
+<meta property="og:image" content="http://img.mukewang.com/53e198540001b66404860353.jpg">
+<meta property="og:updated_time" content="2016-01-20T15:35:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="慕课网前端课程学习笔记">
+<meta name="twitter:description" content="学习慕课网上的一些重点记录。比较基础的，记录下来以免忘记，学而时习之！">
+<meta name="twitter:image" content="http://img.mukewang.com/53e198540001b66404860353.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 慕课网前端课程学习笔记 | Crossing's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70792175-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crossing's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">NOT Genius but Try Best</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                慕课网前端课程学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-27T14:19:08+08:00" content="2015-12-27">
+              2015-12-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">Web前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/27/imoochtmlcss/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/27/imoochtmlcss/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习慕课网上的一些重点记录。比较基础的，记录下来以免忘记，学而时习之！<br><a id="more"></a></p>
+<h2 id="关于CSS"><a href="#关于CSS" class="headerlink" title="关于CSS"></a>关于CSS</h2><ul>
+<li>css样式优先级?</li>
+</ul>
+<p>内联样式表（标签内部）&gt; 嵌入样式表（当前文件中）&gt; 外部样式表（外部文件中）</p>
+<ul>
+<li>我们为同一个元素设置了不同的CSS样式代码，那么元素会启用哪一个CSS样式呢?</li>
+</ul>
+<p>浏览器是根据权值来判断使用哪种css样式的，权值高的就使用哪种css样式。</p>
+<p>权值的规则：继承的权值为0.1，标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。</p>
+<ul>
+<li>如果在html文件中对于同一个元素可以有多个css样式存在并且这多个css样式具有相同权重值怎么办？</li>
+</ul>
+<p>层叠就是在html文件中对于同一个元素可以有多个css样式存在，当有相同权重的样式存在时，会根据这些css样式的前后顺序来决定，处于最后面的css样式会被应用。</p>
+<ul>
+<li>有些特殊的情况需要为某些样式设置具有最高权值，怎么办？</li>
+</ul>
+<p>我们可以使用!important来解决。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">color</span>:red<span class="meta">!important</span>;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float。</p>
+</li>
+<li><p>层模型有三种形式：</p>
+<p>  1、绝对定位(position: absolute)</p>
+<p>  2、相对定位(position: relative)</p>
+<p>  3、固定定位(position: fixed)</p>
+</li>
+<li><p>字体缩写:</p>
+<p>  1、使用这一简写方式你至少要指定 font-size 和 font-family 属性，其他的属性(如 font-weight、font-style、font-varient、line-height)如未指定将自动使用默认值。</p>
+<p>  2、在缩写时 font-size 与 line-height 中间要加入“/”斜扛。</p>
+</li>
+</ul>
+<p>eg:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">font</span>:<span class="number">12px</span>/<span class="number">1.5em</span>  <span class="string">"宋体"</span>,sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>当被设置元素为块状元素时用 text-align：center 就不起作用了，这时也分两种情况：定宽块状元素和不定宽块状元素。满足定宽和块状两个条件的元素是可以通过设置“左右margin”值为“auto”来实现居中的。</p>
+</li>
+<li><p>不定宽度的块状元素有三种方法居中（这三种方法目前使用的都比多）：</p>
+<p>  加入 table 标签</p>
+<p>  设置 display;inline 方法</p>
+<p>  设置 position:relative 和 left:50%;</p>
+<pre><code>通过给父元素设置 float，然后给父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left:-50% 来实现水平居中
+</code></pre></li>
+<li><p>垂直居中-父元素高度确定的单行文本:父元素高度确定的单行文本的竖直居中的方法是通过设置父元素的 height 和 line-height 高度一致来实现的。</p>
+</li>
+<li><p>父元素高度确定的多行文本、图片、块状元素的竖直居中的方法有两种：</p>
+<p>  方法一：使用插入 table (包括tbody、tr、td)标签，同时设置 vertical-align：middle。</p>
+<p>  说到竖直居中，css 中有一个用于竖直居中的属性 vertical-align，但这个样式只有在父元素为 td 或 th 时，才会生效。所以又要插入 table 标签了。</p>
+<p>  方法二：在 chrome、firefox 及 IE8 以上的浏览器下可以设置块级元素的 display 为 table-cell，激活 vertical-align 属性，但注意 IE6、7 并不支持这个样式。</p>
+</li>
+</ul>
+<h2 id="关于JavaScript"><a href="#关于JavaScript" class="headerlink" title="关于JavaScript"></a>关于JavaScript</h2><ul>
+<li><p>变量也可以不声明，直接使用，但为了规范，需要先声明，后使用。</p>
+</li>
+<li><p>二维数组的定义方法一</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> myarr=<span class="keyword">new</span> <span class="built_in">Array</span>();  <span class="comment">//先声明一维 </span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)&#123;   <span class="comment">//一维长度为2</span></span><br><span class="line">   myarr[i]=<span class="keyword">new</span> <span class="built_in">Array</span>();  <span class="comment">//再声明二维 </span></span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>;j&lt;<span class="number">3</span>;j++)&#123;   <span class="comment">//二维长度为3</span></span><br><span class="line">   myarr[i][j]=i+j;   <span class="comment">// 赋值，每个数组元素的值为i+j</span></span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>主要事件表:</li>
+</ul>
+<p><img src="http://img.mukewang.com/53e198540001b66404860353.jpg" alt="主要事件表" title="主要事件表"></p>
+<ul>
+<li><p>字符串中第一个字符的下标是 0。最后一个字符的下标为字符串长度减一（string.length-1）</p>
+</li>
+<li><p>获取属性<code>elementNode.getAttribute(name)</code></p>
+</li>
+<li><p>设置属性<code>elementNode.setAttribute(name,value)</code></p>
+</li>
+<li><p>nodeType 属性: 节点的类型，是只读的。以下常用的几种结点类型:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>元素类型</th>
+<th>节点类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  元素</td>
+<td>1</td>
+</tr>
+<tr>
+<td>  属性</td>
+<td>2</td>
+</tr>
+<tr>
+<td>  文本</td>
+<td>3</td>
+</tr>
+<tr>
+<td>  注释</td>
+<td>8</td>
+</tr>
+<tr>
+<td>  文档</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>nodeValue 属性：节点的值</p>
+<p> 元素节点的 nodeValue 是 undefined 或 null</p>
+<p> 文本节点的 nodeValue 是文本自身</p>
+<p> 属性节点的 nodeValue 是属性的值</p>
+</li>
+</ul>
+<ul>
+<li><p>nodeName 属性: 节点的名称，是只读的。</p>
+<p> 元素节点的 nodeName 与标签名相同</p>
+<p> 属性节点的 nodeName 是属性的名称</p>
+<p> 文本节点的 nodeName 永远是 #text</p>
+<p> 文档节点的 nodeName 永远是 #document</p>
+</li>
+<li><p><code>node.firstChild</code>等同于<code>elementNode.childNodes[0]</code></p>
+</li>
+<li><p><code>node.lastChild</code>等同于<code>elementNode.childNodes[elementNode.childNodes.length-1]</code></p>
+</li>
+<li><p>改变 HTML 元素的内容:<code>document.getElementById(id).innerHTML=new HTML</code></p>
+</li>
+</ul>
+<h2 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery"></a>JQuery</h2><p>###基础选择器</p>
+<p>ID选择器：<code>$(&quot;#my_id&quot;)</code></p>
+<p>元素选择器：<code>$(&quot;element&quot;)</code>根据元素的名称可以查找到该元素，并调用<code>css()</code>方法将设置该元素内容中文字显示的样式。eg:<code>$(&quot;div&quot;).css(&quot;border&quot;,&quot;1px solid #CCC&quot;)</code></p>
+<p>类选择器：<code>$(&quot;.class&quot;)</code></p>
+<p><em>选择器：`$(“</em>“)<code>,eg:</code>$(“div *”)`获得div中所以子元素</p>
+<p>sele1,sele2,seleN选择器：<code>$(&quot;sele1,sele2,seleN&quot;)</code>,选择任意多个指定的元素</p>
+<p>层次性选择器：<code>$(&quot;ance desc&quot;)</code>,ance desc是使用空格隔开的两个参数。ance参数（ancestor祖先的简写）表示父元素；desc参数（descendant后代的简写）表示后代元素，即包括子元素、孙元素等等。两个参数都可以通过选择器来获取。</p>
+<p>parent&gt;child选择器：<code>$(&quot;parent &gt; child&quot;)</code>,与<code>ance desc</code>选择器相比，<code>parent&gt;child</code>选择器的范围要小些，它所选择的目标是子集元素，相当于一个家庭中的子辈们，但不包括孙辈。</p>
+<p>prev+next选择器：<code>$(&quot;prev+next&quot;)</code>,找与“prev”元素紧邻的下一个“next”元素。</p>
+<p>prev~siblings选择器：<code>$(&quot;prev~siblings&quot;)</code>,也是查找prev 元素之后的相邻元素，但<code>$(&quot;prev+next&quot;)</code>只获取第一个相邻的元素，而<code>$(&quot;prev~siblings&quot;)</code>则获取prev 元素后面全部相邻的元素。</p>
+<h3 id="过滤选择器"><a href="#过滤选择器" class="headerlink" title="过滤选择器"></a>过滤选择器</h3><p>:first过滤选择器：过滤选择器的功能是获取第一个元素，常常与其它选择器一起使用，获取指定的一组元素中的第一个元素。eg:<code>$(&quot;li:first&quot;)</code>,获取第一个li元素。</p>
+<p>:last,同:first相反，获取最后一个元素。</p>
+<p>:eq(index)过滤选择器：其中参数index表示索引号（即：一个整数），它从0开始，如果index的值为3，表示选择的是第4个元素。</p>
+<p>:contains(text)过滤选择器：选择包含指定字符串的全部元素，它通常与其他元素结合使用，获取包含“text”字符串内容的全部元素对象。其中参数text表示页面中的文字。</p>
+<p>:has(selector)过滤选择器：获取选择器中包含指定元素名称的全部元素，其中selector参数就是包含的元素名称，是被包含元素。</p>
+<p>:hidden过滤选择器：获取全部不可见的元素，这些不可见的元素中包括type属性值为hidden的元素。</p>
+<p>:visible过滤选择器：获取的是全部可见的元素。</p>
+<p>[attribute=value]属性选择器：获取与属性名和属性值完全相同的全部元素，其中[]是专用于属性选择器的括号符，参数attribute表示属性名称，value参数表示属性值。eg：<code>$(&quot;li[title=&#39;我最爱&#39;]&quot;)</code></p>
+<p>[attribute!=value]属性选择器：你懂得，和上一个相反！</p>
+<p>[attribute<em>=value]属性选择器：它可以获取属性值中包含指定内容的全部元素，其中[]是专用于属性选择器的括号符，参数attribute表示属性名称，value参数表示对应的属性值。eg：`$(“li[title</em>=’最’]”)`</p>
+<p>:first-child子元素过滤选择器：使用<code>:first</code>过滤选择器可以获取指定父元素中的首个子元素，但该选择器返回的只有一个元素，并不是一个集合，而使用<code>:first-child</code>子元素过滤选择器则可以获取每个父元素中返回的首个子元素，它是一个集合，常用多个集合数据的选择处理。</p>
+<p>:last-child子元素过滤选择器：类同上面的。</p>
+<h3 id="表单选择器"><a href="#表单选择器" class="headerlink" title="表单选择器"></a>表单选择器</h3><p>:input选择器：返回全部的表单元素。</p>
+<p>:text表单文本选择器：获取表单中全部单行的文本输入框元素，单行的文本输入框就像一个不换行的字条工具，使用非常广泛。</p>
+<p>:password表单密码选择器：获取表单中全部的密码输入文本框元素。</p>
+<p>:radio单选按钮选择器：获取表单中的全部单选按钮元素。</p>
+<p>:checkbox复选框选择器：快速定位并获取表单中的复选框元素。</p>
+<p>:submit提交按钮选择器：获取表单中的这个提交按钮元素。eg：<code>$(&quot;#frmTest input:submit&quot;)</code></p>
+<p>:image图像域选择器：可以快速获取该类全部元素。</p>
+<p>:button表单按钮选择器：获取且只能获取“type”属性值为“button”的<input>和<button>这两类普通按钮元素。</button></p>
+<p>:checked选中状态选择器：调用:checked可以获取处于选中状态的全部元素。</p>
+<p>:selected选中状态选择器：只能获取<select>下拉列表框中全部处于选中状态的<option>选项元素。</option></select></p>
+<h3 id="操作DOM元素"><a href="#操作DOM元素" class="headerlink" title="操作DOM元素"></a>操作DOM元素</h3><p>使用attr()方法控制元素的属性：<code>attr()</code>方法的作用是设置或者返回元素的属性，其中<code>attr(属性名)</code>格式是获取元素属性名的值，<code>attr(属性名，属性值)</code>格式则是设置元素属性名的值。</p>
+<p>操作元素的内容：使用<code>html()</code>和<code>text()</code>方法操作元素的内容，当两个方法的参数为空时，表示获取该元素的内容，而如果方法中包含参数，则表示将参数值设置为元素内容。</p>
+<p>操作元素的样式：通过<code>addClass()</code>和<code>css()</code>方法可以方便地操作元素中的样式，前者括号中的参数为增加元素的样式名称，后者直接将样式的属性内容写在括号中。</p>
+<p>移除属性和样式：使用<code>removeAttr(name)</code>和<code>removeClass(class)</code>分别可以实现移除元素的属性和样式的功能，前者方法中参数表示移除属性名，后者方法中参数则表示移除的样式名。</p>
+<p>使用append()方法向元素内追加内容：<code>append(content)</code>方法的功能是向指定的元素中追加内容，被追加的content参数，可以是字符、HTML元素标记，还可以是一个返回字符串内容的函数。</p>
+<p>使用appendTo()方法向被选元素内插入内容：<code>appendTo()</code>方法也可以向指定的元素内插入内容，它的使用格式是：<code>$(content).appendTo(selector)</code>。参数content表示需要插入的内容，参数selector表示被选的元素，即把content内容插入selector元素内，默认是在尾部。</p>
+<p>使用before()和after()在元素前后插入内容：可以在元素的前后插入内容，它们分别表示在整个元素的前面和后面插入指定的元素或内容，调用格式分别为：<code>$(selector).before(content)和$(selector).after(content)</code>,其中参数content表示插入的内容，该内容可以是元素或HTML字符串。</p>
+<p>使用clone()方法复制元素：调用clone()方法可以生成一个被选元素的副本，即复制了一个被选元素，包含它的节点、文本和属性，它的调用格式为：<code>$(selector).clone()</code>其中参数selector可以是一个元素或HTML内容。</p>
+<p>替换内容：replaceWith()和replaceAll()方法都可以用于替换元素或元素中的内容，但它们调用时，内容和被替换元素所在的位置不同，分别为如下所示：<code>$(selector).replaceWith(content)和$(content).replaceAll(selector)</code>参数selector为被替换的元素，content为替换的内容。</p>
+<p>使用wrap()和wrapInner()方法包裹元素和内容：前者用于包裹元素本身，后者则用于包裹元素中的内容，它们的调用格式分别为：<code>$(selector).wrap(wrapper)和$(selector).wrapInner(wrapper)</code>参数selector为被包裹的元素，wrapper参数为包裹元素的格式。</p>
+<p>使用each()方法遍历元素：遍历指定的元素集合，在遍历时，通过回调函数返回遍历元素的序列号，它的调用格式为：<code>$(selector).each(function(index))</code>参数function为遍历时的回调函数，index为遍历元素的序列号，它从0开始。</p>
+<p>使用remove()和empty()方法删除元素：<code>remove()</code>方法删除所选元素本身和子元素，该方法可以通过添加过滤参数指定需要删除的某些元素，而<code>empty()</code>方法则只删除所选元素的子元素。</p>
+<h3 id="事件与应用"><a href="#事件与应用" class="headerlink" title="事件与应用"></a>事件与应用</h3><p>页面加载时触发ready()事件：ready()事件类似于onLoad()事件，但前者只要页面的DOM结构加载后便触发，而后者必须在页面全部元素加载成功才触发，ready()可以写多个，按顺序执行。此外，下列写法是相等的：<code>$(document).ready(function(){})</code>等价于<code>$(function(){})</code>。</p>
+<p>使用bind()方法绑定元素的事件：<code>$(selector).bind(event,[data] function)</code>参数event为事件名称，多个事件名称用空格隔开，function为事件执行的函数。</p>
+<p>使用hover()方法切换事件：当鼠标移到所选元素上时，执行方法中的第一个函数，鼠标移出时，执行方法中的第二个函数，实现事件的切实效果，调用格式如下：<code>$(selector).hover(over，out)</code>over参数为移到所选元素上触发的函数，out参数为移出元素时触发的函数。</p>
+<p>使用toggle()方法绑定多个函数：toggle()方法可以在元素的click事件中绑定两个或两个以上的函数，同时，它还可以实现元素的隐藏与显示的切换，绑定多个函数的调用格式如下：<code>$(selector).toggle(fun1(),fun2(),funN(),...)</code>其中，fun1，fun2就是多个函数的名称。（Ps：感觉这个方法好low欸，貌似新版本都已经不支持了。</p>
+<p>使用unbind()方法移除元素绑定的事件：unbind()方法可以移除元素已绑定的事件，它的调用格式如下：<code>$(selector).unbind(event,fun)</code>其中参数event表示需要移除的事件名称，多个事件名用空格隔开，fun参数为事件执行时调用的函数名称。（Ps：这个应用场景也有点问题。不是特别理解。</p>
+<p>使用one()方法绑定元素的一次性事件：one()方法可以绑定元素任何有效的事件，但这种方法绑定的事件只会触发一次，它的调用格式如下：<code>$(selector).one(event,[data],fun)</code>参数event为事件名称，data为触发事件时携带的数据，fun为触发该事件时执行的函数。</p>
+<p>调用trigger()方法手动触发指定的事件：trigger()方法可以直接手动触发元素指定的事件，这些事件可以是元素自带事件，也可以是自定义的事件，总之，该事件必须能执行，它的调用格式为：<code>$(selector).trigger(event)</code>其中event参数为需要手动触发的事件名称。（Ps：感觉没有什么用呀，手动测使用？</p>
+<p>文本框的focus和blur事件：focus事件在元素获取焦点时触发，如点击文本框时，触发该事件；而blur事件则在元素丢失焦点时触发，如点击除文本框的任何元素，都会触发该事件。 （Ps：常用于表单事件。</p>
+<p>下拉列表框的change事件：当一个元素的值发生变化时，将会触发change事件。</p>
+<p>调用live()方法绑定元素的事件：与bind()方法相同，<code>live()</code>方法与可以绑定元素的可执行事件，除此相同功能之外，<code>live()</code>方法还可以绑定动态元素，即使用代码添加的元素事件，格式如下：<code>$(selector).live(event,[data],fun)</code>参数event为事件名称，data为触发事件时携带的数据，fun为触发该事件时执行的函数。（Ps：这个方法也没什么用，新版jquery已经移除了。。</p>
+<h3 id="动画特效"><a href="#动画特效" class="headerlink" title="动画特效"></a>动画特效</h3><p>调用show()和hide()方法显示和隐藏元素：<code>$(selector).hide(speed,[callback])</code>和<code>$(selector).show(speed,[callback])</code>参数speed设置隐藏或显示时的速度值，可为“slow”、“fast”或毫秒数值，可选项参数callback为隐藏或显示动作执行完成后调用的函数名。</p>
+<p>调用toggle()方法实现动画切换效：<code>$(selector).toggle(speed,[callback])</code>其中speed参数为动画效果时的速度值，可以为数字，单位为毫秒，也可是“fast”、“slow”字符，可选项参数callback为方法执行成功后回调的函数名称。</p>
+<p>使用slideUp()和slideDown()方法的滑动效果：<code>$(selector).slideUp(speed,[callback])</code>和<code>$(selector).slideDown(speed,[callback])</code>其中speed参数为滑动时的速度，单位是毫秒，可选项参数callback为滑动成功后执行的回调函数名。（Ps：<code>slideDown()</code>仅适用于被隐藏的元素；<code>slideup()</code>则相反。</p>
+<p>使用slideToggle()方法实现图片“变脸”效果：使用<code>slideToggle()</code>方法可以切换<code>slideUp()</code>和<code>slideDown()</code>,即调用该方法时，如果元素已向上滑动，则元素自动向下滑动，反之，则元素自动向上滑动，格式为：<code>$(selector).slideToggle(speed,[callback])</code>其中speed参数为动画效果时的速度值，可以为数字，单位为毫秒，也可是“fast”、“slow”字符，可选项参数callback为方法执行成功后回调的函数名称。</p>
+<p>使用fadeIn()与fadeOut()方法实现淡入淡出效果：<code>$(selector).fadeIn(speed,[callback])</code>和<code>$(selector).fadeOut(speed,[callback])</code>其中参数speed为淡入淡出的速度，callback参数为完成后执行的回调函数名。</p>
+<p>使用fadeTo()方法设置淡入淡出效果的不透明度：<code>$(selector).fadeTo(speed,opacity,[callback])</code>其中speed参数为效果的速度，opacity参数为指定的不透明值，它的取值范围是0.0~1.0，可选项参数callback为效果完成后，回调的函数名。</p>
+<p>调用animate()方法制作简单的动画效果：<code>$(selector).animate({params},speed,[callback])</code>其中，params参数为制作动画效果的CSS属性名与值，speed参数为动画的效果的速度，单位为毫秒，可选项callback参数为动画完成时执行的回调函数名。</p>
+<p>调用animate()方法制作移动位置的动画：在移动位置之前，必须将被移元素的“position”属性值设为“absolute”或“relative”，否则，该元素移动不了。</p>
+<p>调用stop()方法停止当前所有动画效果：停止当前正在执行的动画效果，这些效果包括滑动、淡入淡出和自定义的动画，它的调用格式为：<code>$(selector).stop([clearQueue],[goToEnd])</code>其中，两个可选项参数clearQueue和goToEnd都是布尔类型值，前者表示是否停止正在执行的动画，后者表示是否完成正在执行的动画，默认为false。</p>
+<p>调用delay()方法延时执行动画效果：设置一个延时值来推迟动画效果的执行，它的调用格式为：<code>$(selector).delay(duration)</code>其中参数duration为延时值，它的单位是毫秒，当超过延时值时，动画继续执行。</p>
+<h3 id="AJAX应用"><a href="#AJAX应用" class="headerlink" title="AJAX应用"></a>AJAX应用</h3><p>使用load()方法异步请求数据：通过Ajax请求加载服务器中的数据，并把返回的数据放置到指定的元素中，它的调用格式为：<code>load(url,[data],[callback])</code>参数url为加载服务器地址，可选项data参数为请求时发送的数据，callback参数为数据请求成功后，执行的回调函数。</p>
+<p>使用getJSON()方法异步加载JSON格式数据：使用getJSON()方法可以通过Ajax异步请求的方式，获取服务器中的数组，并对获取的数据进行解析，显示在页面中，它的调用格式为：<code>jQuery.getJSON(url,[data],[callback])</code>或<code>$.getJSON(url,[data],[callback])</code>其中，url参数为请求加载json格式文件的服务器地址，可选项data参数为请求时发送的数据，callback参数为数据请求成功后，执行的回调函数。</p>
+<p>使用getScript()方法异步加载并执行js文件：使用getScript()方法异步请求并执行服务器中的JavaScript格式的文件，它的调用格式如下所示：<code>jQuery.getScript(url,[callback])</code>或<code>$.getScript(url,[callback])</code>参数url为服务器请求地址，可选项callback参数为请求成功后执行的回调函数。</p>
+<p>使用get()方法以GET方式从服务器获取数据：<code>$.get(url,[callback])</code>参数url为服务器请求地址，可选项callback参数为请求成功后执行的回调函数。</p>
+<p>使用post()方法以POST方式从服务器发送数据：用于以POST方式向服务器发送数据，服务器接收到数据之后，进行处理，并将处理结果返回页面，调用格式如下：<code>$.post(url,[data],[callback])</code>参数url为服务器请求地址，可选项data为向服务器请求时发送的数据，可选项callback参数为请求成功后执行的回调函数。</p>
+<p>使用serialize()方法序列化表单元素值：将表单中有name属性的元素值进行序列化，生成标准URL编码文本字符串，直接可用于ajax请求，它的调用格式如下：<code>$(selector).serialize()</code>其中selector参数是一个或多个表单中的元素或表单元素本身。</p>
+<p>使用ajax()方法加载服务器数据：<code>jQuery.ajax([settings])或$.ajax([settings])</code>其中参数settings为发送ajax请求时的配置对象，在该对象中，url表示服务器请求的路径，data为请求时传递的数据，dataType为服务器返回的数据类型，success为请求成功的执行的回调函数，type为发送数据请求的方式，默认为get。</p>
+<p>使用ajaxSetup()方法设置全局Ajax默认选项：<code>jQuery.ajaxSetup([options])</code>或<code>$.ajaxSetup([options])</code>可选项options参数为一个对象，通过该对象设置Ajax请求时的全局选项值。</p>
+<p>使用ajaxStart()和ajaxStop()方法：<code>ajaxStart()</code>方法用于在Ajax请求发出前触发函数，<code>ajaxStop()</code>方法用于在Ajax请求完成后触发函数。它们的调用格式为：<code>$(selector).ajaxStart(function())</code>和<code>$(selector).ajaxStop(function())</code>其中，两个方法中括号都是绑定的函数，当发送Ajax请求前执行<code>ajaxStart()</code>方法绑定的函数，请求成功后，执行<code>ajaxStop ()</code>方法绑定的函数。</p>
+<h3 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h3><p>（Ps：事实上并不推荐使用jQuery的插件，下面笔记仅供了解吧！</p>
+<p>表单验证插件——validate：该插件自带包含必填、数字、URL在内容的验证规则，即时显示异常信息，此外，还允许自定义验证规则，插件调用方法如下：<code>$(form).validate({options})</code>其中form参数表示表单元素名称，options参数表示调用方法时的配置对象，所有的验证规则和异常信息显示的位置都在该对象中进行设置。</p>
+<p>表单插件——form：通过表单form插件，调用ajaxForm()方法，实现ajax方式向服务器提交表单数据，并通过方法中的options对象获取服务器返回数据，调用格式如下：<code>$(form). ajaxForm ({options})</code>其中form参数表示表单元素名称；options是一个配置对象，用于在发送ajax请求过程，设置发送时的数据和参数。</p>
+<p>图片灯箱插件——lightBox：该插件可以用圆角的方式展示选择中的图片，使用按钮查看上下张图片，在加载图片时自带进度条，还能以自动播放的方式浏览图片，调用格式如下：<code>$(linkimage).lightBox({options})</code>其中linkimage参数为包含图片的<a>元素名称，options为插件方法的配置对象。</a></p>
+<p>图片放大镜插件——jqzoom：在调用jqzoom图片放大镜插件时，需要准备一大一小两张一样的图片，在页面中显示小图片，当鼠标在小图片中移动时，调用该插件的jqzoom()方法，显示与小图片相同的大图片区域，从而实现放大镜的效果，调用格式如下：<code>$(linkimage).jqzoom({options})</code>其中linkimage参数为包含图片的<a>元素名称，options为插件方法的配置对象。</a></p>
+<p>cookie插件——cookie：使用cookie插件后，可以很方便地通过cookie对象保存、读取、删除用户的信息，还能通过cookie插件保存用户的浏览记录，它的调用格式为：保存：<code>$.cookie(key，value)</code>;读取：<code>$.cookie(key)</code>，删除：<code>$.cookie(key，null)</code>其中参数key为保存cookie对象的名称，value为名称对应的cookie值。</p>
+<p>搜索插件——autocomplete：搜索插件的功能是通过插件的autocomplete()方法与文本框相绑定，当文本框输入字符时，绑定后的插件将返回与字符相近的字符串提示选择，调用格式如下：<code>$(textbox).autocomplete(urlData,[options]);</code>其中，textbox参数为文本框元素名称，urlData为插件返回的相近字符串数据，可选项参数options为调用插件方法时的配置对象。</p>
+<p>右键菜单插件——contextmenu：右键菜单插件可以绑定页面中的任意元素，绑定后，选中元素，点击右键，便通过该插件弹出一个快捷菜单，点击菜单各项名称执行相应操作，调用代码如下：<code>$(selector).contextMenu(menuId,{options});</code>Selector参数为绑定插件的元素，meunId为快捷菜单元素，options为配置对象。</p>
+<p>自定义对象级插件——lifocuscolor插件：自定义的lifocuscolor插件可以在<ul>元素中，鼠标在表项<li>元素移动时，自定义其获取焦点时的背景色，即定义</li><li>元素选中时的背景色，调用格式为：<code>$(Id).focusColor(color)</code>其中，参数Id表示<ul>元素的Id号，color表示<li>元素选中时的背景色。（Ps：这个完全无力吐槽！</li></ul></li></ul></p>
+<p>自定义类级别插件—— twoaddresult：通过调用自定义插件twoaddresult中的不同方法，可以实现对两个数值进行相加和相减的运算，导入插件后，调用格式分别为：<code>$.addNum(p1,p2)</code> 和 <code>$.subNum(p1,p2)</code>上述调用格式分别为计算两数值相加和相减的结果，p1和p2为任意数值。(PS：这个绝壁bug+无用。。。已经快被这撒比的题目逗哭了。。。)</p>
+<h3 id="UI型插件"><a href="#UI型插件" class="headerlink" title="UI型插件"></a>UI型插件</h3><p>拖曳插件——draggable：<code>$(selector). draggable({options})</code>，options参数为方法调用时的配置对象，根据该对象可以设置各种拖曳效果，如“containment”属性指定拖曳区域，“axis”属性设置拖曳时的坐标方向。</p>
+<p>放置插件——droppable：<code>$(selector).droppable({options})</code>selector参数为接收拖曳元素，options为方法的配置对象，在对象中，drop函数表示当被接收的拖曳元素完全进入接收元素的容器时，触发该函数的调用。</p>
+<p>拖曳排序插件——sortable：<code>$(selector).sortable({options})</code>，selector参数为进行拖曳排序的元素，options为调用方法时的配置对象。</p>
+<p>面板折叠插件——accordion：<code>$(selector).accordion({options})</code>其中，参数selector为整个面板元素，options参数为方法对应的配置对象。</p>
+<p>选项卡插件——tabs：<code>$(selector).tabs({options})</code>，selector参数为选项卡整体外围元素，该元素包含选项卡标题与内容，options参数为tabs()方法的配置对象，通过该对象还能以ajax方式加载选项卡的内容。（Ps：这些options参数可大有研究的地方呀。。</p>
+<p>对话框插件——dialog：<code>$(selector).dialog({options});</code>selector参数为显示弹出对话框的元素，通常为<div>，options参数为方法的配置对象，在对象中可以设置对话框类型、“确定”、“取消”按钮执行的代码等。</div></p>
+<p>菜单工具插件——menu：<code>$(selector).menu({options})</code>，selector参数为菜单列表中最外层<ul>元素，options为menu()方法的配置对象。（Ps：这个有点6！</ul></p>
+<p>微调按钮插件——spinner：<code>$(selector).spinner({options});</code>selector参数为文本输入框元素，可选项options参数为spinner()方法的配置对象，在该对象中，可以设置输入的最大、最小值，获取改变值和设置对应事件。（Ps：这个有意思~</p>
+<p>工具提示插件——tooltip：<code>$(selector).tooltip({options});</code>其中selector为需要显示提示信息的元素，可选项参数options为tooltip()方法的配置对象，在该对象中，可以设置提示信息的弹出、隐藏时的效果和所在位置。</p>
+<h3 id="工具类函数"><a href="#工具类函数" class="headerlink" title="工具类函数"></a>工具类函数</h3><p>获取浏览器的名称与版本信息：在jQuery中，通过<code>$.browser</code>对象可以获取浏览器的名称和版本信息，如<code>$.browser.chrome</code>为<code>true</code>，表示当前为Chrome浏览器，<code>$.browser.mozilla</code>为<code>true</code>，表示当前为火狐浏览器，还可以通过<code>$.browser.version</code>方式获取浏览器版本信息。</p>
+<p>检测浏览器是否属于W3C盒子模型：浏览器的盒子模型分为两类，一类为标准的w3c盒子模型，另一类为IE盒子模型，两者区别为在<code>Width</code>和<code>Height</code>这两个属性值中是否包含<code>padding</code>和<code>border</code>的值，w3c盒子模型不包含，IE盒子模型则包含，而在jQuery 中，可以通过<code>$.support.boxModel</code>对象返回的值，检测浏览器是否属于标准的w3c盒子模型。</p>
+<p>检测对象是否为空：<code>$.isEmptyObject(obj);</code>其中，参数obj表示需要检测的对象名称。</p>
+<p>检测对象是否为原始对象：调用名为<code>$.isPlainObject</code>的工具函数，能检测对象是否为通过<code>{}</code>或<code>new Object()</code>关键字创建的原始对象，如果是，返回true，否则，返回false值，调用格式为：<code>$.isPlainObject (obj);</code>其中，参数obj表示需要检测的对象名称。</p>
+<p>检测两个节点的包含关系：检测在一个DOM节点中是否包含另外一个DOM节点，如果包含，返回true，否则，返回false值，调用格式为：<code>$.contains (container, contained);</code>参数container表示一个DOM对象节点元素，用于包含其他节点的容器，contained是另一个DOM对象节点元素，用于被其他容器所包含。</p>
+<p>字符串操作函数：调用名为$.trim的工具函数，能删除字符串中左右两边的空格符，但该函数不能删除字符串中间的空格，调用格式为：<code>$.trim (str);</code>参数str表示需要删除左右两边空格符的字符串。</p>
+<p>URL操作函数：调用名为$. param的工具函数，能使对象或数组按照key/value格式进行序列化编码，该编码后的值常用于向服务端发送URL请求，调用格式为：<code>$. param (obj);</code>参数obj表示需要进行序列化的对象，该对象也可以是一个数组，整个函数返回一个经过序列化编码后的字符串。</p>
+<p>使用$.extend()扩展工具函数：调用名为$. extend的工具函数，可以对原有的工具函数进行扩展，自定义类级别的jQuery插件，调用格式为：<code>$. extend ({options});</code>参数options表示自定义插件的函数内容。</p>
+<p>使用$.extend()扩展Object对象：除使用$.extend扩展工具函数外，还可以扩展原有的Object对象，在扩展对象时，两个对象将进行合并，当存在相同属性名时，后者将覆盖前者，调用格式为：<code>$. extend (obj1,obj2,…objN);</code>参数obj1至objN表示需要合并的各个原有对象。</p>
+<h3 id="jQuery总结"><a href="#jQuery总结" class="headerlink" title="jQuery总结"></a>jQuery总结</h3><p>这课程到后面插件部分简直烂呀！不过好在jQuery最常用的就开始的那些选择器以及后面的ajax的东西，不过ajax这部份的内容已经很水很烂了！插件部分更是bug百出，慕课网的课程内容也是良莠不齐呀！</p>
+<h3 id="Yahoo军规"><a href="#Yahoo军规" class="headerlink" title="Yahoo军规"></a>Yahoo军规</h3><p>1 尽可能的减少http请求数</p>
+<p>2 使用CDN(内容分发网络)</p>
+<p>3 添加Expire/Cache-Control头：<br>    expire头是一个时间值，值就是在本地的过期时间、存在本地。在本地缓存阶段，找到一个对应的资源值，当前时间没有超过资源的过期时间，就直接使用这一个资源，不发送http请求。个人理解就是看本地cache有没有过期，没有过期就不用再去请求了。<br>    Cache-Control是http协议中常用的头部之一，负责控制页面的缓存机制，如果该头部指示缓存，缓存的内容也会存在本地，操作流程和expire相似，cache-control有更多的选项和处理方式。</p>
+<p>4 启用Gzip压缩：就是先把文件放在服务器压缩然后再传输，下载到本地之后浏览器再解压缩。</p>
+<p>5 将css放在页面最上面，避免页面出现空白或闪烁问题。</p>
+<p>6 将script放在页面最下面，可以先将页面呈现出来，不会让用户等太久。（这个内容其实水挺深的，涉及到DOM加载顺序。</p>
+<p>7 避免在css中使用 Expressinos。</p>
+<p>8 把js和css文件放到外部文件中。写在页面内的情况：只应用于一个页面，不经常被访问到，脚本和样式很少。</p>
+<p>9 减少DNS查询</p>
+<p>10 压缩js和css，代码格式化、简写变量或方法名。</p>
+<p>11 避免重定向，因为会增加服务器请求返回次数。</p>
+<p>12 移除重复的脚本。</p>
+<p>13 配置实体标签(ETag)，减轻服务器负担。ETag：Entity Tag实体标签，属于Http协议，受web服务支持。使用特殊的字符串来标识某个请求资源版本。</p>
+<p>14 使用AJAX缓存。    </p>
+<p>＊YSlow插件，评估网站性能，并进行针对性优化。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xootj.com1.z0.glb.clouddn.com/alids1.jpg" alt="Crossingmay Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="copyright" style="clear:both;">
+           <p><span>本文标题:</span><a href="/2015/12/27/imoochtmlcss/">慕课网前端课程学习笔记</a></p>
+           <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
+           <p><span>发布时间:</span>2015年12月27日 - 14时12分</p>
+           <p><span>最后更新:</span>2016年1月20日 - 23时01分</p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有9,634字</span></p>
+           <p><span>原始链接:</span><a href="/2015/12/27/imoochtmlcss/" title="慕课网前端课程学习笔记">http://crossingmay.github.io/2015/12/27/imoochtmlcss/</a></p>
+           <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
+           <p><span>转载请保留以上信息。</span></p>
+        </div>
+      
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tips/" rel="tag">#Tips</a>
+          
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+            <a href="/tags/HTML/" rel="tag">#HTML</a>
+          
+            <a href="/tags/iMooc/" rel="tag">#iMooc</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/25/codeformat/" rel="next" title="HTML/CSS/JS代码格式化">
+                <i class="fa fa-chevron-left"></i> HTML/CSS/JS代码格式化
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/30/sublimeipv6/" rel="prev" title="Sublime Text 3 无法使用package control安装插件解决办法">
+                Sublime Text 3 无法使用package control安装插件解决办法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xootj.com1.z0.glb.clouddn.com/x-head1.jpg"
+               alt="Crossingmay" />
+          <p class="site-author-name" itemprop="name">Crossingmay</p>
+          <p class="site-description motion-element" itemprop="description">Memo my learning process everyday and to share</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crossingmay" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/crossingmay" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/crossingmay" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/crossingmay" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://ixiusama.com/" title="ixiusama" target="_blank">ixiusama</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于CSS"><span class="nav-number">1.</span> <span class="nav-text">关于CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于JavaScript"><span class="nav-number">2.</span> <span class="nav-text">关于JavaScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JQuery"><span class="nav-number">3.</span> <span class="nav-text">JQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤选择器"><span class="nav-number">3.1.</span> <span class="nav-text">过滤选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单选择器"><span class="nav-number">3.2.</span> <span class="nav-text">表单选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作DOM元素"><span class="nav-number">3.3.</span> <span class="nav-text">操作DOM元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件与应用"><span class="nav-number">3.4.</span> <span class="nav-text">事件与应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画特效"><span class="nav-number">3.5.</span> <span class="nav-text">动画特效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AJAX应用"><span class="nav-number">3.6.</span> <span class="nav-text">AJAX应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用插件"><span class="nav-number">3.7.</span> <span class="nav-text">常用插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI型插件"><span class="nav-number">3.8.</span> <span class="nav-text">UI型插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具类函数"><span class="nav-number">3.9.</span> <span class="nav-text">工具类函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery总结"><span class="nav-number">3.10.</span> <span class="nav-text">jQuery总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Yahoo军规"><span class="nav-number">3.11.</span> <span class="nav-text">Yahoo军规</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crossingmay</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共56.7k字</span>
+  
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'crossingmay';
+      var disqus_identifier = '2015/12/27/imoochtmlcss/';
+      var disqus_title = '慕课网前端课程学习笔记';
+      var disqus_url = 'http://crossingmay.github.io/2015/12/27/imoochtmlcss/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

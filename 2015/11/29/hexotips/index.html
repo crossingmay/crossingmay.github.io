@@ -1,0 +1,809 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Tips,Hexo," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="使用Hexo也有几天啦。果然非常好用非常简洁。可以让我专注于真正该关注的内容。不折腾。
+不过作为一个新手，多多少少还是会遇到这样那样的一些问题。所以就有了本贴士。
+由于网络上已经有了很多Use Hexo Bulid Blog的相关文章啦，本文最后的ref links里的文章也有涉及到搭建的具体过程了，所以不再涉及到整个搭建过程以及具体的主题定制详细过程。
+当然还是会有一些Tips涉及到的啦。
+PS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo使用小贴士">
+<meta property="og:url" content="http://crossingmay.github.io/2015/11/29/hexotips/index.html">
+<meta property="og:site_name" content="Crossing's Blog">
+<meta property="og:description" content="使用Hexo也有几天啦。果然非常好用非常简洁。可以让我专注于真正该关注的内容。不折腾。
+不过作为一个新手，多多少少还是会遇到这样那样的一些问题。所以就有了本贴士。
+由于网络上已经有了很多Use Hexo Bulid Blog的相关文章啦，本文最后的ref links里的文章也有涉及到搭建的具体过程了，所以不再涉及到整个搭建过程以及具体的主题定制详细过程。
+当然还是会有一些Tips涉及到的啦。
+PS">
+<meta property="og:updated_time" content="2015-12-12T13:52:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo使用小贴士">
+<meta name="twitter:description" content="使用Hexo也有几天啦。果然非常好用非常简洁。可以让我专注于真正该关注的内容。不折腾。
+不过作为一个新手，多多少少还是会遇到这样那样的一些问题。所以就有了本贴士。
+由于网络上已经有了很多Use Hexo Bulid Blog的相关文章啦，本文最后的ref links里的文章也有涉及到搭建的具体过程了，所以不再涉及到整个搭建过程以及具体的主题定制详细过程。
+当然还是会有一些Tips涉及到的啦。
+PS">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Hexo使用小贴士 | Crossing's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70792175-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crossing's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">NOT Genius but Try Best</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hexo使用小贴士
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-29T13:11:50+08:00" content="2015-11-29">
+              2015-11-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/磨刀霍霍/" itemprop="url" rel="index">
+                    <span itemprop="name">磨刀霍霍</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/29/hexotips/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/29/hexotips/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>使用Hexo也有几天啦。果然非常好用非常简洁。可以让我专注于真正该关注的内容。不折腾。</p>
+<p>不过作为一个新手，多多少少还是会遇到这样那样的一些问题。所以就有了本贴士。</p>
+<p>由于网络上已经有了很多<em>Use Hexo Bulid Blog</em>的相关文章啦，本文最后的ref links里的文章也有涉及到搭建的具体过程了，所以不再涉及到整个搭建过程以及具体的主题定制详细过程。</p>
+<p>当然还是会有一些Tips涉及到的啦。</p>
+<p>PS：本文长期更！就是为了让我更好的掌握Hexo的使用。</p>
+<a id="more"></a>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>在git和node都配置好的基础上，我们安装hexo：<code>$ npm install -g hexo-cli</code></p>
+<p>初始化：<code>hexo init &lt;folder&gt;</code>或者cd到指定目录后直接执行<code>hexo init</code></p>
+<p>新建文章：<code>hexo n &lt;article name&gt;</code>or<code>hexo new [layout] &lt;article name&gt;</code>(layout参数可省，默认为post，layout种类可以到hexo/scaffolds下查看)</p>
+<p>生成：<code>hexo g</code>(g=generate)</p>
+<p>部署：<code>hexo d</code>(d=deploy)</p>
+<p>本地启动：<code>hexo s</code>(s=server)或<code>hexo s --debug</code></p>
+<p>生成并部署：<code>hexo d -g</code></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ul>
+<li><p>在<code>hexo/scaffolds/post.md</code>中添加categories和description、photos等项目，就可以在生成的页面中直接就有该添加项</p>
+</li>
+<li><p>新建layout－photo.md</p>
+</li>
+</ul>
+<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="symbol">title:</span> <span class="template-variable">&#123;&#123; title &#125;&#125;</span></span><br><span class="line"><span class="symbol">date:</span> <span class="template-variable">&#123;&#123; date &#125;&#125;</span></span><br><span class="line"><span class="symbol">categories:</span></span><br><span class="line"><span class="symbol">tags:</span></span><br><span class="line"><span class="symbol">description:</span> <span class="comment">#描述 </span></span><br><span class="line"><span class="symbol">photos:</span> </span><br><span class="line">- <span class="comment">#http://xxx.com/xxx.jpg</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>之后我们就可以使用<code>hexo new photo &lt;article name&gt;</code>新建照片文章了</p>
+<ul>
+<li><p>如何设置read more(文章摘要)？</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">以上是文章摘要</span><br><span class="line"><span class="comment">&lt;!-- more --&gt;</span></span><br><span class="line">以下是余下全文</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加多个tag:中括号内用逗号分开</p>
+<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="symbol">title:</span> <span class="template-variable">&#123;&#123; title &#125;&#125;</span></span><br><span class="line"><span class="symbol">date:</span> <span class="template-variable">&#123;&#123; date &#125;&#125;</span></span><br><span class="line"><span class="symbol">tags:</span> [tag1,tag2,tag3]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除hexo无用的分类和标签：<code>hexo clean</code>之后重新生成一次</p>
+</li>
+<li><p>删除代码块的行号：_config.yml中的highlight block</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  auto_detect:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  tab_replace:</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>首页部署只显示最新一章：在github上有遇到类似情况的同学蛮多的，基本上判定是NexT的bug无误了。<br>这个时候只要我们在<code>hexo clean</code>之后，生成新的一份文档<code>hexo g</code>，再查看<code>hexo s</code>是否正常。多次<code>hexo g</code>之后文档没有再变化了(如下显示)，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">INFO  Files loaded <span class="keyword">in</span> 1.03 s</span><br><span class="line">INFO  0 files generated <span class="keyword">in</span> 808 ms</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>index.html的大小也没有再发生变化了，那此时再<code>hexo d</code>就是正常的了。</p>
+<h2 id="Ref-Links"><a href="#Ref-Links" class="headerlink" title="Ref Links"></a>Ref Links</h2><p><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a></p>
+<p><a href="http://blog.sunnyxx.com/2014/03/07/hexo_customize/" target="_blank" rel="external">hexo的私人订制</a></p>
+<p><a href="https://hexo.io/docs/" target="_blank" rel="external">Hexo官方文档</a></p>
+<p><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT使用文档</a></p>
+<h2 id="About-More-and-More"><a href="#About-More-and-More" class="headerlink" title="About More and More"></a>About More and More</h2><p>因为还处于学习中，所以会不断往文章里添加新东西的哟。毕竟学习中也会遇到各种各样的问题。</p>
+<p>我使用的是Next.mist的主题。个人感觉还是相当清爽不错的，很有KISS风范。</p>
+<p>图床用的七牛，数据分析用的Google Analytics。评论直接用的disqus，试用了一下多说，不太喜欢，我比较喜欢disqus的风格。没有添加分享，感觉有点突兀不自然。</p>
+<p>此外，独立域名和dns解析以及gitcafe还有国内优化这块都暂时不搞。集中精力学习该学的～</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xootj.com1.z0.glb.clouddn.com/alids1.jpg" alt="Crossingmay Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="copyright" style="clear:both;">
+           <p><span>本文标题:</span><a href="/2015/11/29/hexotips/">Hexo使用小贴士</a></p>
+           <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
+           <p><span>发布时间:</span>2015年11月29日 - 13时11分</p>
+           <p><span>最后更新:</span>2015年12月12日 - 21时12分</p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有1,312字</span></p>
+           <p><span>原始链接:</span><a href="/2015/11/29/hexotips/" title="Hexo使用小贴士">http://crossingmay.github.io/2015/11/29/hexotips/</a></p>
+           <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
+           <p><span>转载请保留以上信息。</span></p>
+        </div>
+      
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tips/" rel="tag">#Tips</a>
+          
+            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/28/frontendevset/" rel="next" title="私属前端开发环境配置指南">
+                <i class="fa fa-chevron-left"></i> 私属前端开发环境配置指南
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/29/sublimemarkdown/" rel="prev" title="用SublimeText打造我的markdown编辑器">
+                用SublimeText打造我的markdown编辑器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xootj.com1.z0.glb.clouddn.com/x-head1.jpg"
+               alt="Crossingmay" />
+          <p class="site-author-name" itemprop="name">Crossingmay</p>
+          <p class="site-description motion-element" itemprop="description">Memo my learning process everyday and to share</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crossingmay" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/crossingmay" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/crossingmay" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/crossingmay" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://ixiusama.com/" title="ixiusama" target="_blank">ixiusama</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">2.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref-Links"><span class="nav-number">3.</span> <span class="nav-text">Ref Links</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#About-More-and-More"><span class="nav-number">4.</span> <span class="nav-text">About More and More</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crossingmay</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共56.7k字</span>
+  
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'crossingmay';
+      var disqus_identifier = '2015/11/29/hexotips/';
+      var disqus_title = 'Hexo使用小贴士';
+      var disqus_url = 'http://crossingmay.github.io/2015/11/29/hexotips/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

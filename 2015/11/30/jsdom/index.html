@@ -1,0 +1,808 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Tips,Dom,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="之前草草看了一次《Dom编程艺术》没做笔记，没记住多少，代码也没跟着做。这次重新打基础！Step by Step！基本是这篇可以说是纯粹的个人笔记啦，所以应该对大家没什么太大的用处吧。如果你们非要看，我当然是资词滴！
+原本都习惯纸和笔，但是久而久之记得东西多了，不方便再次查看，也不方便携带，所以同步到网络上才是最好的。在网络允许的情况下，加上搜索和目录索引基本就足够让我便利的查看和复用啦！做笔记的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dom编程艺术学习笔记1">
+<meta property="og:url" content="http://crossingmay.github.io/2015/11/30/jsdom/index.html">
+<meta property="og:site_name" content="Crossing's Blog">
+<meta property="og:description" content="之前草草看了一次《Dom编程艺术》没做笔记，没记住多少，代码也没跟着做。这次重新打基础！Step by Step！基本是这篇可以说是纯粹的个人笔记啦，所以应该对大家没什么太大的用处吧。如果你们非要看，我当然是资词滴！
+原本都习惯纸和笔，但是久而久之记得东西多了，不方便再次查看，也不方便携带，所以同步到网络上才是最好的。在网络允许的情况下，加上搜索和目录索引基本就足够让我便利的查看和复用啦！做笔记的">
+<meta property="og:updated_time" content="2015-12-14T03:21:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dom编程艺术学习笔记1">
+<meta name="twitter:description" content="之前草草看了一次《Dom编程艺术》没做笔记，没记住多少，代码也没跟着做。这次重新打基础！Step by Step！基本是这篇可以说是纯粹的个人笔记啦，所以应该对大家没什么太大的用处吧。如果你们非要看，我当然是资词滴！
+原本都习惯纸和笔，但是久而久之记得东西多了，不方便再次查看，也不方便携带，所以同步到网络上才是最好的。在网络允许的情况下，加上搜索和目录索引基本就足够让我便利的查看和复用啦！做笔记的">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Dom编程艺术学习笔记1 | Crossing's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70792175-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crossing's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">NOT Genius but Try Best</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Dom编程艺术学习笔记1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-30T22:57:46+08:00" content="2015-11-30">
+              2015-11-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">Web前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/30/jsdom/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/30/jsdom/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前草草看了一次《Dom编程艺术》没做笔记，没记住多少，代码也没跟着做。这次重新打基础！Step by Step！基本是这篇可以说是纯粹的个人笔记啦，所以应该对大家没什么太大的用处吧。如果你们非要看，我当然是资词滴！</p>
+<p>原本都习惯纸和笔，但是久而久之记得东西多了，不方便再次查看，也不方便携带，所以同步到网络上才是最好的。在网络允许的情况下，加上搜索和目录索引基本就足够让我便利的查看和复用啦！做笔记的同时也会让自己的思维慢下来，让自己对知识点有更清晰的认识，也能有更深入的理解。好处多多！</p>
+<p>说了这么多废话就是希望每个新人在学习初期如果有需要，请尽可能的做一些笔记！</p>
+<a id="more"></a>
+<h2 id="编程习惯："><a href="#编程习惯：" class="headerlink" title="编程习惯："></a>编程习惯：</h2><figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">1 </span>每条语句末尾加上一个分号——让代码易读，每条语句独占一行能更容易跟踪JS脚本的执行顺序。</span><br><span class="line"></span><br><span class="line"><span class="symbol">2 </span>用//来注释单行，/*  */注释多行。</span><br><span class="line"></span><br><span class="line"><span class="symbol">3 </span>variable变量，使用var 提前声明变量。</span><br><span class="line"></span><br><span class="line"><span class="symbol">4 </span>变量命名规范，区分大小写，不允许包涵空格或标点符号（不包括$），允许包含字母，数字，$和下划线，首字母不能是数字，使用下划线来分隔各个单词。</span><br><span class="line"></span><br><span class="line"><span class="symbol">5 </span>一般，驼峰格式是函数名、方法名和对象属性名的首选格式。</span><br><span class="line"></span><br><span class="line"><span class="symbol">6 </span>保持风格一致，缩进、引号、空格、括号换行等。</span><br><span class="line"></span><br><span class="line"><span class="symbol">7 </span>时刻牢记，从<span class="number">0</span>开始。</span><br><span class="line"></span><br><span class="line"><span class="symbol">8 </span>函数先定义再调用。</span><br></pre></td></tr></table></figure>
+<h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><h3 id="JavaScript语法"><a href="#JavaScript语法" class="headerlink" title="JavaScript语法"></a>JavaScript语法</h3><ul>
+<li>创建对象、数组的方法。</li>
+<li><p>操作符：</p>
+<p>   算术：</p>
+<pre><code>＋     －     ＊     ／     ％     
+＋＋     －－     ＋＝     －=
+
+ 注意&gt;&gt;&gt; ＋还能拼接字符串
+</code></pre><p>   比较：</p>
+<pre><code>&gt;   &lt;   &gt;=  &lt;=  ==  !=  !===    ===
+</code></pre><p>   逻辑：</p>
+<pre><code>&amp;&amp;  ||  ！
+</code></pre></li>
+<li><p>条件语句：</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;    </span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>循环语句：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> (condition) &#123;</span><br><span class="line">     statements;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">     statements;</span><br><span class="line">&#125; <span class="keyword">while</span> (condition);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">initialize;</span><br><span class="line"><span class="keyword">while</span> (condition) &#123;</span><br><span class="line">     statements;</span><br><span class="line">     increment;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (initial condition; test condition; alter condition) &#123;</span><br><span class="line">     statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>传递给函数的数据称为参数（argument）。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span> (<span class="params">arguments</span>) </span>&#123;</span><br><span class="line">     statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数不仅能够（以参数的形式）接收数据，同时也能返回数据。可以返回一个值、字符串、数组、布尔值等。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">num1,num2</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">var</span> total = num1*num2;</span><br><span class="line">     <span class="keyword">return</span> total;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertToCelsius</span>(<span class="params">temp</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">var</span>  result = temp <span class="number">-32</span>;</span><br><span class="line">     result = result / <span class="number">1.8</span>;</span><br><span class="line">     <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以把函数座位一种数据类型使用，即可把一个函数的调用结果赋给一个变量。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> temp_fahrenheit = <span class="number">95</span>;</span><br><span class="line"><span class="keyword">var</span> temp_celsius = convertToCelsius(temp_fahrenheit);</span><br><span class="line">alert(temp_celsius);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果在某个函数中使用了var，那个变量就将被视为一个局部变量，它只存在于这个函数的上下文中；反之，如果没有使用var，那个变量就将被视为一个全局变量，如果脚本里已经存在了一个同名的全局变量，这个函数就会改变那个全局变量的值。</li>
+<li>在定义一个函数的时，一定要把内部的变量全都明确的声明为局部变量。如果总是在函数里使用var关键字来定义变量，就能避免任何形式的二义性隐患。</li>
+<li>包含在对象里的数据可以再通过两种形式访问——属性（property）和方法（method）：属性是隶属于某个特定对象的变量；方法是只有某个特定对象才能调用的函数。</li>
+</ul>
+<h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h3><ul>
+<li>一份文档就是一棵节点树。</li>
+<li>节点分为不同的类型：元素节点、属性节点和文本节点等。</li>
+<li>getElementById将返回一个对象，该对象对应着文档里的一个特定的元素节点。</li>
+<li>getElementsByTagName和getElementsByClassName将返回一个对象数组，它们分别对应着文档里的一组特定的元素节点。</li>
+<li>每一个节点都是一个对象。</li>
+<li>获取和设置属性：getAttribute,setAttribute</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">object.getAttribute(attribute);</span><br><span class="line"></span><br><span class="line">object.setAttribute(attribute,value);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xootj.com1.z0.glb.clouddn.com/alids1.jpg" alt="Crossingmay Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="copyright" style="clear:both;">
+           <p><span>本文标题:</span><a href="/2015/11/30/jsdom/">Dom编程艺术学习笔记1</a></p>
+           <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
+           <p><span>发布时间:</span>2015年11月30日 - 22时11分</p>
+           <p><span>最后更新:</span>2015年12月14日 - 11时12分</p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有1,656字</span></p>
+           <p><span>原始链接:</span><a href="/2015/11/30/jsdom/" title="Dom编程艺术学习笔记1">http://crossingmay.github.io/2015/11/30/jsdom/</a></p>
+           <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
+           <p><span>转载请保留以上信息。</span></p>
+        </div>
+      
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tips/" rel="tag">#Tips</a>
+          
+            <a href="/tags/Dom/" rel="tag">#Dom</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/29/sublimemarkdown/" rel="next" title="用SublimeText打造我的markdown编辑器">
+                <i class="fa fa-chevron-left"></i> 用SublimeText打造我的markdown编辑器
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/09/domain-dnspod/" rel="prev" title="域名购买以及DNSPod设置">
+                域名购买以及DNSPod设置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xootj.com1.z0.glb.clouddn.com/x-head1.jpg"
+               alt="Crossingmay" />
+          <p class="site-author-name" itemprop="name">Crossingmay</p>
+          <p class="site-description motion-element" itemprop="description">Memo my learning process everyday and to share</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crossingmay" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/crossingmay" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/crossingmay" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/crossingmay" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">友情链接</div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://ixiusama.com/" title="ixiusama" target="_blank">ixiusama</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编程习惯："><span class="nav-number">1.</span> <span class="nav-text">编程习惯：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点："><span class="nav-number">2.</span> <span class="nav-text">知识点：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript语法"><span class="nav-number">2.1.</span> <span class="nav-text">JavaScript语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM"><span class="nav-number">2.2.</span> <span class="nav-text">DOM</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crossingmay</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共56.7k字</span>
+  
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'crossingmay';
+      var disqus_identifier = '2015/11/30/jsdom/';
+      var disqus_title = 'Dom编程艺术学习笔记1';
+      var disqus_url = 'http://crossingmay.github.io/2015/11/30/jsdom/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
