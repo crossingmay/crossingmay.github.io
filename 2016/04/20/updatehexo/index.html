@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://crossingmay.github.io/2016/04/20/updatehexo/index.html">
 <meta property="og:site_name" content="Crossing's Blog">
 <meta property="og:description" content="更新博客系统一个星期了，都没来得及写更新日志，现在补上。更新到了Hexo3.2版本，Next主题也更新到了最新版5.0.1,增加了一些功能——打赏，文章版权声明，字数统计，访问统计。">
-<meta property="og:updated_time" content="2016-04-22T02:37:39.000Z">
+<meta property="og:updated_time" content="2016-04-22T02:52:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo更新日志">
 <meta name="twitter:description" content="更新博客系统一个星期了，都没来得及写更新日志，现在补上。更新到了Hexo3.2版本，Next主题也更新到了最新版5.0.1,增加了一些功能——打赏，文章版权声明，字数统计，访问统计。">
@@ -312,8 +312,8 @@
 
           
               &nbsp; | &nbsp;
-              <span class="page-pv"><i class="fa fa-file-o"></i>
-              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
               </span>
           
         </div>
@@ -332,6 +332,8 @@
 <p>替换方法:找到主题下的_config.yml，搜关键字scheme,然后打开对应的主题<code>scheme: Pisces</code>。</p>
 <h2 id="打赏"><a href="#打赏" class="headerlink" title="打赏"></a>打赏</h2><p>目前业界起了一阵赏金模式的风，我也时尚的来追一把，加入支付宝打赏。在网络上有遇到非常棒的文章的时候我也会小额打赏，虽然数额不多，但也是一种心意，这能让更多的优秀作者产出更多的优秀内容。<br>在主题的__config.yml下加入下面内容：</p>
 <figure class="highlight dts"><table><tr><td class="code"><pre><span class="line"><span class="symbol">reward_comment:</span> 坚持原创技术分享，您的支持将鼓励我继续创作！</span><br><span class="line"><span class="symbol">wechatpay:</span> <span class="meta-keyword">/path/</span>to/wechat-reward-image</span><br><span class="line"><span class="symbol">alipay:</span> <span class="meta-keyword">/path/</span>to/alipay-reward-image</span><br></pre></td></tr></table></figure>
+<h2 id="不蒜子访问统计"><a href="#不蒜子访问统计" class="headerlink" title="不蒜子访问统计"></a>不蒜子访问统计</h2><p>搜索关键字<code>busuanzi_count</code>，设置<code>enable: true</code>时，代表开启全局开关。若site_uv、site_pv、page_pv的值均为false时，不蒜子仅作记录而不会在页面上显示。<br>配置示例如下</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="comment"># count values only if the other configs are false</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># custom uv span for the whole site</span></span><br><span class="line"><span class="attr">  site_uv:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  site_uv_header:</span> 本站访客数</span><br><span class="line"><span class="attr">  site_uv_footer:</span> 人次</span><br><span class="line">  <span class="comment"># custom pv span for the whole site</span></span><br><span class="line"><span class="attr">  site_pv:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  site_pv_header:</span> 本站总访问量</span><br><span class="line"><span class="attr">  site_pv_footer:</span> 次</span><br><span class="line">  <span class="comment"># custom pv span for one page only</span></span><br><span class="line"><span class="attr">  page_pv:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  page_pv_header:</span> 本文总阅读量</span><br><span class="line"><span class="attr">  page_pv_footer:</span> 次</span><br></pre></td></tr></table></figure>
 <h2 id="增加字数统计插件WordCount"><a href="#增加字数统计插件WordCount" class="headerlink" title="增加字数统计插件WordCount"></a>增加字数统计插件WordCount</h2><p>这个是看到 <a href="http://ixiusama.com/" target="_blank" rel="external">一休同学blog</a> 里有这玩意儿，一时好奇也加入了，感觉还挺好玩的，有那么一点简书的味道~</p>
 <p>首先在Hexo项目目录下安装：<code>npm install hexo-wordcount --save</code>。</p>
 <p>在footer.swig文件中加入下面代码<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"theme-info"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"powered-by"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"post-count"</span>&gt;</span>博客全站共&#123;&#123; totalcount(site) &#125;&#125;字<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
@@ -339,7 +341,7 @@
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"post-footer"</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"copyright"</span> <span class="attr">style</span>=<span class="string">"clear:both;"</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>本文标题:<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for(post.path) &#125;&#125;"</span>&gt;</span>&#123;&#123; post.title &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>文章作者:<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/"</span> <span class="attr">title</span>=<span class="string">"访问 &#123;&#123; theme.author &#125;&#125; 的个人博客"</span>&gt;</span>&#123;&#123; theme.author &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>发布时间:<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#123;&#123; post.date.format("YYYY年M月D日 - HH时MM分") &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>本文字数:<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"page-count"</span>&gt;</span>本文一共有&#123;&#123; wordcount(page.content) &#125;&#125;字<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>原始链接:<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for(post.path) &#125;&#125;"</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; post.title &#125;&#125;"</span>&gt;</span>&#123;&#123; post.permalink &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>许可协议:<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-creative-commons"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">rel</span>=<span class="string">"license"</span> <span class="attr">href</span>=<span class="string">"http://creativecommons.org/licenses/by-nc/4.0/"</span> <span class="attr">title</span>=<span class="string">"Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)"</span>&gt;</span>Attribution-NonCommercial 4.0<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>转载请保留以上信息。<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>然后需要修改一下样式，找到_posts.styl,加入如下样式</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.post-footer</span> <span class="selector-class">.copyright</span>&#123;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">1.5em</span>;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><p><a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="external">Next主题配置</a><br><a href="https://github.com/willin/hexo-wordcount" target="_blank" rel="external">Hexo-WordCount</a><br><a href="http://ixiusama.com/2016/02/15/%E4%B8%BA%20Next%20%E4%B8%BB%E9%A2%98%E6%96%87%E6%9C%AB%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E7%AD%89%E4%BF%A1%E6%81%AF/" target="_blank" rel="external">为 Next 主题文末添加版权等信息</a></p>
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><p><a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="external">NexT主题配置</a><br><a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="external">NexT第三方服务集成</a><br><a href="https://github.com/willin/hexo-wordcount" target="_blank" rel="external">Hexo-WordCount</a><br><a href="http://ixiusama.com/2016/02/15/%E4%B8%BA%20Next%20%E4%B8%BB%E9%A2%98%E6%96%87%E6%9C%AB%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E7%AD%89%E4%BF%A1%E6%81%AF/" target="_blank" rel="external">为 NexT 主题文末添加版权等信息</a></p>
 
       
     </div>
@@ -378,7 +380,7 @@
            <p><span>本文标题:</span><a href="/2016/04/20/updatehexo/">Hexo更新日志</a></p>
            <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
            <p><span>发布时间:</span>2016年4月20日 - 11时04分</p>
-           <p><span>本文字数:</span><span class="page-count">本文一共有1,900字</span></p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有2,248字</span></p>
            <p><span>原始链接:</span><a href="/2016/04/20/updatehexo/" title="Hexo更新日志">http://crossingmay.github.io/2016/04/20/updatehexo/</a></p>
            <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
            <p><span>转载请保留以上信息。</span></p>
@@ -580,7 +582,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主题更换"><span class="nav-number">1.</span> <span class="nav-text">主题更换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打赏"><span class="nav-number">2.</span> <span class="nav-text">打赏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加字数统计插件WordCount"><span class="nav-number">3.</span> <span class="nav-text">增加字数统计插件WordCount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文章末尾版权声明"><span class="nav-number">4.</span> <span class="nav-text">添加文章末尾版权声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Links"><span class="nav-number">5.</span> <span class="nav-text">Links</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主题更换"><span class="nav-number">1.</span> <span class="nav-text">主题更换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打赏"><span class="nav-number">2.</span> <span class="nav-text">打赏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不蒜子访问统计"><span class="nav-number">3.</span> <span class="nav-text">不蒜子访问统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加字数统计插件WordCount"><span class="nav-number">4.</span> <span class="nav-text">增加字数统计插件WordCount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文章末尾版权声明"><span class="nav-number">5.</span> <span class="nav-text">添加文章末尾版权声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Links"><span class="nav-number">6.</span> <span class="nav-text">Links</span></a></li></ol></div>
             
           </div>
         </section>
@@ -616,7 +618,7 @@
     NexT.Pisces
   </a>
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共58.7k字</span>
+  <span class="post-count">博客全站共59.1k字</span>
   
 </div>
 
@@ -627,11 +629,11 @@
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
-    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
   
 
   
-    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
   
   
 </div>
