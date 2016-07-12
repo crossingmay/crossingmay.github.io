@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Mac,Rime," />
+  <meta name="keywords" content="JavaScript,规范," />
 
 
 
@@ -80,16 +80,16 @@
 
 
 
-<meta name="description" content="偶然间看到一篇推荐Rime输入法的文章—— 换新的输入法，Rime ，在mac上叫鼠须管，很有意思的名字。下载来试用过后发现体验很棒，比原生自带的输入法要好使。但是自定义配置上比较麻烦：）">
+<meta name="description" content="平时写Js代码遵循的一些规范。基本上采用的就是绝大多数人采用的。规范的目的也基本上是为了让大家写代码的时候尽可能的遵循一些原则，增加代码的可读性。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="把輸入法換成rime！">
-<meta property="og:url" content="http://crossingmay.github.io/2016/01/02/userime/index.html">
+<meta property="og:title" content="javascript代码规范">
+<meta property="og:url" content="http://crossingmay.github.io/2016/07/12/jsregular/index.html">
 <meta property="og:site_name" content="Crossing's Blog">
-<meta property="og:description" content="偶然间看到一篇推荐Rime输入法的文章—— 换新的输入法，Rime ，在mac上叫鼠须管，很有意思的名字。下载来试用过后发现体验很棒，比原生自带的输入法要好使。但是自定义配置上比较麻烦：）">
-<meta property="og:updated_time" content="2016-01-03T13:45:09.000Z">
+<meta property="og:description" content="平时写Js代码遵循的一些规范。基本上采用的就是绝大多数人采用的。规范的目的也基本上是为了让大家写代码的时候尽可能的遵循一些原则，增加代码的可读性。">
+<meta property="og:updated_time" content="2016-07-12T06:06:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="把輸入法換成rime！">
-<meta name="twitter:description" content="偶然间看到一篇推荐Rime输入法的文章—— 换新的输入法，Rime ，在mac上叫鼠须管，很有意思的名字。下载来试用过后发现体验很棒，比原生自带的输入法要好使。但是自定义配置上比较麻烦：）">
+<meta name="twitter:title" content="javascript代码规范">
+<meta name="twitter:description" content="平时写Js代码遵循的一些规范。基本上采用的就是绝大多数人采用的。规范的目的也基本上是为了让大家写代码的时候尽可能的遵循一些原则，增加代码的可读性。">
 
 
 
@@ -107,7 +107,7 @@
   };
 </script>
 
-  <title> 把輸入法換成rime！ | Crossing's Blog </title>
+  <title> javascript代码规范 | Crossing's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -256,7 +256,7 @@
             
             
               
-                把輸入法換成rime！
+                javascript代码规范
               
             
           </h1>
@@ -268,8 +268,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-02T16:38:41+08:00" content="2016-01-02">
-              2016-01-02
+            <time itemprop="dateCreated" datetime="2016-07-12T12:58:51+08:00" content="2016-07-12">
+              2016-07-12
             </time>
           </span>
 
@@ -282,8 +282,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/折腾不止/" itemprop="url" rel="index">
-                    <span itemprop="name">折腾不止</span>
+                  <a href="/categories/Web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">Web前端</span>
                   </a>
                 </span>
 
@@ -298,8 +298,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/02/userime/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/02/userime/" itemprop="commentsCount"></span>
+                <a href="/2016/07/12/jsregular/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/12/jsregular/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -327,31 +327,41 @@
       
 
       
-        <p>偶然间看到一篇推荐Rime输入法的文章—— <a href="http://www.barretlee.com/blog/2015/11/20/new-input-methed-rime/" target="_blank" rel="external">换新的输入法，Rime</a> ，在mac上叫鼠须管，很有意思的名字。下载来试用过后发现体验很棒，比原生自带的输入法要好使。但是自定义配置上比较麻烦：）<br><a id="more"></a><br>普通用户，所以就不深度定制了，只做最常用的几个配置。</p>
-<h2 id="自定义设置"><a href="#自定义设置" class="headerlink" title="自定义设置"></a>自定义设置</h2><p>首先，明确最基础的需求——需要设置的项目包括显示栏里的显示条目数量和字体大小，输入方案，以及配色方案。</p>
-<p>还有，我们要知道需要备份的几个文件：（目录：~/Library/Rime/）</p>
-<ul>
-<li>※〔安装信息〕<code>installation.yaml</code></li>
-<li>※〔用户状态信息〕<code>user.yaml</code></li>
-<li>※〔用户词典〕<code>&lt;词典名&gt;.userdb.kct</code></li>
-<li>※〔用户词典快照〕<code>&lt;词典名&gt;.userdb.txt</code>、<code>&lt;词典名&gt;.userdb.kct.snapshot</code>见于同步文件夹</li>
-<li>※〔用户对全局设定的定制信息〕<code>default.custom.yaml</code></li>
-<li>※〔用户对预设输入方案的定制信息〕<code>&lt;方案标识&gt;.custom.yaml</code></li>
-<li>※〔用户自制输入方案〕及配套的词典文件。</li>
+        <p>平时写Js代码遵循的一些规范。基本上采用的就是绝大多数人采用的。规范的目的也基本上是为了让大家写代码的时候尽可能的遵循一些原则，增加代码的可读性。</p>
+<a id="more"></a>
+<p>文件命名规范: Html、css、javascript文件统一用驼峰式命名</p>
+<h2 id="JAVASCRIPT"><a href="#JAVASCRIPT" class="headerlink" title="JAVASCRIPT"></a>JAVASCRIPT</h2><ul>
+<li><p>引号默认采用单引号<br><code>var a = &#39;MANFED&#39;</code></p>
+</li>
+<li><p>缩进使用4个空格</p>
+</li>
+<li>逗号后边跟1个空格 </li>
+<li>函数名称后无空格</li>
+<li>函数参数与括号间无空格</li>
+<li>表示区块起首的大括号跟在关键字后面, 不要另起一行</li>
 </ul>
-<p>这几个文件做好备份之后，以后软件版本升级了也不用担心自己的个性配置和个人词库被覆盖啦！长此以往，个人词库会被调教得越来越好用！虽然需要耗点时间，但是看着Rime在自己的调教下越来越棒，总会有成就感的！</p>
-<p>在这之前要先新建两个文件，然后把设置复制粘贴进去：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ touch ~/Library/Rime/default.custom.yaml</span><br><span class="line">$ touch ~/Library/Rime/squirrel.custom.yaml</span><br></pre></td></tr></table></figure>
-<p>下面列出我的配置：</p>
-<p>default.custom.yaml–&gt;</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># default.custom.yaml, 全局生效</span></span><br><span class="line"><span class="attr">patch:</span></span><br><span class="line">    menu/page_size: <span class="number">8</span>      <span class="comment">#这是之前增加的候选词数量。</span></span><br><span class="line"><span class="attr">    schema_list:</span>           <span class="comment">#“输入选单”中激活的输入方案定义。</span></span><br><span class="line"><span class="attr">        - schema:</span> luna_pinyin          <span class="comment"># 朙月拼音</span></span><br><span class="line"><span class="attr">        - schema:</span> luna_pinyin_simp     <span class="comment"># 朙月拼音 简化字模式</span></span><br><span class="line">        <span class="comment"># - schema: luna_pinyin_tw       # 朙月拼音 臺灣正體模式</span></span><br><span class="line">        <span class="comment"># - schema: terra_pinyin         # 地球拼音 dì qiú pīn yīn</span></span><br><span class="line">        <span class="comment"># - schema: bopomofo             # 注音</span></span><br><span class="line">        <span class="comment"># - schema: bopomofo_tw          # 注音 臺灣正體模式</span></span><br><span class="line">        <span class="comment"># - schema: jyutping             # 粵拼</span></span><br><span class="line">        <span class="comment"># - schema: cangjie5             # 倉頡五代</span></span><br><span class="line">        <span class="comment"># - schema: cangjie5_express     # 倉頡 快打模式</span></span><br><span class="line">        <span class="comment"># - schema: quick5               # 速成</span></span><br><span class="line">        <span class="comment"># - schema: wubi86               # 五笔86</span></span><br><span class="line">        <span class="comment"># - schema: wubi_pinyin          # 五笔拼音混合輸入</span></span><br><span class="line">        <span class="comment"># - schema: double_pinyin        # 自然碼雙拼</span></span><br><span class="line">        <span class="comment"># - schema: double_pinyin_mspy   # 微軟雙拼</span></span><br><span class="line">        <span class="comment"># - schema: double_pinyin_abc    # 智能ABC雙拼</span></span><br><span class="line"><span class="attr">        - schema:</span> double_pinyin_flypy  <span class="comment"># 小鶴雙拼</span></span><br><span class="line">        <span class="comment"># - schema: wugniu        # 吳語上海話（新派）</span></span><br><span class="line">        <span class="comment"># - schema: wugniu_lopha  # 吳語上海話（老派）</span></span><br><span class="line">        <span class="comment"># - schema: sampheng      # 中古漢語三拼</span></span><br><span class="line">        <span class="comment"># - schema: zyenpheng     # 中古漢語全拼</span></span><br><span class="line">        <span class="comment"># - schema: ipa_xsampa    # X-SAMPA 國際音標</span></span><br><span class="line"><span class="attr">        - schema:</span> emoji         <span class="comment"># emoji表情</span></span><br><span class="line"><span class="comment">#下面定义“输入选单”的切换控</span></span><br><span class="line"><span class="attr">    switcher:</span></span><br><span class="line"><span class="attr">        abbreviate_options:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        caption:</span> 〔方案選單〕          <span class="comment">#把默认的“方案選單”修改为了“切换”。</span></span><br><span class="line"><span class="attr">        fold_options:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        hotkeys:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">"Control+grave"</span>       <span class="comment">#默认方案</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">"Control+Shift+grave"</span>   <span class="comment">#默认方案</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">"Control+s"</span>             <span class="comment">#新增方案</span></span><br><span class="line"><span class="attr">        option_list_separator:</span> <span class="string">"／"</span>   <span class="comment">#以下都为默认custom.yaml文件的默认配置，copy过来就可以。</span></span><br><span class="line"><span class="attr">        save_options:</span></span><br><span class="line"><span class="bullet">            -</span> full_shape</span><br><span class="line"><span class="bullet">            -</span> ascii_punct</span><br><span class="line"><span class="bullet">            -</span> simplification</span><br><span class="line"><span class="bullet">            -</span> extended_charset</span><br></pre></td></tr></table></figure>
-<p>squirrel.custom.yaml–&gt;</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 适用于【鼠须管】0.9.13+</span></span><br><span class="line"><span class="comment"># 位置：~/Library/Rime/squirrel.custom.yaml</span></span><br><span class="line"><span class="comment"># 用法：想要哪项生效，就删去该行行首的 "#" 字符，但注意保留用于缩进的空格</span></span><br><span class="line"></span><br><span class="line"><span class="attr">patch:</span></span><br><span class="line"><span class="comment">#  us_keyboard_layout: true                 # 键盘选项：应用美式键盘布局</span></span><br><span class="line"><span class="comment">#  状态通知，适当，也可设为全开（always）全关（never）</span></span><br><span class="line"><span class="comment">#  show_notifications_when: appropriate</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"> style/color_scheme: ink                    <span class="comment"># 选择配色方案</span></span><br><span class="line"> style/horizontal: <span class="literal">true</span>                     <span class="comment"># 候选窗横向显示</span></span><br><span class="line"> style/inline_preedit: <span class="literal">false</span>                <span class="comment"># 关闭内嵌编码，这样就可以显示首行的拼音</span></span><br><span class="line"><span class="comment">#  style/corner_radius: 10                  # 窗口圆角半径</span></span><br><span class="line"><span class="comment">#  style/border_height: 0                   # 窗口边界高度，大于圆角半径才有效果</span></span><br><span class="line"><span class="comment">#  style/border_width: 0                    # 窗口边界宽度，大于圆角半径才有效果</span></span><br><span class="line"><span class="comment">#  style/line_spacing: 1                    # 候选词的行间距</span></span><br><span class="line"><span class="comment">#  style/spacing: 5                         # 在非内嵌编码模式下，预编辑和候选词之间的间距</span></span><br><span class="line"><span class="comment">#  style/font_face: "Hiragino Sans GB W3"   # 字体名称</span></span><br><span class="line"> style/font_point: <span class="number">20</span>                       <span class="comment"># 字号</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 注：预设的配色方案及代码（指定为 style/color_scheme ）</span></span><br><span class="line"><span class="comment">#   碧水 - aqua</span></span><br><span class="line"><span class="comment">#   青天 - azure</span></span><br><span class="line"><span class="comment">#   明月 - luna</span></span><br><span class="line"><span class="comment">#   墨池 - ink</span></span><br><span class="line"><span class="comment">#   孤寺 - lost_temple</span></span><br><span class="line"><span class="comment">#   暗堂 - dark_temple</span></span><br><span class="line"><span class="comment">#   星际我争霸 - starcraft</span></span><br><span class="line"><span class="comment">#   谷歌 - google</span></span><br><span class="line"><span class="comment">#   晒经石 - solarized_rock</span></span><br><span class="line"><span class="comment">#   简约白 - clean_white</span></span><br></pre></td></tr></table></figure>
-<h2 id="LINK"><a href="#LINK" class="headerlink" title="LINK"></a>LINK</h2><p><a href="https://github.com/rime/home/wiki/RimeWithSchemata" target="_blank" rel="external">Rime with Schemata</a></p>
-<p><a href="https://gist.github.com/lotem/2290714" target="_blank" rel="external">【鼠鬚管】定製檔1</a></p>
-<p><a href="https://gist.github.com/lotem/2309739" target="_blank" rel="external">【鼠鬚管】定製檔2</a></p>
-<hr>
-<p>2016-1-3 update<br>根据 <a href="http://www.dreamxu.com/install-config-squirrel/" target="_blank" rel="external">安装及配置 Mac 上的 Rime 输入法——鼠鬚管 (Squirrel)</a>，以及 <a href="https://github.com/rime-aca/dictionaries" target="_blank" rel="external">Rime 擴充詞庫</a>又折腾了一番。更新了配置，增加了词库和颜文字。<br>具体更新到 <a href="https://github.com/crossingmay/crossing_rime" target="_blank" rel="external">我的GitHub</a>上了。有错误的地方也请指正！欢迎使用我的定制方案：）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">arg1, arg2</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对象字面量的冒号后加空格, 冒号前不加</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    foo: <span class="number">1</span>,</span><br><span class="line">    bar: <span class="number">2</span>,</span><br><span class="line">    baz: <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>条件语句关键字后加空格</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> (v) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一个语句结束后跟一个分号</li>
+<li>使用严格等于’===’运算符</li>
+<li>为了提升代码可读性, 不要将不同目的的语句, 合并成一行</li>
+<li>变量声明都应放在函数头部</li>
+<li>所有函数都在使用之前定义</li>
+<li>使用用驼峰命名法, 命名时需要结合功能语义化, 便于阅读 <code>getName</code></li>
+<li>避免使用全局变量, 如果不得不使用, 用大写字母表示变量名 <code>SUCCESSWORD</code></li>
+<li>避免使用new命令, 使用{}代替new Object(), 使用[]代替new Array()</li>
+<li>构建函数的函数名, 采用首字母大写(InitialCap), 其他函数名, 一律首字母小写</li>
+<li>不要省去注释, 使用单行注释语句和代码块, 使用多行注释无用代码和页面功能模块描述</li>
+</ul>
+<h2 id="Ref-Link"><a href="#Ref-Link" class="headerlink" title="Ref Link"></a>Ref Link</h2><p><a href="http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html" target="_blank" rel="external">Javascript编程风格</a><br><a href="https://segmentfault.com/a/1190000000410316" target="_blank" rel="external">最流行的JavaScript代码规范</a></p>
 
       
     </div>
@@ -387,11 +397,11 @@
     <footer class="post-footer">
       
         <div class="copyright" style="clear:both;">
-           <p><span>本文标题:</span><a href="/2016/01/02/userime/">把輸入法換成rime！</a></p>
+           <p><span>本文标题:</span><a href="/2016/07/12/jsregular/">javascript代码规范</a></p>
            <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
-           <p><span>发布时间:</span>2016年1月2日 - 16时01分</p>
-           <p><span>本文字数:</span><span class="page-count">本文一共有1,960字</span></p>
-           <p><span>原始链接:</span><a href="/2016/01/02/userime/" title="把輸入法換成rime！">http://crossingmay.github.io/2016/01/02/userime/</a></p>
+           <p><span>发布时间:</span>2016年7月12日 - 12时07分</p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有779字</span></p>
+           <p><span>原始链接:</span><a href="/2016/07/12/jsregular/" title="javascript代码规范">http://crossingmay.github.io/2016/07/12/jsregular/</a></p>
            <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
            <p><span>转载请保留以上信息。</span></p>
         </div>
@@ -399,9 +409,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Mac/" rel="tag">#Mac</a>
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
           
-            <a href="/tags/Rime/" rel="tag">#Rime</a>
+            <a href="/tags/规范/" rel="tag">#规范</a>
           
         </div>
       
@@ -410,17 +420,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/01/plan2016/" rel="next" title="写在新年伊始，信さんの野望">
-                <i class="fa fa-chevron-left"></i> 写在新年伊始，信さんの野望
+              <a href="/2016/05/28/webpackshim/" rel="next" title="Vue+SUI+Webpack填坑之路——解决zepto依赖">
+                <i class="fa fa-chevron-left"></i> Vue+SUI+Webpack填坑之路——解决zepto依赖
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/03/giterror/" rel="prev" title="GitHub提交错误解决办法">
-                GitHub提交错误解决办法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -599,7 +605,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义设置"><span class="nav-number">1.</span> <span class="nav-text">自定义设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LINK"><span class="nav-number">2.</span> <span class="nav-text">LINK</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVASCRIPT"><span class="nav-number">1.</span> <span class="nav-text">JAVASCRIPT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref-Link"><span class="nav-number">2.</span> <span class="nav-text">Ref Link</span></a></li></ol></div>
             
           </div>
         </section>
@@ -745,9 +751,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'crossingmay';
-      var disqus_identifier = '2016/01/02/userime/';
-      var disqus_title = '把輸入法換成rime！';
-      var disqus_url = 'http://crossingmay.github.io/2016/01/02/userime/';
+      var disqus_identifier = '2016/07/12/jsregular/';
+      var disqus_title = 'javascript代码规范';
+      var disqus_url = 'http://crossingmay.github.io/2016/07/12/jsregular/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
