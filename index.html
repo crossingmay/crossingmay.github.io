@@ -327,17 +327,12 @@
 
       
         
-          
-            <p>环境为 Os X 10.11.6, XAMPP 7.0.2</p>
-<p>首先，检查默认安装的MySQL的字符集<code>show variables like &#39;%char%&#39;;</code><br><img src="http://7xootj.com1.z0.glb.clouddn.com/mychar1.png" alt="mychar1" title="mychar1"></p>
-<p>然后修改mysql配置文件my.cnf，在[client]和[mysqld]部分都加入<code>default-character-set=utf8</code><br><img src="http://7xootj.com1.z0.glb.clouddn.com/mycof1.png-w300" alt="mycof1" title="myconf1"></p>
-<p><img src="http://7xootj.com1.z0.glb.clouddn.com/conf2.png" alt="myconf2" title="myconf2"></p>
-<p>修改完毕后重启mysql服务。</p>
-<p>输入<code>show variables like &#39;%char%&#39;;</code></p>
-<p>检查结果，大功告成！</p>
-<p><img src="http://7xootj.com1.z0.glb.clouddn.com/mychar2.png" alt="mychar2" title="mychar2"></p>
-
-          
+          <p>MySQL默认情况下，建表的编码格式会为latin1，我们需要改成utf8格式。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/30/mysqlcharset/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
