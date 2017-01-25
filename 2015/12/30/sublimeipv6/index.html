@@ -328,8 +328,8 @@
 
       
         <p>问题貌似出现在liveStyle版本更新之后，因为打算安装javascript next和css3 package，结果出现了无法安装的情况。临时在chrome里把LiveStyle插件暂停了之后，管用了一会儿。但是在我卸载一些插件之后，又再次出现了问题。网上搜了下，可能是IPv6导致的问题。<br><a id="more"></a><br>首先弹出的窗口跳出如下信息：</p>
-<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">Package Control  There are no packages <span class="built_in">available</span> <span class="built_in">for</span> installation</span><br></pre></td></tr></table></figure>
-<p>然后控制台里会出现下面这么一段。<br><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">Package Control: <span class="keyword">Error</span> downloading channel. URL <span class="keyword">error</span> [Errno 65] <span class="keyword">No</span> route to host downloading https:<span class="comment">//packagecontrol.io/channel_v3.json</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><div class="line"><span class="keyword">Package</span> <span class="title">Control  There are no packages available for installation</span></div></pre></td></tr></table></figure>
+<p>然后控制台里会出现下面这么一段。<br><figure class="highlight stata"><table><tr><td class="code"><pre><div class="line">Package Control: <span class="keyword">Error</span> downloading channel. URL <span class="keyword">error</span> [Errno 65] <span class="keyword">No</span> route to host downloading https:<span class="comment">//packagecontrol.io/channel_v3.json</span></div></pre></td></tr></table></figure></p>
 <p>如果需要更详细的信息，可以开启debug模式。</p>
 <p>刚开始以为是被墙了。但是设置了http代理之后依然没用，看来应该不是被墙那么简单。</p>
 <p>搜索了一些相关问题，说是出现这样的问题是由于ISP不支持IPv6导致的。所以我们需要修改host文件，增加对应关系。</p>
@@ -337,7 +337,7 @@
 <p>由于我用的是OS X系统，所以稍微不一样。</p>
 <p>解决办法如下：</p>
 <p>1.<code>$ ping sublime.wbond.net</code>，可以获得IP地址50.116.34.243<br>2.<code>$ sudo vi /etc/hosts</code>，输入系统密码，按i进入insert模式，输入下面内容</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#to</span> <span class="selector-tag">solve</span> <span class="selector-tag">sublime</span> <span class="selector-tag">Text</span> <span class="selector-tag">IPv6</span></span><br><span class="line">50<span class="selector-class">.116</span><span class="selector-class">.34</span><span class="selector-class">.243</span> <span class="selector-tag">sublime</span><span class="selector-class">.wbond</span><span class="selector-class">.net</span></span><br><span class="line"><span class="selector-id">#end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-id">#to</span> <span class="selector-tag">solve</span> <span class="selector-tag">sublime</span> <span class="selector-tag">Text</span> <span class="selector-tag">IPv6</span></div><div class="line">50<span class="selector-class">.116</span><span class="selector-class">.34</span><span class="selector-class">.243</span> <span class="selector-tag">sublime</span><span class="selector-class">.wbond</span><span class="selector-class">.net</span></div><div class="line"><span class="selector-id">#end</span></div></pre></td></tr></table></figure>
 <p>3.完了之后按esc退出insert模式，<code>:wq</code>保存并退出</p>
 <p>然而你以为事情到这里就结束了么－ －。然而过了一会儿又来大姨妈了T_T。为毛呀！</p>
 <p>而且还是抽风式的，偶尔几次竟然能进。看来只能使出最终的杀手锏了！</p>
@@ -385,7 +385,7 @@
            <p><span>本文标题:</span><a href="/2015/12/30/sublimeipv6/">Sublime Text 3 无法使用package control安装插件解决办法</a></p>
            <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
            <p><span>发布时间:</span>2015年12月30日 - 12时12分</p>
-           <p><span>本文字数:</span><span class="page-count">本文一共有789字</span></p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有785字</span></p>
            <p><span>原始链接:</span><a href="/2015/12/30/sublimeipv6/" title="Sublime Text 3 无法使用package control安装插件解决办法">http://crossingmay.github.io/2015/12/30/sublimeipv6/</a></p>
            <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
            <p><span>转载请保留以上信息。</span></p>
@@ -488,7 +488,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -505,7 +505,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -611,7 +611,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

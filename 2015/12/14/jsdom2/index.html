@@ -360,19 +360,19 @@
 <ul>
 <li>JS用<code>window.open(url,name,features)</code>打开新的浏览器窗口。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">popUp</span>(<span class="params">withURL</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.open(winURL,<span class="string">"popup"</span>,<span class="string">"width=320,height=480"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">popUp</span>(<span class="params">withURL</span>) </span>&#123;</div><div class="line">    <span class="built_in">window</span>.open(winURL,<span class="string">"popup"</span>,<span class="string">"width=320,height=480"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>通过”javascript:”伪协议或内嵌的事件处理函数来调用都不能很好做到平稳退化。</li>
 </ul>
-<p>“javascript:”伪协议:<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:popUp('http://www.example.com/');"</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>内嵌事件处理函数:<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">onclick</span>=<span class="string">"popUp('http://www.example.com/'); return false;"</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>“javascript:”伪协议:<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:popUp('http://www.example.com/');"</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>内嵌事件处理函数:<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">onclick</span>=<span class="string">"popUp('http://www.example.com/'); return false;"</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <ul>
 <li><p>之所以强调平稳退化，最主要是为了搜索引擎的排名。</p>
 </li>
 <li><p>预留退路的方法：在链接里把href属性设置为真实存在的URL地址，让它成为一个有效的链接。把href设置为真实存在的URL地址后，即使js被禁用，或者遇到搜索机器人，这个链接都是可用的。只是在功能上打了折扣，不能在新窗口打开。这是一个经典的平稳退化的例子。</p>
 </li>
 </ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.example.com/"</span> <span class="attr">onclick</span>=<span class="string">"popUp(this.href; return false;"</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.example.com/"</span> <span class="attr">onclick</span>=<span class="string">"popUp(this.href; return false;"</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>2.分离JavaScript：把网页的结构和内容与JavaScript脚本的动作行为分开。</p>
 <ul>
 <li><p>结构和样式分离：CSS技术。文档结构和文档样式的分离可以确保网页都能平稳退化。</p>
@@ -387,7 +387,7 @@
 <li>便利数组。</li>
 <li>如果某个链接的class属性等于popup，就表示这个链接在被点击时应该调用popUp()函数。<ul>
 <li>A.把这个链接的href属性值传递给popUP()函数。</li>
-<li>取消这个链接的默认行为，不让这个链接把访问者带离当前窗口。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> links = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"a"</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;links.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (links[i].getAttribute(<span class="string">"class"</span>) == <span class="string">"popup"</span>)&#123;</span><br><span class="line">        popUp(<span class="keyword">this</span>.getAttribute(<span class="string">"href"</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>取消这个链接的默认行为，不让这个链接把访问者带离当前窗口。<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> links = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"a"</span>);</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;links.length; i++) &#123;</div><div class="line">    <span class="keyword">if</span> (links[i].getAttribute(<span class="string">"class"</span>) == <span class="string">"popup"</span>)&#123;</div><div class="line">        popUp(<span class="keyword">this</span>.getAttribute(<span class="string">"href"</span>));</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -396,12 +396,12 @@
 </ul>
 <p>以上代码存在问题，如果放置到外部的js文件，会先于html文档之前加载到浏览器里。没有完整的DOM，getElementsByTagName等方法就无法正常工作。</p>
 <p>解决办法：把代码打包到函数prepareLinks里，并添加到window对象触发的onload事件上。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = prepareLinks;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">prepareLinks</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> links = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"a"</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;links.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (links[i].getAttribute(<span class="string">"class"</span>) == <span class="string">"popup"</span>)&#123;</span><br><span class="line">            popUp(<span class="keyword">this</span>.getAttribute(<span class="string">"href"</span>));</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">popUp</span>(<span class="params">winURL</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">window</span>.open(winURL,<span class="string">"popup"</span>,<span class="string">"width=320,height=480"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = prepareLinks;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">prepareLinks</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> links = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"a"</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;links.length; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (links[i].getAttribute(<span class="string">"class"</span>) == <span class="string">"popup"</span>)&#123;</div><div class="line">            popUp(<span class="keyword">this</span>.getAttribute(<span class="string">"href"</span>));</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">popUp</span>(<span class="params">winURL</span>)</span>&#123;</div><div class="line">    <span class="built_in">window</span>.open(winURL,<span class="string">"popup"</span>,<span class="string">"width=320,height=480"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>3.向后兼容：确保老版本的浏览器不会因为你的JavaScript脚本而死掉。</p>
 <ul>
 <li>对象检测：在使用对象检测时，一定要删掉方法后的圆括号，如果不删掉，测试的将是方法的结果，无论方法是否存在。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!method) &#123;</span><br><span class="line">    statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (!method) &#123;</div><div class="line">    statements</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li><p>如果需要测试多个方法或属性是否存在，可以使用”逻辑或”操作符将其合并<code>if (!getElementyById || !getElementsByTagName) return false</code></p>
 </li>
@@ -414,7 +414,7 @@
 <ul>
 <li>尽量少访问DOM。访问DOM的方式对脚本性能会产生非常大的影响。使用两次getElementsByTagName方法，相当于浪费了一次搜索，更好的办法应该是把第一次搜索的结果保存在一个变量中，然后在循环里重用该结果。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> links = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"a"</span>);</span><br><span class="line"><span class="keyword">if</span> (links.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;links.length; i++)&#123;</span><br><span class="line">        <span class="comment">//对每个链接做点处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> links = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"a"</span>);</div><div class="line"><span class="keyword">if</span> (links.length &gt; <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;links.length; i++)&#123;</div><div class="line">        <span class="comment">//对每个链接做点处理</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li><p>在多个函数都会去的一组类似元素的情况下，可以考虑重构代码，把搜索结果保存在一个全局变量里，或者把一组元素直接以参数形式传递给函数。</p>
 </li>
@@ -468,7 +468,7 @@
            <p><span>本文标题:</span><a href="/2015/12/14/jsdom2/">Dom编程艺术学习笔记2</a></p>
            <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
            <p><span>发布时间:</span>2015年12月14日 - 11时12分</p>
-           <p><span>本文字数:</span><span class="page-count">本文一共有2,934字</span></p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有2,899字</span></p>
            <p><span>原始链接:</span><a href="/2015/12/14/jsdom2/" title="Dom编程艺术学习笔记2">http://crossingmay.github.io/2015/12/14/jsdom2/</a></p>
            <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
            <p><span>转载请保留以上信息。</span></p>
@@ -575,7 +575,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -592,7 +592,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -698,7 +698,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

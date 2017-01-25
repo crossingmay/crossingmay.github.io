@@ -385,7 +385,7 @@
 <h3 id="利用className设置class属性"><a href="#利用className设置class属性" class="headerlink" title="利用className设置class属性"></a>利用className设置class属性</h3><ul>
 <li>有个简单的法子：与其使用DOM直接改变某个元素的样式，不如通过JS更新这个元素的class属性。在引用的外部样式表中添加对应class的属性。</li>
 </ul>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.info</span> &#123;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1.2em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.info</span> &#123;</div><div class="line">    <span class="attribute">font-weight</span>: bold;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">1.2em</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>elem.setAttribute(&quot;class&quot;,&quot;intro&quot;)</code></p>
 <p>className属性是一个可读／可写的属性，凡是元素节点都有这个属性。</p>
 <p>用className属性和操作符设置一个元素的class属性：<code>element.className = value</code>。</p>
@@ -396,7 +396,7 @@
 <ul>
 <li>检查className属性的值是否为null</li>
 <li>如果是，把新的class设置值直接赋值给className属性；</li>
-<li>如果不是，把一个空格和新的class设置值追加到className属性上。<br>据此封装成一个函数addClass。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addClass</span>(<span class="params">elem,value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!elem.className) &#123;</span><br><span class="line">        elem.className = value;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        newClassName = elem.className;</span><br><span class="line">        newClassName+= <span class="string">" "</span>;</span><br><span class="line">        newClassName+= value;</span><br><span class="line">        elem.className = newClassName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>如果不是，把一个空格和新的class设置值追加到className属性上。<br>据此封装成一个函数addClass。<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addClass</span>(<span class="params">elem,value</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!elem.className) &#123;</div><div class="line">        elem.className = value;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        newClassName = elem.className;</div><div class="line">        newClassName+= <span class="string">" "</span>;</div><div class="line">        newClassName+= value;</div><div class="line">        elem.className = newClassName;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -443,7 +443,7 @@
            <p><span>本文标题:</span><a href="/2015/12/16/jsdom4/">Dom编程艺术学习笔记4</a></p>
            <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
            <p><span>发布时间:</span>2015年12月16日 - 11时12分</p>
-           <p><span>本文字数:</span><span class="page-count">本文一共有1,940字</span></p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有1,926字</span></p>
            <p><span>原始链接:</span><a href="/2015/12/16/jsdom4/" title="Dom编程艺术学习笔记4">http://crossingmay.github.io/2015/12/16/jsdom4/</a></p>
            <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
            <p><span>转载请保留以上信息。</span></p>
@@ -550,7 +550,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -567,7 +567,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -673,7 +673,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

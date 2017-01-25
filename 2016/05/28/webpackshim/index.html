@@ -333,7 +333,7 @@
 <p>然后在webpack的配置文件中添加externals如:<br>    <code>externals: { zepto: &#39;$&#39; }</code></p>
 <p>2 将zepto下载到本地，在webpack的配置文件中添加<br><code>resolve: { alias: { zepto: &#39;/path/to/zepto.min.js&#39; } }</code></p>
 <p>3 <a href="https://webpack.github.io/docs/shimming-modules.html" target="_blank" rel="external">官网文档Shimming</a>:<br>这个做法会把文件一起打包。npm安装webpack-zepto这个模块，然后在webpack的配置文件中添加</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">resolve: &#123;</span><br><span class="line">  ...</span><br><span class="line">  alias: &#123;</span><br><span class="line">      ...</span><br><span class="line">      <span class="string">'zepto'</span>: path.join(__dirname, <span class="string">'../node_modules/webpack-zepto/index.js'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">plugins: &#123;</span><br><span class="line">  ...</span><br><span class="line">  new webpack.ProvidePlugin(&#123; <span class="comment">// ProvidePlugin的作用是提供全局变量给每个模块,这样就不需要通过require引入了</span></span><br><span class="line">      $: <span class="string">'zepto'</span>,</span><br><span class="line">      Zepto: <span class="string">'zepto'</span>,</span><br><span class="line">      <span class="string">'window.Zepto'</span>: <span class="string">'zepto'</span></span><br><span class="line">      &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">  ...</div><div class="line">  alias: &#123;</div><div class="line">      ...</div><div class="line">      <span class="string">'zepto'</span>: path.join(__dirname, <span class="string">'../node_modules/webpack-zepto/index.js'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;,</div><div class="line"><span class="attr">plugins</span>: &#123;</div><div class="line">  ...</div><div class="line">  new webpack.ProvidePlugin(&#123; <span class="comment">// ProvidePlugin的作用是提供全局变量给每个模块,这样就不需要通过require引入了</span></div><div class="line">      $: <span class="string">'zepto'</span>,</div><div class="line">      <span class="attr">Zepto</span>: <span class="string">'zepto'</span>,</div><div class="line">      <span class="string">'window.Zepto'</span>: <span class="string">'zepto'</span></div><div class="line">      &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="SUI中Zepto-js版本选择问题"><a href="#SUI中Zepto-js版本选择问题" class="headerlink" title="SUI中Zepto.js版本选择问题"></a>SUI中Zepto.js版本选择问题</h2><p>由于SUI本身使用的zepto版本的问题，之前一直都没有找到合适的解决方法。</p>
 <p>最开始使用了官方的cdn，采取了方法1，但是没有成功导入依赖。中间尝试了方法2,但是当时大脑已经萌萌哒了，结果糊里糊涂的就是没成功。再尝试使用了方法3,这次虽然成功导入了依赖，但是SUI的插件报错，版本不兼容的问题——于是又一个坑。</p>
 <p>一直卡在这个问题耗了许久时间，其实最后发觉这问题挺简单的——就是解决一个模块依赖的问题。之前关是弄明白我需要解决的问题就花了许久，脑子是浆糊的。。。然后又由于SUI的限制。。。官方建议是直接使用SUI官方CDN上的版本，但是采取方法1没成功应该是由于网络加载导致的，估计CDN不给力啊！之后我尝试把SUI官方提供的zepto下到本地之后采取类似的方法1总算把这个问题给解决了，至少开发的时候不会有问题了，之后的坑先不填╮(╯_╰)╭ 。</p>
@@ -379,7 +379,7 @@
            <p><span>本文标题:</span><a href="/2016/05/28/webpackshim/">Vue+SUI+Webpack填坑之路——解决zepto依赖</a></p>
            <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
            <p><span>发布时间:</span>2016年5月28日 - 23时05分</p>
-           <p><span>本文字数:</span><span class="page-count">本文一共有1,154字</span></p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有1,147字</span></p>
            <p><span>原始链接:</span><a href="/2016/05/28/webpackshim/" title="Vue+SUI+Webpack填坑之路——解决zepto依赖">http://crossingmay.github.io/2016/05/28/webpackshim/</a></p>
            <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
            <p><span>转载请保留以上信息。</span></p>
@@ -486,7 +486,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -503,7 +503,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -609,7 +609,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

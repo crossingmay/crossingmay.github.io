@@ -340,7 +340,7 @@
 <p>google了一下没找到答案，感觉应该是环境配置没读到的原因。<code>$ nvm ls</code>没问题，尝试source了一下配置文件：<code>$ source ~/.zshrc</code>和<code>$ source ~/.zshenv</code>，node命令果然重新起作用了。</p>
 <p>但是我在重启终端之后，奇怪的事情又发生了，node再次失效。“不做二”的原则推动下，决定重新看看配置文件，找找到底是哪里不对。</p>
 <p>想起之前配置SublimeText3的liveload插件的时候曾经修改过配置文件，新增加的<code>.zshenv</code>文件，把原本在<code>.zshrc</code>里的这段剪切过去了：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> NVM_DIR=~/.nvm</span><br><span class="line">[ <span class="_">-s</span> <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; . <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> <span class="comment"># This loads nvm</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">export</span> NVM_DIR=~/.nvm</div><div class="line">[ <span class="_">-s</span> <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; . <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> <span class="comment"># This loads nvm</span></div></pre></td></tr></table></figure>
 <p>重新在<code>.zshrc</code>里添加这段之后，重启终端，果然解决了。</p>
 <p>也许问题就是出在更新之后无法直接读取<code>.zshenv</code>吧？（不太确定～）</p>
 <p>总之问题解决，继续愉快的撸码去！</p>
@@ -382,7 +382,7 @@
            <p><span>本文标题:</span><a href="/2015/12/12/nodecantus/">更新OSX10.11.2后node命令无法使用解决办法</a></p>
            <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
            <p><span>发布时间:</span>2015年12月12日 - 19时12分</p>
-           <p><span>本文字数:</span><span class="page-count">本文一共有379字</span></p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有377字</span></p>
            <p><span>原始链接:</span><a href="/2015/12/12/nodecantus/" title="更新OSX10.11.2后node命令无法使用解决办法">http://crossingmay.github.io/2015/12/12/nodecantus/</a></p>
            <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
            <p><span>转载请保留以上信息。</span></p>
@@ -489,7 +489,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -506,7 +506,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -612,7 +612,7 @@
         <div class="copyright" >
   
   &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
