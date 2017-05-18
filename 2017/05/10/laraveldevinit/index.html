@@ -1,0 +1,798 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="PHP,Laravel," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="之前在学习PHP的时候在网易云课堂买了个Laravel的课程，一直都没来得及看。昨天突然翻出来，决定后面每天跟着学一点。拓展自己的宽度，不把自己局限于前端——不是为了全栈，身为web开发，总要什么都知道点，不给自己设限，拥抱新姿势。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel学习">
+<meta property="og:url" content="http://crossingmay.github.io/2017/05/10/laraveldevinit/index.html">
+<meta property="og:site_name" content="Crossing's Blog">
+<meta property="og:description" content="之前在学习PHP的时候在网易云课堂买了个Laravel的课程，一直都没来得及看。昨天突然翻出来，决定后面每天跟着学一点。拓展自己的宽度，不把自己局限于前端——不是为了全栈，身为web开发，总要什么都知道点，不给自己设限，拥抱新姿势。">
+<meta property="og:image" content="http://7xootj.com1.z0.glb.clouddn.com/getvboxlink1.png">
+<meta property="og:image" content="http://7xootj.com1.z0.glb.clouddn.com/addlocalvbox.png">
+<meta property="og:image" content="http://7xootj.com1.z0.glb.clouddn.com/homesteadinstall.png">
+<meta property="og:updated_time" content="2017-05-10T17:55:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Laravel学习">
+<meta name="twitter:description" content="之前在学习PHP的时候在网易云课堂买了个Laravel的课程，一直都没来得及看。昨天突然翻出来，决定后面每天跟着学一点。拓展自己的宽度，不把自己局限于前端——不是为了全栈，身为web开发，总要什么都知道点，不给自己设限，拥抱新姿势。">
+<meta name="twitter:image" content="http://7xootj.com1.z0.glb.clouddn.com/getvboxlink1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Laravel学习 | Crossing's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70792175-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crossing's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">NOT Genius but Try Best</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Laravel学习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-10T10:38:25+08:00" content="2017-05-10">
+              2017-05-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/10/laraveldevinit/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/10/laraveldevinit/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前在学习PHP的时候在网易云课堂买了个Laravel的课程，一直都没来得及看。昨天突然翻出来，决定后面每天跟着学一点。拓展自己的宽度，不把自己局限于前端——不是为了全栈，身为web开发，总要什么都知道点，不给自己设限，拥抱新姿势。</p>
+<a id="more"></a>
+<h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><h3 id="Homestead"><a href="#Homestead" class="headerlink" title="Homestead"></a>Homestead</h3><ul>
+<li><p><a href="https://docs.golaravel.com/docs/5.4/homestead/" target="_blank" rel="external">Laravel 虚拟开发环境 Homestead</a></p>
+</li>
+<li><p><a href="https://laravel.com/docs/5.4/homestead" target="_blank" rel="external">Laravel Homestead</a></p>
+</li>
+</ul>
+<p>官方文档其实已经很清晰了。这里就简单记录一下流程。</p>
+<h4 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h4><p><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">安装VirtualBox</a><br><a href="https://www.vagrantup.com/downloads.html" target="_blank" rel="external">安装vagrant</a></p>
+<h4 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h4><ul>
+<li>安装 Homestead Vagrant Box</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">vagrant box add laravel/homestead</div></pre></td></tr></table></figure>
+<p>这一步比较坑。我敢说如果你按照这个模式来下，基本就是失败的。原因就是众所周知的了<em>(:з」∠)</em></p>
+<p>所以在这里根据下图拿到链接之后，打开迅雷下，家里百兆宽带的很快1分半就下完了。</p>
+<p><img src="http://7xootj.com1.z0.glb.clouddn.com/getvboxlink1.png" alt="获取vagrant box链接" title="下载vagrant box"></p>
+<p>然后参照<a href="https://zhuanlan.zhihu.com/p/25338468" target="_blank" rel="external">vagrant 添加本地 box 安装 laravel homestead</a>进行设置。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#本地方式添加 box</span></div><div class="line">$ vagrant box add laravel/homestead ~/Downloads/virtualbox.box</div><div class="line"><span class="comment">#修改版本号</span></div><div class="line">$ <span class="built_in">cd</span> ~/.vagrant.d/boxes/laravel-VAGRANTSLASH-homestead</div><div class="line">$ ls</div><div class="line"><span class="comment">#可以发现ls后可能只有一个0的文件夹，之后把这个文件夹的名字改成我们下的virtualbox的版本号</span></div><div class="line"><span class="comment">#比如这里是2.1.0　</span></div><div class="line">$ touch metadata_url</div><div class="line"><span class="comment">#metadata_url文件中写入https://atlas.hashicorp.com/laravel/homestead这个url链接</span></div></pre></td></tr></table></figure>
+<p><img src="http://7xootj.com1.z0.glb.clouddn.com/addlocalvbox.png" alt="本地添加box流程" title="本地添加box流程"></p>
+<ul>
+<li>安装 Homestead<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/laravel/homestead.git Homestead</div><div class="line">$ <span class="built_in">cd</span> Homestead</div><div class="line"><span class="comment"># 切换到稳定版release</span></div><div class="line">$ git checkout v5.2.4</div><div class="line"><span class="comment">#来创建 Homesstead.yaml 配置文件</span></div><div class="line">$ bash init.sh</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://7xootj.com1.z0.glb.clouddn.com/homesteadinstall.png" alt="安装 Homestead" title="安装 Homestead"></p>
+<p>如果还有遇到其他问题可以参看<a href="https://pigjian.com/article/homestead-problems" target="_blank" rel="external">安装 Homestead 可能会出现的一些 Problems</a></p>
+<ul>
+<li>配置 Homestead<br>  -配置Homestead.yaml<figure class="highlight yaml"><table><tr><td class="code"><pre><div class="line"><span class="meta">---</span></div><div class="line"><span class="attr">ip:</span> <span class="string">"192.168.10.10"</span></div><div class="line"><span class="attr">memory:</span> <span class="number">2048</span></div><div class="line"><span class="attr">cpus:</span> <span class="number">2</span></div><div class="line"><span class="attr">provider:</span> virtualbox</div><div class="line"></div><div class="line"><span class="attr">authorize:</span> ~/.ssh/id_rsa.pub</div><div class="line"></div><div class="line"><span class="attr">keys:</span></div><div class="line"><span class="bullet">    -</span> ~/.ssh/id_rsa</div><div class="line"></div><div class="line"><span class="attr">folders:</span></div><div class="line"><span class="attr">    - map:</span> ~/Code/TaskManager</div><div class="line"><span class="attr">      to:</span> /home/vagrant/Code/TaskManager</div><div class="line"></div><div class="line"><span class="attr">sites:</span></div><div class="line"><span class="attr">    - map:</span> taskmanager.app</div><div class="line"><span class="attr">      to:</span> /home/vagrant/Code/TaskManager/public</div><div class="line"></div><div class="line"><span class="attr">databases:</span></div><div class="line"><span class="bullet">    -</span> homestead</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>修改host，加上<code>192.168.10.10 taskmanager.app</code></p>
+<p>终端当前目录(Homestead)下执行<code>$ vagrant up</code>，另<code>$ vagrant halt #终止当前的虚拟机</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ vagrant up <span class="comment"># 启动虚拟机</span></div><div class="line">$ vagrant ssh <span class="comment"># ssh登录</span></div><div class="line">$ <span class="built_in">exit</span> <span class="comment"># 退出</span></div><div class="line">$ vagrant halt <span class="comment"># 关闭虚拟机</span></div><div class="line">$ vagrant <span class="built_in">help</span> <span class="comment"># 获取命令</span></div></pre></td></tr></table></figure>
+<p>到这里我们就可以在浏览器里打开 <a href="http://taskmanager.app/" target="_blank" rel="external">http://taskmanager.app/</a> 了。当然现在还什么东西都没有</p>
+<h2 id="创建Laravel项目"><a href="#创建Laravel项目" class="headerlink" title="创建Laravel项目"></a>创建Laravel项目</h2><h3 id="composer"><a href="#composer" class="headerlink" title="composer"></a>composer</h3><p>建议把composer的镜像切换为中国的镜像</p>
+<p><a href="https://pkg.phpcomposer.com/" target="_blank" rel="external">Packagist 镜像</a></p>
+<ul>
+<li>修改composer的全局配置文件，命令行输入下面的命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ composer config -g repo.packagist composer https://packagist.phpcomposer.com</div></pre></td></tr></table></figure>
+<h3 id="Laravel初始化项目"><a href="#Laravel初始化项目" class="headerlink" title="Laravel初始化项目"></a>Laravel初始化项目</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># Laravel初始化项目</span></div><div class="line">$ sudo composer create-project laravel/larvarel TaskManager</div></pre></td></tr></table></figure>
+<h3 id="Laravel-配置"><a href="#Laravel-配置" class="headerlink" title="Laravel 配置"></a>Laravel 配置</h3><p>数据库用户名，时区，本地化等的设置<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> TaskManager</div><div class="line">$ artisan <span class="comment"># 查看常用命令</span></div><div class="line">$ artisan route:list <span class="comment"># 查看当前路由表</span></div><div class="line">$ artisan make:auth <span class="comment"># 增加登录等相关的route和view</span></div></pre></td></tr></table></figure></p>
+<h3 id="数据库创建和设置"><a href="#数据库创建和设置" class="headerlink" title="数据库创建和设置"></a>数据库创建和设置</h3><p>这里我用mac上的数据库管理工具sequel。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ vagrant provision <span class="comment"># 更新配置</span></div><div class="line">$ artisan make:model -h <span class="comment"># 查看帮助</span></div><div class="line">$ artisan make:model Project -m</div></pre></td></tr></table></figure>
+<p>之后就是具体业务逻辑的开发了。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xootj.com1.z0.glb.clouddn.com/alids1.jpg" alt="Crossingmay Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="copyright" style="clear:both;">
+           <p><span>本文标题:</span><a href="/2017/05/10/laraveldevinit/">Laravel学习</a></p>
+           <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
+           <p><span>发布时间:</span>2017年5月10日 - 10时05分</p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有1,620字</span></p>
+           <p><span>原始链接:</span><a href="/2017/05/10/laraveldevinit/" title="Laravel学习">http://crossingmay.github.io/2017/05/10/laraveldevinit/</a></p>
+           <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
+           <p><span>转载请保留以上信息。</span></p>
+        </div>
+      
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag">#PHP</a>
+          
+            <a href="/tags/Laravel/" rel="tag">#Laravel</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/26/resourcepack/" rel="next" title="个人收藏夹收拾整理——归纳学习资源">
+                <i class="fa fa-chevron-left"></i> 个人收藏夹收拾整理——归纳学习资源
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xootj.com1.z0.glb.clouddn.com/x-head1.jpg"
+               alt="Crossingmay" />
+          <p class="site-author-name" itemprop="name">Crossingmay</p>
+          <p class="site-description motion-element" itemprop="description">Memo my learning process everyday and to share</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crossingmay" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/crossingmay" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/crossingmay" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/crossingmay" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://ixiusama.com/" title="ixiusama" target="_blank">ixiusama</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境安装"><span class="nav-number">1.</span> <span class="nav-text">环境安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Homestead"><span class="nav-number">1.1.</span> <span class="nav-text">Homestead</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-1"><span class="nav-number">1.1.1.</span> <span class="nav-text">Step 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-2"><span class="nav-number">1.1.2.</span> <span class="nav-text">Step 2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Laravel项目"><span class="nav-number">2.</span> <span class="nav-text">创建Laravel项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#composer"><span class="nav-number">2.1.</span> <span class="nav-text">composer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Laravel初始化项目"><span class="nav-number">2.2.</span> <span class="nav-text">Laravel初始化项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Laravel-配置"><span class="nav-number">2.3.</span> <span class="nav-text">Laravel 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库创建和设置"><span class="nav-number">2.4.</span> <span class="nav-text">数据库创建和设置</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crossingmay</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共68.0k字</span>
+  
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'crossingmay';
+      var disqus_identifier = '2017/05/10/laraveldevinit/';
+      var disqus_title = 'Laravel学习';
+      var disqus_url = 'http://crossingmay.github.io/2017/05/10/laraveldevinit/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
