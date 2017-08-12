@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://crossingmay.github.io/2017/08/12/nodejsfromzero0/index.html">
 <meta property="og:site_name" content="Crossing's Blog">
 <meta property="og:description" content="使用了Node.js有相当长的时间了。一直都是用到什么去看什么，零零散散的，毫无系统条理，碎片化的知识结构导致我的大脑存储也时常out fo memory。So, Let’s begin from Zero。">
-<meta property="og:updated_time" content="2017-08-12T09:07:19.000Z">
+<meta property="og:updated_time" content="2017-08-12T10:08:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js从零开始-REPL">
 <meta name="twitter:description" content="使用了Node.js有相当长的时间了。一直都是用到什么去看什么，零零散散的，毫无系统条理，碎片化的知识结构导致我的大脑存储也时常out fo memory。So, Let’s begin from Zero。">
@@ -353,7 +353,7 @@
 <p>然后在终端里运行</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ node repl_test.js</div><div class="line">&gt; m</div><div class="line"><span class="string">'hello world'</span></div></pre></td></tr></table></figure>
 <p>成功在当前的REPL中获取到了变量m</p>
-<p>通过这个demo，我们可以得知context的属性默认是可读写。<code>可以通过</code>Object.defineProperty()`来限制只读。</p>
+<p>通过这个demo，我们可以得知context的属性默认是可读写。可以通过<code>Object.defineProperty()</code>来限制只读。</p>
 <blockquote>
 <p>访问Node.js核心模块, 例如fs<br>指定变量<code>_</code>, 这个<code>_</code>默认把最近一次的输入值赋给<code>_</code>，除非明确设置了<code>_</code></p>
 <p>Custom Evaluation Functions 自定义配置<br>prompt，translator配置<br>Recoverable Errors这点主要是为了支持多行输入。(略过)<br>在repl中回车的时候都是默认输入当前行的内容到<code>eval</code>函数，为了支持多行输入，返回的<code>repl.Recoverable</code>实例会提供回调</p>
