@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://crossingmay.github.io/2017/09/10/nodejsfromzero2/index.html">
 <meta property="og:site_name" content="Crossing's Blog">
 <meta property="og:description" content="又匆匆忙忙了两周，耽搁了不少进度，这次就先看看events这一块。">
-<meta property="og:updated_time" content="2017-09-10T06:19:37.000Z">
+<meta property="og:updated_time" content="2017-09-10T06:21:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js从零开始-事件系统">
 <meta name="twitter:description" content="又匆匆忙忙了两周，耽搁了不少进度，这次就先看看events这一块。">
@@ -341,21 +341,21 @@
 <h3 id="error事件"><a href="#error事件" class="headerlink" title="error事件"></a><code>error</code>事件</h3><p>若在<code>EventEmitter</code>实例中出错了，一般会发送一个<code>error</code>的事件，从而作出特殊的处理。</p>
 <p>官方建议最佳实践：<code>listener</code>应该总是设定<code>error</code>事件处理，如下所示</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</div><div class="line">myEmitter.on(<span class="string">'error'</span>, (err) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.error(<span class="string">'whoops! there was an error'</span>);</div><div class="line">&#125;);</div><div class="line">myEmitter.emit(<span class="string">'error'</span>, <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'whoops!'</span>));</div><div class="line"><span class="comment">// Prints: whoops! there was an error</span></div></pre></td></tr></table></figure>
-<h2 id="EventEmitter类"><a href="#EventEmitter类" class="headerlink" title="EventEmitter类"></a>EventEmitter类</h2><p>由<code>events</code>模块定义和暴露方法。</p>
+<h3 id="EventEmitter类"><a href="#EventEmitter类" class="headerlink" title="EventEmitter类"></a>EventEmitter类</h3><p>由<code>events</code>模块定义和暴露方法。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</div></pre></td></tr></table></figure>
-<h3 id="newListener和removeListener"><a href="#newListener和removeListener" class="headerlink" title="newListener和removeListener"></a><code>newListener</code>和<code>removeListener</code></h3><p><code>newListener</code>监听注册事件的监听器，听起来有点绕。可以这么理解，我们的房子是各个部件原料组成的，而这个是生产盖房子原料的之前的监听过程。</p>
+<h4 id="newListener和removeListener"><a href="#newListener和removeListener" class="headerlink" title="newListener和removeListener"></a><code>newListener</code>和<code>removeListener</code></h4><p><code>newListener</code>监听注册事件的监听器，听起来有点绕。可以这么理解，我们的房子是各个部件原料组成的，而这个是生产盖房子原料的之前的监听过程。</p>
 <p>一个事件我们可以简单的看成有个事件名<code>eventName</code>，还有监听处理<code>listener</code>函数，当我们新注册一个事件的时候我们只要指定这两个玩意儿就能够自定义事件了。</p>
 <p>而我们在注册之前想要搞点事情。那就可以在<code>newListener</code>的监听里做处理。</p>
 <p>举个栗子：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</div><div class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</div><div class="line"><span class="comment">// Only do this once so we don't loop forever</span></div><div class="line">myEmitter.once(<span class="string">'newListener'</span>, (event, listener) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (event === <span class="string">'nb'</span>) &#123;</div><div class="line">    <span class="comment">// Insert a new listener in front</span></div><div class="line">    myEmitter.on(<span class="string">'nb'</span>, () =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'大佬们'</span>);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line">myEmitter.on(<span class="string">'nb'</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'牛B啊!'</span>);</div><div class="line">&#125;);</div><div class="line">myEmitter.emit(<span class="string">'nb'</span>);</div><div class="line"><span class="comment">// Prints:</span></div><div class="line"><span class="comment">//   大佬们</span></div><div class="line"><span class="comment">//   牛B啊！</span></div></pre></td></tr></table></figure>
 <p>这里注意要用once。不然得搞坏了。</p>
 <p><code>removeListener</code>在事件移除的时候触发。</p>
-<h3 id="其余api简单笔记"><a href="#其余api简单笔记" class="headerlink" title="其余api简单笔记"></a>其余api简单笔记</h3><p><code>emitter.addListener</code>是<code>emitter.on(eventName, listener)</code>的另外一种写法。</p>
+<h4 id="其余api简单笔记"><a href="#其余api简单笔记" class="headerlink" title="其余api简单笔记"></a>其余api简单笔记</h4><p><code>emitter.addListener</code>是<code>emitter.on(eventName, listener)</code>的另外一种写法。</p>
 <p><code>emitter.eventNames()</code>可以查看<code>emmitter</code>上绑定的事件列表</p>
 <p><code>emitter.prependListener()</code>可以改变执行顺序，可以作为生命周期的一个阶段来理解。</p>
 <p><code>emitter.setMaxListeners</code>，默认情况下给一个<code>emitter</code>添加超过10个事件的时候就会报警，可以通过修改这个设置来避开这个报警。默认设置是为了帮助寻找内存泄漏问题。</p>
 <p>其实就开头比较绕，下面部分都很好理解，有一个弃用的api就直接跳过不看了。官方文档解释的非常清晰，英文小菜鸡直接看也能明白~</p>
-<h2 id="REF"><a href="#REF" class="headerlink" title="REF"></a>REF</h2><p><a href="https://nodejs.org/api/events.html" target="_blank" rel="external">官方文档Events</a></p>
+<h3 id="REF"><a href="#REF" class="headerlink" title="REF"></a>REF</h3><p><a href="https://nodejs.org/api/events.html" target="_blank" rel="external">官方文档Events</a></p>
 
       
     </div>
@@ -597,7 +597,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#传参"><span class="nav-number">1.</span> <span class="nav-text">传参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步VS同步"><span class="nav-number">2.</span> <span class="nav-text">异步VS同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仅执行一次的事件"><span class="nav-number">3.</span> <span class="nav-text">仅执行一次的事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error事件"><span class="nav-number">4.</span> <span class="nav-text">error事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EventEmitter类"><span class="nav-number"></span> <span class="nav-text">EventEmitter类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#newListener和removeListener"><span class="nav-number">1.</span> <span class="nav-text">newListener和removeListener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其余api简单笔记"><span class="nav-number">2.</span> <span class="nav-text">其余api简单笔记</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REF"><span class="nav-number"></span> <span class="nav-text">REF</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#传参"><span class="nav-number">1.</span> <span class="nav-text">传参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步VS同步"><span class="nav-number">2.</span> <span class="nav-text">异步VS同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仅执行一次的事件"><span class="nav-number">3.</span> <span class="nav-text">仅执行一次的事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error事件"><span class="nav-number">4.</span> <span class="nav-text">error事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EventEmitter类"><span class="nav-number">5.</span> <span class="nav-text">EventEmitter类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#newListener和removeListener"><span class="nav-number">5.1.</span> <span class="nav-text">newListener和removeListener</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其余api简单笔记"><span class="nav-number">5.2.</span> <span class="nav-text">其余api简单笔记</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REF"><span class="nav-number">6.</span> <span class="nav-text">REF</span></a></li></ol></div>
             
           </div>
         </section>
