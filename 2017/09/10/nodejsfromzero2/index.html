@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Mac,终端,MySql," />
+  <meta name="keywords" content="NodeJs," />
 
 
 
@@ -80,16 +80,16 @@
 
 
 
-<meta name="description" content="个人用的是XAMPP集成环境，加上iTerm+zsh，Mac下默认是没有mysql命令的，这里就简单说一下如何让我们在终端中使用mysql命令。">
+<meta name="description" content="又匆匆忙忙了两周，耽搁了不少进度，这次就先看看events这一块。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac下如何在终端启用mysql命令">
-<meta property="og:url" content="http://crossingmay.github.io/2016/07/27/mysqlbegin1/index.html">
+<meta property="og:title" content="Node.js从零开始-事件系统">
+<meta property="og:url" content="http://crossingmay.github.io/2017/09/10/nodejsfromzero2/index.html">
 <meta property="og:site_name" content="Crossing's Blog">
-<meta property="og:description" content="个人用的是XAMPP集成环境，加上iTerm+zsh，Mac下默认是没有mysql命令的，这里就简单说一下如何让我们在终端中使用mysql命令。">
-<meta property="og:updated_time" content="2016-07-27T09:03:51.000Z">
+<meta property="og:description" content="又匆匆忙忙了两周，耽搁了不少进度，这次就先看看events这一块。">
+<meta property="og:updated_time" content="2017-09-10T06:19:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac下如何在终端启用mysql命令">
-<meta name="twitter:description" content="个人用的是XAMPP集成环境，加上iTerm+zsh，Mac下默认是没有mysql命令的，这里就简单说一下如何让我们在终端中使用mysql命令。">
+<meta name="twitter:title" content="Node.js从零开始-事件系统">
+<meta name="twitter:description" content="又匆匆忙忙了两周，耽搁了不少进度，这次就先看看events这一块。">
 
 
 
@@ -107,7 +107,7 @@
   };
 </script>
 
-  <title> Mac下如何在终端启用mysql命令 | Crossing's Blog </title>
+  <title> Node.js从零开始-事件系统 | Crossing's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -256,7 +256,7 @@
             
             
               
-                Mac下如何在终端启用mysql命令
+                Node.js从零开始-事件系统
               
             
           </h1>
@@ -268,8 +268,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-27T16:47:26+08:00" content="2016-07-27">
-              2016-07-27
+            <time itemprop="dateCreated" datetime="2017-09-10T09:49:29+08:00" content="2017-09-10">
+              2017-09-10
             </time>
           </span>
 
@@ -282,8 +282,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/折腾不止/" itemprop="url" rel="index">
-                    <span itemprop="name">折腾不止</span>
+                  <a href="/categories/NodeJs/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJs</span>
                   </a>
                 </span>
 
@@ -298,8 +298,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/27/mysqlbegin1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/07/27/mysqlbegin1/" itemprop="commentsCount"></span>
+                <a href="/2017/09/10/nodejsfromzero2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/10/nodejsfromzero2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -327,10 +327,35 @@
       
 
       
-        <p>个人用的是XAMPP集成环境，加上iTerm+zsh，Mac下默认是没有mysql命令的，这里就简单说一下如何让我们在终端中使用mysql命令。<br><a id="more"></a><br>先找到mysql的目录<code>/Applications/XAMPP/xamppfiles/bin</code>,<br>如果看过我之前的那篇 <a href="http://crossingmay.com/2015/11/28/frontendevset/" target="_blank" rel="external">私属前端开发环境配置指南</a>，那么我们只要在终端中输入<code>zshconfig</code>，然后我们就能在<code>.zhsrc</code>文件的最下面加上这么一行<br><code>export PATH=&quot;$PATH:/Applications/XAMPP/xamppfiles/bin&quot;</code>。嗯哼，这样就完成了终端的配置啦！是不是很简单呢！zsh大法好！</p>
-<blockquote>
-<p>reflink <a href="http://blog.csdn.net/yangkun0824/article/details/8973481" target="_blank" rel="external">Mac下使用terminal访问mysql</a></p>
-</blockquote>
+        <p>又匆匆忙忙了两周，耽搁了不少进度，这次就先看看events这一块。<br><a id="more"></a></p>
+<p>大多数Node.js的核心API都是围绕这一个通用的异步事件驱动架构的。emitters发出具名事件，然后再由函数对象listeners监听并作出响应。</p>
+<p>发出事件的所有的对象都是<code>EventEmitter</code>类的实例，这些对象暴露了一个<code>eventEmitter.on()</code>的函数，允许1个或多个函数对象附加到这个具名事件上。</p>
+<p>当<code>EventEmitter</code>对象发送一个事件，所有和这个事件相关的都会被同步(<code>synchronously</code>)调用.</p>
+<p><code>eventEmitter.on()</code>用来注册事件监听，触发事件之后的回调。如下面的官方例子</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</div><div class="line">myEmitter.on(<span class="string">'event'</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'an event occurred!'</span>);</div><div class="line">&#125;);</div><div class="line">myEmitter.emit(<span class="string">'event'</span>);</div></pre></td></tr></table></figure>
+<h3 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h3><p><code>eventEmitter.emit()</code>允许随意设置参数带给<code>listener</code>，这个时候<code>this</code>会指向绑定事件的对象上——箭头函数会例外。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</div><div class="line">myEmitter.on(<span class="string">'event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(a, b, <span class="keyword">this</span>);</div><div class="line">  <span class="comment">// Prints:</span></div><div class="line">  <span class="comment">//   a b MyEmitter &#123;</span></div><div class="line">  <span class="comment">//     domain: null,</span></div><div class="line">  <span class="comment">//     _events: &#123; event: [Function] &#125;,</span></div><div class="line">  <span class="comment">//     _eventsCount: 1,</span></div><div class="line">  <span class="comment">//     _maxListeners: undefined &#125;</span></div><div class="line">&#125;);</div><div class="line">myEmitter.emit(<span class="string">'event'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>);</div></pre></td></tr></table></figure>
+<h3 id="异步VS同步"><a href="#异步VS同步" class="headerlink" title="异步VS同步"></a>异步VS同步</h3><p><code>EventListener</code>会按照注册顺序调用所有的<code>listener</code>，这能够确保事件的执行顺序。</p>
+<p>可以通过<code>process.nextTick()</code>和<code>setImmediate()</code>这两个方法转化为异步执行。</p>
+<h3 id="仅执行一次的事件"><a href="#仅执行一次的事件" class="headerlink" title="仅执行一次的事件"></a>仅执行一次的事件</h3><p>通过<code>eventEmitter.once()</code>来注册事件即可，当触发一次之后就会被注销。</p>
+<h3 id="error事件"><a href="#error事件" class="headerlink" title="error事件"></a><code>error</code>事件</h3><p>若在<code>EventEmitter</code>实例中出错了，一般会发送一个<code>error</code>的事件，从而作出特殊的处理。</p>
+<p>官方建议最佳实践：<code>listener</code>应该总是设定<code>error</code>事件处理，如下所示</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</div><div class="line">myEmitter.on(<span class="string">'error'</span>, (err) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.error(<span class="string">'whoops! there was an error'</span>);</div><div class="line">&#125;);</div><div class="line">myEmitter.emit(<span class="string">'error'</span>, <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'whoops!'</span>));</div><div class="line"><span class="comment">// Prints: whoops! there was an error</span></div></pre></td></tr></table></figure>
+<h2 id="EventEmitter类"><a href="#EventEmitter类" class="headerlink" title="EventEmitter类"></a>EventEmitter类</h2><p>由<code>events</code>模块定义和暴露方法。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</div></pre></td></tr></table></figure>
+<h3 id="newListener和removeListener"><a href="#newListener和removeListener" class="headerlink" title="newListener和removeListener"></a><code>newListener</code>和<code>removeListener</code></h3><p><code>newListener</code>监听注册事件的监听器，听起来有点绕。可以这么理解，我们的房子是各个部件原料组成的，而这个是生产盖房子原料的之前的监听过程。</p>
+<p>一个事件我们可以简单的看成有个事件名<code>eventName</code>，还有监听处理<code>listener</code>函数，当我们新注册一个事件的时候我们只要指定这两个玩意儿就能够自定义事件了。</p>
+<p>而我们在注册之前想要搞点事情。那就可以在<code>newListener</code>的监听里做处理。</p>
+<p>举个栗子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>);</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyEmitter</span> <span class="keyword">extends</span> <span class="title">EventEmitter</span> </span>&#123;&#125;</div><div class="line"><span class="keyword">const</span> myEmitter = <span class="keyword">new</span> MyEmitter();</div><div class="line"><span class="comment">// Only do this once so we don't loop forever</span></div><div class="line">myEmitter.once(<span class="string">'newListener'</span>, (event, listener) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (event === <span class="string">'nb'</span>) &#123;</div><div class="line">    <span class="comment">// Insert a new listener in front</span></div><div class="line">    myEmitter.on(<span class="string">'nb'</span>, () =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'大佬们'</span>);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line">myEmitter.on(<span class="string">'nb'</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'牛B啊!'</span>);</div><div class="line">&#125;);</div><div class="line">myEmitter.emit(<span class="string">'nb'</span>);</div><div class="line"><span class="comment">// Prints:</span></div><div class="line"><span class="comment">//   大佬们</span></div><div class="line"><span class="comment">//   牛B啊！</span></div></pre></td></tr></table></figure>
+<p>这里注意要用once。不然得搞坏了。</p>
+<p><code>removeListener</code>在事件移除的时候触发。</p>
+<h3 id="其余api简单笔记"><a href="#其余api简单笔记" class="headerlink" title="其余api简单笔记"></a>其余api简单笔记</h3><p><code>emitter.addListener</code>是<code>emitter.on(eventName, listener)</code>的另外一种写法。</p>
+<p><code>emitter.eventNames()</code>可以查看<code>emmitter</code>上绑定的事件列表</p>
+<p><code>emitter.prependListener()</code>可以改变执行顺序，可以作为生命周期的一个阶段来理解。</p>
+<p><code>emitter.setMaxListeners</code>，默认情况下给一个<code>emitter</code>添加超过10个事件的时候就会报警，可以通过修改这个设置来避开这个报警。默认设置是为了帮助寻找内存泄漏问题。</p>
+<p>其实就开头比较绕，下面部分都很好理解，有一个弃用的api就直接跳过不看了。官方文档解释的非常清晰，英文小菜鸡直接看也能明白~</p>
+<h2 id="REF"><a href="#REF" class="headerlink" title="REF"></a>REF</h2><p><a href="https://nodejs.org/api/events.html" target="_blank" rel="external">官方文档Events</a></p>
 
       
     </div>
@@ -366,11 +391,11 @@
     <footer class="post-footer">
       
         <div class="copyright" style="clear:both;">
-           <p><span>本文标题:</span><a href="/2016/07/27/mysqlbegin1/">Mac下如何在终端启用mysql命令</a></p>
+           <p><span>本文标题:</span><a href="/2017/09/10/nodejsfromzero2/">Node.js从零开始-事件系统</a></p>
            <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
-           <p><span>发布时间:</span>2016年7月27日 - 16时07分</p>
-           <p><span>本文字数:</span><span class="page-count">本文一共有203字</span></p>
-           <p><span>原始链接:</span><a href="/2016/07/27/mysqlbegin1/" title="Mac下如何在终端启用mysql命令">http://crossingmay.github.io/2016/07/27/mysqlbegin1/</a></p>
+           <p><span>发布时间:</span>2017年9月10日 - 09时09分</p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有1,702字</span></p>
+           <p><span>原始链接:</span><a href="/2017/09/10/nodejsfromzero2/" title="Node.js从零开始-事件系统">http://crossingmay.github.io/2017/09/10/nodejsfromzero2/</a></p>
            <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
            <p><span>转载请保留以上信息。</span></p>
         </div>
@@ -378,11 +403,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Mac/" rel="tag">#Mac</a>
-          
-            <a href="/tags/终端/" rel="tag">#终端</a>
-          
-            <a href="/tags/MySql/" rel="tag">#MySql</a>
+            <a href="/tags/NodeJs/" rel="tag">#NodeJs</a>
           
         </div>
       
@@ -391,17 +412,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/21/subliterm/" rel="next" title="修复Mac下subllime中无法打开iTerm2问题">
-                <i class="fa fa-chevron-left"></i> 修复Mac下subllime中无法打开iTerm2问题
+              <a href="/2017/08/19/nodejsfromzero1/" rel="next" title="Node.js从零开始-模块加载">
+                <i class="fa fa-chevron-left"></i> Node.js从零开始-模块加载
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/30/mysqlcharset/" rel="prev" title="mac下修改MySQL的默认字符集为utf8">
-                mac下修改MySQL的默认字符集为utf8 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -580,7 +597,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#传参"><span class="nav-number">1.</span> <span class="nav-text">传参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步VS同步"><span class="nav-number">2.</span> <span class="nav-text">异步VS同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仅执行一次的事件"><span class="nav-number">3.</span> <span class="nav-text">仅执行一次的事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#error事件"><span class="nav-number">4.</span> <span class="nav-text">error事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EventEmitter类"><span class="nav-number"></span> <span class="nav-text">EventEmitter类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#newListener和removeListener"><span class="nav-number">1.</span> <span class="nav-text">newListener和removeListener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其余api简单笔记"><span class="nav-number">2.</span> <span class="nav-text">其余api简单笔记</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REF"><span class="nav-number"></span> <span class="nav-text">REF</span></a></div>
             
           </div>
         </section>
@@ -726,9 +743,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'crossingmay';
-      var disqus_identifier = '2016/07/27/mysqlbegin1/';
-      var disqus_title = 'Mac下如何在终端启用mysql命令';
-      var disqus_url = 'http://crossingmay.github.io/2016/07/27/mysqlbegin1/';
+      var disqus_identifier = '2017/09/10/nodejsfromzero2/';
+      var disqus_title = 'Node.js从零开始-事件系统';
+      var disqus_url = 'http://crossingmay.github.io/2017/09/10/nodejsfromzero2/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
