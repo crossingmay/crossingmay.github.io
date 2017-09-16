@@ -1,0 +1,837 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="NodeJs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="这次开始看NodeJs的又一个核心——Stream的概念。比较冗长，而且概念性的东西很多，这次先看看流基本概念和写入流部分。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js从零开始-Stream(上)">
+<meta property="og:url" content="http://crossingmay.github.io/2017/09/16/nodejsfromzero3/index.html">
+<meta property="og:site_name" content="Crossing's Blog">
+<meta property="og:description" content="这次开始看NodeJs的又一个核心——Stream的概念。比较冗长，而且概念性的东西很多，这次先看看流基本概念和写入流部分。">
+<meta property="og:updated_time" content="2017-09-16T18:51:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js从零开始-Stream(上)">
+<meta name="twitter:description" content="这次开始看NodeJs的又一个核心——Stream的概念。比较冗长，而且概念性的东西很多，这次先看看流基本概念和写入流部分。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Node.js从零开始-Stream(上) | Crossing's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70792175-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crossing's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">NOT Genius but Try Best</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Node.js从零开始-Stream(上)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-16T23:34:04+08:00" content="2017-09-16">
+              2017-09-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/NodeJs/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/09/16/nodejsfromzero3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/16/nodejsfromzero3/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这次开始看NodeJs的又一个核心——Stream的概念。比较冗长，而且概念性的东西很多，这次先看看流基本概念和写入流部分。<br><a id="more"></a><br>Stream——流，在Node.js里是一个处理流数据的抽象接口。<code>stream</code>模块提供了一些基本的API能够轻松构建实现流接口的对象。</p>
+<p>Node.js提供了非常多的流对象，比如说HTTP的服务请求、<code>process.stdout</code>都是实例。</p>
+<p>流是可读写的，所有流都是<code>EventEmitter</code>的实例。</p>
+<p>流模块的访问方式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> stream = <span class="built_in">require</span>(<span class="string">'stream'</span>)</div></pre></td></tr></table></figure>
+<p>了解流如何工作很重要，但是如果要创建新类型的流实例的话，流模块本身是最有用的，普通开发者一般很少直接使用流模块。</p>
+<p>也就是说在做底层封装的时候会用到，如果是上层业务开发一般是用不到这玩意儿的。当然，我们还是要有梦想的，先从普通的了解开始。</p>
+<h3 id="流的类型"><a href="#流的类型" class="headerlink" title="流的类型"></a>流的类型</h3><blockquote>
+<p>可读：如<code>fs.createReadStream()</code></p>
+<p>可写：如<code>fs.createWriteStream()</code></p>
+<p>双工流（Duplex）：如<code>net.Socket</code></p>
+<p>双工转换流（Transform）：可同时读写，并且可以转换数据类型，如<code>zlib.createDeflate()</code></p>
+</blockquote>
+<h3 id="对象模式"><a href="#对象模式" class="headerlink" title="对象模式"></a>对象模式</h3><p>由Node.js创建的所有流都专用于字符串和<code>Buffer(or Unit8Array)</code>对象。在对象模式下，可以实现其他类型的js值和流一起工作。</p>
+<p>当流创建的时候，流实例可以使用<code>objectMode</code>选项切换到对象模式，但是将已经存在的流实例转换为对象模式则是不安全的。</p>
+<h3 id="Buffering"><a href="#Buffering" class="headerlink" title="Buffering"></a>Buffering</h3><p>同时可读可写的流会把数据存储到内部缓冲区，在内部缓冲区可以使用<code>writable._writableState.getBuffer()</code>或<code>readable._readableState.buffer</code>来检索。</p>
+<p>缓冲的数据量大小设置取决于流构造函数的<code>highWaterMark</code>选项。</p>
+<p>普通流，<code>highWaterMark</code>选项指定总字节数。</p>
+<p>对象模式运行的流，<code>highWaterMark</code>指定对象的总数。</p>
+<p>调用<code>stream.push(chunk)</code>，数据被缓存在可读流中。如果流的消费者不调用<code>stream.read()</code>，数据会一直在内部队列中，直到被消耗。</p>
+<p>一旦内部缓冲区的总大小达到<code>highWaterMark</code>指定的阈值，流会停止从底层资源读取数据，直到当前的缓冲的数据可以被使用（也就是说，流将停止调用用于填充<code>read</code>缓冲区的内部<code>readable._read()</code>方法）。</p>
+<p>当<code>writable.write(chunk)</code>方法被重复调用的时候，数据被缓存在可读流中。当内部<code>write</code>缓冲区大小低于<code>highWaterMark</code>阈值时，调用<code>writable.write()</code>会返回<code>true</code>，反之则返回<code>false</code>。</p>
+<p><code>stream</code>API（特别是<code>stream.pipe()</code>方法）的关键目标是将数据缓冲限制为可接受的水平，使得不同速度的源和目标不会超过可用内存。</p>
+<p>由于<code>Duplex</code>和<code>Transform</code>流都允许同时可读和可写，每个都保留用于读和写的两个单独的内部缓冲区，并且允许每一方独立于另一方操作，同时保持合适和有效的数据流。</p>
+<p>例如<code>net.Socket</code>实例就是<code>Duplex</code>流，它的可读端允许消耗从<code>socket</code>接收的数据，可写端则允许将数据写入<code>socket</code>。</p>
+<p>因为数据写入到<code>socket</code>可能比接收更快或者更慢，因此<code>write</code>端和<code>read</code>读独立操作是非常重要的。</p>
+<h3 id="流消耗者API"><a href="#流消耗者API" class="headerlink" title="流消耗者API"></a>流消耗者API</h3><p>几乎所有的Node.js应用程序都以某种方式使用流。比如下面的<code>HTTP</code>服务。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</div><div class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">let</span> body = <span class="string">''</span></div><div class="line">  req.setEncoding(<span class="string">'utf8'</span>)</div><div class="line">  req.on(<span class="string">'data'</span>, (chunk) =&gt; &#123;</div><div class="line">    body += chunk</div><div class="line">  &#125;)</div><div class="line">  req.on(<span class="string">'end'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      <span class="keyword">const</span> data = <span class="built_in">JSON</span>.parse(body)</div><div class="line">      res.write(<span class="keyword">typeof</span> data)</div><div class="line">      res.end()</div><div class="line">    &#125; <span class="keyword">catch</span> &#123;</div><div class="line">      res.statusCode = <span class="number">400</span></div><div class="line">      <span class="keyword">return</span> res.end(<span class="string">`error: <span class="subst">$&#123;er.message&#125;</span>`</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;)</div><div class="line">server.listen(<span class="number">1337</span>)</div><div class="line"><span class="comment">// $ curl localhost:1337 -d "&#123;&#125;"</span></div><div class="line"><span class="comment">// object</span></div><div class="line"><span class="comment">// $ curl localhost:1337 -d "\"foo\""</span></div><div class="line"><span class="comment">// string</span></div><div class="line"><span class="comment">// $ curl localhost:1337 -d "not json"</span></div><div class="line"><span class="comment">// error: Unexpected token o in JSON at position 1</span></div></pre></td></tr></table></figure>
+<p><code>Writable</code>流，如这个例子里的<code>res</code>，暴露了将数据写入流的方法<code>write()</code>和<code>end()</code>。</p>
+<p><code>Readable</code>流可以使用<code>EventEmitter API</code>来通知应用程序代码，当数据可以从流中读取的时候，可以从流中以多种方式读取可用数据。</p>
+<p><code>Writable</code>和<code>Readable</code>流都以各种方式使用<code>EventEmitter API</code>来交流流的当前状态。</p>
+<p>将数据写入数据或从流中消耗数据的应用程序不需要直接实现流接口，通常就不需要调用<code>require(&#39;stream&#39;)</code>。</p>
+<h3 id="Writable流"><a href="#Writable流" class="headerlink" title="Writable流"></a><code>Writable</code>流</h3><p>常见例子<br>    <code>HTTP requests</code>，客户端<br>    <code>HTTP responses</code>， 服务端<br>    <code>fs</code>写入流<br>    <code>zlib</code><br>    <code>crypto</code><br>    <code>TCP sockets</code><br>    <code>child process stdin</code><br>    <code>process.stdout, process.stderr</code></p>
+<p>所有<code>WritAble</code>流通过<code>stream.Writable</code>类实现接口定义</p>
+<p>当<code>WritAble</code>流的特定实例可能以各种方式不同，但所有可写流都遵循相同的基本使用模式，如下例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> myStream = getWritableStreamShomehow()</div><div class="line">myStream.write(<span class="string">'some data'</span>)</div><div class="line">myStream.write(<span class="string">'some more data'</span>)</div><div class="line">mystream.end(<span class="string">'done writing data'</span>)</div></pre></td></tr></table></figure>
+<h4 id="stream-Writable类"><a href="#stream-Writable类" class="headerlink" title="stream.Writable类"></a><code>stream.Writable</code>类</h4><blockquote>
+<p>Event: ‘close’</p>
+</blockquote>
+<p>当流和任何底层资源关闭时触发。之后不在发生任何事件，并且将不会进一步计算。</p>
+<blockquote>
+<p>Event: ‘drain’</p>
+</blockquote>
+<p>调用<code>stream.write(chunk)</code>返回<code>false</code>时触发。适当的时候将<code>drain</code>事件发送到数据流中。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">writeOneMillionTimes</span>(<span class="params">writer, data, encoding, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> i = <span class="number">1000000</span></div><div class="line">  write()</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">write</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> ok = <span class="literal">true</span></div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">      i--</div><div class="line">      <span class="keyword">if</span> (i === <span class="number">0</span>) &#123;</div><div class="line">        writer.write(data, encoding, callback)</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        ok = writer.write(data, encoding)</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">while</span> (i &gt; <span class="number">0</span> &amp;&amp; ok)</div><div class="line">    <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</div><div class="line">      writer.once(<span class="string">'drain'</span>, write)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Event: ‘error’</p>
+</blockquote>
+<p>在<code>writeing</code>或<code>pipe</code>数据时发生错误时触发。当调用时，监听器回调传递一个错误参数。</p>
+<p>P.S. <code>error</code>事件触发时流并不会关闭。</p>
+<blockquote>
+<p>Event: ‘finish’</p>
+</blockquote>
+<p><code>stream.end()</code>调用后触发。所有数据都会被刷新到底层系统（这句不是很明白）。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> writer = getWritableStreamSomehow()</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">  writer.write(<span class="string">`hello, #<span class="subst">$&#123;i&#125;</span>!\n`</span>)</div><div class="line">&#125;</div><div class="line">writer.end(<span class="string">'This is the end\n'</span>)</div><div class="line">writer.on(<span class="string">'finish'</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.error(<span class="string">'All writes are now complete'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Event: ‘pipe’</p>
+</blockquote>
+<p>可读流调用<code>stream.pipe()</code>时触发。写入目标集。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> writer = getWritableStreamSomehow()</div><div class="line"><span class="keyword">const</span> reader = getReadableStreamSomehow()</div><div class="line">writer.on(<span class="string">'pipe'</span>, (src) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.error(<span class="string">'something is piping into the writer'</span>)</div><div class="line">  assert.equal(src, reader)</div><div class="line">&#125;)</div><div class="line">reader.pipe(writer)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Evnet: ‘unpipe’</p>
+</blockquote>
+<p><code>stream.unpipe()</code>调用时触发，从目标集中移除此<code>Writable</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> writer = getWritableStreamSomehow()</div><div class="line"><span class="keyword">const</span> reader = getReadableStreamSomehow()</div><div class="line">writer.on(<span class="string">'unpipe'</span>, (src) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.error(<span class="string">'Something has stopped piping into the writer.'</span>)</div><div class="line">  assert.equal(src, reader)</div><div class="line">&#125;)</div><div class="line">reader.pipe(writer)</div><div class="line">reader.unpipe(writer)</div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>writable.cork()</code></p>
+</blockquote>
+<p>强制将所有写入的数据缓冲在内存中。调用<code>writable.uncork()</code>或<code>stream.end()</code>刷新缓冲区数据。</p>
+<p>主要目的是避免在流中写入许多小块数据的情况下，不会在内部缓冲区造成对性能有不理影响的备份。在这种情况下，实现<code>writable._writtev()</code>方法的实现可以以更优化的方式执行缓冲写入。</p>
+<blockquote>
+<p><code>writable.end()</code></p>
+</blockquote>
+<p>直接看官方例子，秒懂。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// write 'hello, ' and then end with 'world!'</span></div><div class="line"><span class="keyword">const</span> file = fs.createWriteStream(<span class="string">'example.txt'</span>);</div><div class="line">file.write(<span class="string">'hello, '</span>);</div><div class="line">file.end(<span class="string">'world!'</span>);</div><div class="line"><span class="comment">// writing more now is not allowed!</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>writable.write(chunk[, encoding][, callback])</code></p>
+</blockquote>
+<p><code>writable.write()</code>方法将一些数据写入流中，并在数据完全处理后调用提供的回调。</p>
+<p>如果发生错误，回调可能会被调用，也可能不会以错误为第一个参数来调用。为了可靠地检测写错误，直接添加一个<code>error</code>事件的监听器是更好的做法。</p>
+<p>低于<code>highWaterMark</code>配置时，返回<code>true</code>，否则<code>false</code>时，将进一步尝试写入数据直到触发<code>drain</code>事件。</p>
+<p>这一段官方文档非常啰嗦，但总体意思其实就是围绕着触发<code>drain</code>避免内存问题来描述的。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">write</span> (<span class="params">data, cb</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!stream.write(data)) &#123;</div><div class="line">    stream.once(<span class="string">'drain'</span>, cb)</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    process.nextTick(cb)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">write(<span class="string">'hello'</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'write complated, do more writes now'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>如果是对象模式的话，将总会忽略<code>encoding</code>这个参数</p>
+<blockquote>
+<p>writable.destroy([error])</p>
+</blockquote>
+<p>销毁流，并发出传递的错误。调用这个方法之后，可写入流已经结束。这个方法不应该被覆盖，可以实现<code>writable._destroy</code>来替代。</p>
+<h3 id="短暂小结"><a href="#短暂小结" class="headerlink" title="短暂小结"></a>短暂小结</h3><p>看到这部分其实已经花了三个多小时了，一方面是因为原文不太好理解，另一方面确实底层概念有点多，需要花时间理解。立个flag，可读流部分两天后完成。</p>
+<p>目前我学习Node.js的模块的流程其实是按照先核心概念(Modules,Events,Stream,Errors)，再基本对象(Net,Path…)和基本模块(fs,HTTP,URL,Crypto…)这样的顺序来学习的。这样的一套流程相对比较科学合理，但是会存在断层问题，这个之后等全部系统过完完整一遍之后再进行练习补完。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xootj.com1.z0.glb.clouddn.com/alids1.jpg" alt="Crossingmay Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="copyright" style="clear:both;">
+           <p><span>本文标题:</span><a href="/2017/09/16/nodejsfromzero3/">Node.js从零开始-Stream(上)</a></p>
+           <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
+           <p><span>发布时间:</span>2017年9月16日 - 23时09分</p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有3,374字</span></p>
+           <p><span>原始链接:</span><a href="/2017/09/16/nodejsfromzero3/" title="Node.js从零开始-Stream(上)">http://crossingmay.github.io/2017/09/16/nodejsfromzero3/</a></p>
+           <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
+           <p><span>转载请保留以上信息。</span></p>
+        </div>
+      
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NodeJs/" rel="tag">#NodeJs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/10/nodejsfromzero2/" rel="next" title="Node.js从零开始-事件系统">
+                <i class="fa fa-chevron-left"></i> Node.js从零开始-事件系统
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xootj.com1.z0.glb.clouddn.com/x-head1.jpg"
+               alt="Crossingmay" />
+          <p class="site-author-name" itemprop="name">Crossingmay</p>
+          <p class="site-description motion-element" itemprop="description">Memo my learning process everyday and to share</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crossingmay" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/crossingmay" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/crossingmay" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/crossingmay" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://ixiusama.com/" title="ixiusama" target="_blank">ixiusama</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#流的类型"><span class="nav-number">1.</span> <span class="nav-text">流的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象模式"><span class="nav-number">2.</span> <span class="nav-text">对象模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffering"><span class="nav-number">3.</span> <span class="nav-text">Buffering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流消耗者API"><span class="nav-number">4.</span> <span class="nav-text">流消耗者API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Writable流"><span class="nav-number">5.</span> <span class="nav-text">Writable流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#stream-Writable类"><span class="nav-number">5.1.</span> <span class="nav-text">stream.Writable类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#短暂小结"><span class="nav-number">6.</span> <span class="nav-text">短暂小结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crossingmay</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共78.9k字</span>
+  
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'crossingmay';
+      var disqus_identifier = '2017/09/16/nodejsfromzero3/';
+      var disqus_title = 'Node.js从零开始-Stream(上)';
+      var disqus_url = 'http://crossingmay.github.io/2017/09/16/nodejsfromzero3/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
