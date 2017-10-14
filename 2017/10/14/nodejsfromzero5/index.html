@@ -1,0 +1,836 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="NodeJs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="双工和转换流，这是流的最后一部分了，因为是相对比较底层的概念，跟着文档走的时候总是有点枯燥的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js从零开始-Stream(下)">
+<meta property="og:url" content="http://crossingmay.github.io/2017/10/14/nodejsfromzero5/index.html">
+<meta property="og:site_name" content="Crossing's Blog">
+<meta property="og:description" content="双工和转换流，这是流的最后一部分了，因为是相对比较底层的概念，跟着文档走的时候总是有点枯燥的。">
+<meta property="og:updated_time" content="2017-10-14T15:06:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js从零开始-Stream(下)">
+<meta name="twitter:description" content="双工和转换流，这是流的最后一部分了，因为是相对比较底层的概念，跟着文档走的时候总是有点枯燥的。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Node.js从零开始-Stream(下) | Crossing's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70792175-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Crossing's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">NOT Genius but Try Best</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Node.js从零开始-Stream(下)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-10-14T20:48:44+08:00" content="2017-10-14">
+              2017-10-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/NodeJs/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/10/14/nodejsfromzero5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/10/14/nodejsfromzero5/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">本文总阅读量
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>双工和转换流，这是流的最后一部分了，因为是相对比较底层的概念，跟着文档走的时候总是有点枯燥的。</p>
+<a id="more"></a>
+<h2 id="双工和转换流"><a href="#双工和转换流" class="headerlink" title="双工和转换流"></a>双工和转换流</h2><h3 id="stream-Duplex类"><a href="#stream-Duplex类" class="headerlink" title="stream.Duplex类"></a>stream.Duplex类</h3><p>常见的双工流例子：</p>
+<ul>
+<li>TCP sockets</li>
+<li>zlib streams</li>
+<li>crypto streams</li>
+</ul>
+<h3 id="stream-Transform类"><a href="#stream-Transform类" class="headerlink" title="stream.Transform类"></a>stream.Transform类</h3><p>转换流是属于输出和输入相关的双工流。和所有双工流一样，转换流实现了可读和可写的接口。</p>
+<p>常见的转换流例子：</p>
+<ul>
+<li>zlib streams</li>
+<li>ccrypto streams</li>
+</ul>
+<h4 id="transform-destroy-error"><a href="#transform-destroy-error" class="headerlink" title="transform.destroy([error])"></a>transform.destroy([error])</h4><p>销毁stream，同事发送<code>&#39;error&#39;</code>事件。调用这个方法之后，转换流将释放内部资源。</p>
+<h2 id="流API"><a href="#流API" class="headerlink" title="流API"></a>流API</h2><p>流模块的API的设计是为了使它可以通过javascript的原型继承模型来轻松实现流。</p>
+<p>首先，一个流开发者将声明一个新的javascript类来继承基础的流类（stream.Writable, stream.Readable, stream.Duplex, stream.Transform），确保调用合适的父类构造函数。官方例子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123; Writable &#125; = <span class="built_in">require</span>(<span class="string">'stream'</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyWritable</span> <span class="keyword">extends</span> <span class="title">Writable</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(options) &#123;</div><div class="line">    <span class="keyword">super</span>(options)</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个新的流类然后必须实现一个或多个特定的方法，依赖于流的类型被创建，细节如下表：</p>
+<table>
+<thead>
+<tr>
+<th>例子</th>
+<th style="text-align:center">类</th>
+<th style="text-align:right">实现方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>只读</td>
+<td style="text-align:center">Readable</td>
+<td style="text-align:right">_read</td>
+</tr>
+<tr>
+<td>只写</td>
+<td style="text-align:center">Writable</td>
+<td style="text-align:right">_write, _writev, _final</td>
+</tr>
+<tr>
+<td>读和写</td>
+<td style="text-align:center">Duplex</td>
+<td style="text-align:right">_read, _write, _writev, _final</td>
+</tr>
+<tr>
+<td>操作写过的数据，然后读取</td>
+<td style="text-align:center">Transform</td>
+<td style="text-align:right">_transform, _flush, _final</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意</strong>：流代码的实现不应调用流的公共方法，这是供消费者使用的。否则会导出应用程序的代码消耗流出现副作用。</p>
+<h3 id="简例"><a href="#简例" class="headerlink" title="简例"></a>简例</h3><p>对于很多简单的例子，不依赖继承也能构建一个流。可以通过直接创建<code>stream.Writable</code>，<code>stream.Readable</code>，<code>stream.Duplex</code>，<code>stream.Transform</code>对象实例来完成，并将适当的方法传递为构造函数选项。如：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123; Writable &#125; = <span class="built_in">require</span>(<span class="string">'stream'</span>)</div><div class="line"><span class="keyword">const</span> myWritable = Writable(&#123;</div><div class="line">  write(chunk, encoding, callback) &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="实现一个可写流"><a href="#实现一个可写流" class="headerlink" title="实现一个可写流"></a>实现一个可写流</h3><p><code>stream.Writable</code>类是可写流的扩展实现。自定义的可写流必须调用<code>new stream.Writable([options])</code>构建函数并且实现<code>writable._write()</code>方法。<br><code>writable._writev()</code>方法也同时需要被实现。</p>
+<h4 id="构造函数：new-stream-Writable-options"><a href="#构造函数：new-stream-Writable-options" class="headerlink" title="构造函数：new stream.Writable([options])"></a>构造函数：new stream.Writable([options])</h4><ul>
+<li>options<ul>
+<li><code>highWaterMark</code> <number> 缓冲区的水平（？）</number></li>
+<li><code>decodeStrings</code> <boolean> 是否解码</boolean></li>
+<li><code>objectMode</code> <boolean> 是否对象模式</boolean></li>
+<li><code>write</code> <function> <code>stream._write()</code>方法实现</function></li>
+<li><code>destroy</code> <function> <code>stream._destroy()</code>方法实现</function></li>
+<li><code>final</code> <function> <code>stream._final()</code>方法实现</function></li>
+</ul>
+</li>
+</ul>
+<p>实例：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">const &#123; Writable &#125; = require('stream')</div><div class="line">class MyWritable extends Writable &#123;</div><div class="line">  constructor(options) &#123;</div><div class="line">    // 调用 stream.Writable() 构造函数</div><div class="line">    super(options)</div><div class="line">    // ...</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 或者下面这种pre-ES6方式</div><div class="line">const &#123; Writable &#125; = require('steram')</div><div class="line">const util = require('util')</div><div class="line">function MyWritable(options) &#123;</div><div class="line">  if (!(this instanceof MyWritable)) &#123;</div><div class="line">    return new MyWritable(options)</div><div class="line">  &#125;</div><div class="line">  Writable.call(this, options)</div><div class="line">&#125;</div><div class="line">util.inherits(MyWritable, Writable)</div><div class="line"></div><div class="line">// 或者简单构造函数方式</div><div class="line">const &#123; Writable &#125; = require('stream)</div><div class="line">const myWritable = new Writable(&#123;</div><div class="line">  write(chunk, encoding, callback) &#123;</div><div class="line">    // ...</div><div class="line">  &#125;,</div><div class="line">  writev(chunks, callback) &#123;</div><div class="line">    // ...</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>p.s 讲真，水平太菜，这上面三种方式我只会写最后一种，不过个人认为第二种方式可以无视。</p>
+<h4 id="writable-write-chunk-encoding-callback"><a href="#writable-write-chunk-encoding-callback" class="headerlink" title="writable._write(chunk, encoding, callback)"></a>writable._write(chunk, encoding, callback)</h4><p>所有的可写流实现必须提供一个<code>writable._write()</code>方法，将数据发送给潜在的资源。</p>
+<p><code>callback</code>方法必须给出被调用的信号，不论是完成还是失败的情况。如果调用失败，传递给<code>callback</code>的第一个参数必须是错误对象，如果写成功了，则必须为<code>null</code>。</p>
+<p>需要注意的是调用<code>writable.write()</code>将发生在<code>writable.write()</code>被调用和<code>callabck</code>被调用使写数据到缓冲区时。一但<code>callback</code>被调用，流将会发出’drain’事件。</p>
+<p>如果要一个流能实现多个数据块处理一次，则需要实现<code>writable._writev()</code>方法</p>
+<p>如果在构造函数选项中设置了<code>decodeStrings</code>属性，则<code>chunk</code>将会变成字符串类型而不是缓冲类型。并且<code>encoding</code>将表明字符串的字符编码。这是支持对某些字符串数据的编码优化处理。</p>
+<p>如果<code>decodeString</code>显式设置为<code>false</code>，<code>encoding</code>参数可以忽略，<code>chunk</code>则会保持相同的对象通过<code>.write()</code>方法。</p>
+<p><code>writable._write()</code>方法有下划线前缀，这意味着这是被定义为内部类，不该被用户程序直接调用。</p>
+<h4 id="writable-writev-chunks-callback"><a href="#writable-writev-chunks-callback" class="headerlink" title="writable._writev(chunks, callback)"></a>writable._writev(chunks, callback)</h4><p>当一个流要实现一次处理多个数据块时需要实现此方法。</p>
+<p>上面有提到过，文档果然很详尽和啰嗦。</p>
+<h4 id="writable-destroy-err-callback"><a href="#writable-destroy-err-callback" class="headerlink" title="writable._destroy(err, callback)"></a>writable._destroy(err, callback)</h4><p><code>callback</code>，一个回调函数，接受一个可选的错误参数，该参数在可写流被销毁时调用。</p>
+<h4 id="writable-final-callback"><a href="#writable-final-callback" class="headerlink" title="writable._final(callback)"></a>writable._final(callback)</h4><p>完成写入任何剩余数据时调用这个函数。</p>
+<p>这个可选函数将在流关闭之前调用，延迟<code>finish</code>事件，直到回调函数被调用。这个方法在流结束之前关闭资源或写缓冲数据时很有用。</p>
+<h4 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h4><p>建议在<code>writable._write()</code>和<code>writable.writev()</code>方法的处理过程中发生错误时，通过调用<code>callback</code>将错误作为第一个参数传递，这能让可写流发出<code>error</code>事件。</p>
+<p>在<code>writable._write()</code>中抛出错误，可能会引起意外结果，具体取决于流如何使用。</p>
+<p>使用<code>callback</code>则保证错误处理的一致性和可预测性。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123; Writable &#125; = <span class="built_in">require</span>(<span class="string">'stream'</span>)</div><div class="line"><span class="keyword">const</span> myWritable = <span class="keyword">new</span> Writable(&#123;</div><div class="line">  write(chunk, encoding, callback) &#123;</div><div class="line">    <span class="keyword">if</span> (chunk.toString().indexOf(<span class="string">'a'</span>) &gt;= <span class="number">0</span>) &#123;</div><div class="line">      callback(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'chunk is invalid'</span>))</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      callback()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="可写流实例"><a href="#可写流实例" class="headerlink" title="可写流实例"></a>可写流实例</h4><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123; Writable &#125; = <span class="built_in">require</span>(<span class="string">'stream'</span>)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyWritable</span> <span class="keyword">extends</span> <span class="title">Writable</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(options) &#123;</div><div class="line">    <span class="keyword">super</span>(options)</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  _write(chunk, encoding, callback) &#123;</div><div class="line">    <span class="keyword">if</span> (chunk.toString().indexOf(<span class="string">'a'</span>) &gt;= <span class="number">0</span>) &#123;</div><div class="line">      callback(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'chunk is invalid'</span>))</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      callback</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="偷懒结语"><a href="#偷懒结语" class="headerlink" title="偷懒结语"></a>偷懒结语</h3><p>嗯，其实后面还有满多的，包含<code>Readable</code>，<code>Duplex</code>和<code>Transform</code>这三种流的实现。</p>
+<p>不过文档实在太TM长了。而且内容基本上和<code>Writable</code>一样，基本上过了一次基本概念，那后面的这些也能很快理解。</p>
+<p>所以，你懂的，以下省略。</p>
+<h2 id="REF-Link"><a href="#REF-Link" class="headerlink" title="REF Link"></a>REF Link</h2><p><a href="https://nodejs.org/api/stream.html" target="_blank" rel="external">Stream</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xootj.com1.z0.glb.clouddn.com/alids1.jpg" alt="Crossingmay Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="copyright" style="clear:both;">
+           <p><span>本文标题:</span><a href="/2017/10/14/nodejsfromzero5/">Node.js从零开始-Stream(下)</a></p>
+           <p><span>文章作者:</span><a href="/" title="访问 Crossingmay 的个人博客">Crossingmay</a></p>
+           <p><span>发布时间:</span>2017年10月14日 - 20时10分</p>
+           <p><span>本文字数:</span><span class="page-count">本文一共有2,535字</span></p>
+           <p><span>原始链接:</span><a href="/2017/10/14/nodejsfromzero5/" title="Node.js从零开始-Stream(下)">http://crossingmay.github.io/2017/10/14/nodejsfromzero5/</a></p>
+           <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
+           <p><span>转载请保留以上信息。</span></p>
+        </div>
+      
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NodeJs/" rel="tag">#NodeJs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/23/nodejsfromzero4/" rel="next" title="Node.js从零开始-Stream(中)">
+                <i class="fa fa-chevron-left"></i> Node.js从零开始-Stream(中)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xootj.com1.z0.glb.clouddn.com/x-head1.jpg"
+               alt="Crossingmay" />
+          <p class="site-author-name" itemprop="name">Crossingmay</p>
+          <p class="site-description motion-element" itemprop="description">Memo my learning process everyday and to share</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/crossingmay" target="_blank" title="github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/crossingmay" target="_blank" title="twitter">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/crossingmay" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/crossingmay" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element">
+            <div class="links-of-blogroll-title">
+              <i class="fa fa-globe fa-fw"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://ixiusama.com/" title="ixiusama" target="_blank">ixiusama</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#双工和转换流"><span class="nav-number">1.</span> <span class="nav-text">双工和转换流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#stream-Duplex类"><span class="nav-number">1.1.</span> <span class="nav-text">stream.Duplex类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stream-Transform类"><span class="nav-number">1.2.</span> <span class="nav-text">stream.Transform类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#transform-destroy-error"><span class="nav-number">1.2.1.</span> <span class="nav-text">transform.destroy([error])</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流API"><span class="nav-number">2.</span> <span class="nav-text">流API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简例"><span class="nav-number">2.1.</span> <span class="nav-text">简例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现一个可写流"><span class="nav-number">2.2.</span> <span class="nav-text">实现一个可写流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数：new-stream-Writable-options"><span class="nav-number">2.2.1.</span> <span class="nav-text">构造函数：new stream.Writable([options])</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#writable-write-chunk-encoding-callback"><span class="nav-number">2.2.2.</span> <span class="nav-text">writable._write(chunk, encoding, callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#writable-writev-chunks-callback"><span class="nav-number">2.2.3.</span> <span class="nav-text">writable._writev(chunks, callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#writable-destroy-err-callback"><span class="nav-number">2.2.4.</span> <span class="nav-text">writable._destroy(err, callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#writable-final-callback"><span class="nav-number">2.2.5.</span> <span class="nav-text">writable._final(callback)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误处理"><span class="nav-number">2.2.6.</span> <span class="nav-text">错误处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可写流实例"><span class="nav-number">2.2.7.</span> <span class="nav-text">可写流实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#偷懒结语"><span class="nav-number">2.3.</span> <span class="nav-text">偷懒结语</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REF-Link"><span class="nav-number">3.</span> <span class="nav-text">REF Link</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crossingmay</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共84.2k字</span>
+  
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">本站访客数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次</span>
+  
+
+  
+    <span class="site-pv">本站总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'crossingmay';
+      var disqus_identifier = '2017/10/14/nodejsfromzero5/';
+      var disqus_title = 'Node.js从零开始-Stream(下)';
+      var disqus_url = 'http://crossingmay.github.io/2017/10/14/nodejsfromzero5/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
