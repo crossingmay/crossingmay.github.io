@@ -2,15 +2,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -38,10 +50,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
 
 
 
@@ -50,44 +58,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.4.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.4.1">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
 
 
 
 
 
 
-
-
-
-
-<meta name="description" content="手艺人，勤能补拙，打磨匠心。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ex·咖喱棒">
-<meta property="og:url" content="http://crossingmay.github.io/index.html">
-<meta property="og:site_name" content="Ex·咖喱棒">
-<meta property="og:description" content="手艺人，勤能补拙，打磨匠心。">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ex·咖喱棒">
-<meta name="twitter:description" content="手艺人，勤能补拙，打磨匠心。">
 
 
 
@@ -95,19 +84,17 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    scheme: 'Mist',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '8XOS9FBECN',
-      apiKey: '',
+      apiKey: 'dc88abe91b31bead2842a14be1fbd88d',
       indexName: 'search',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
@@ -116,12 +103,36 @@
 </script>
 
 
+  
+
+
+
+
+  <meta name="description" content="手艺人，勤能补拙，打磨匠心。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ex·咖喱棒">
+<meta property="og:url" content="http://crossingmay.github.io/index.html">
+<meta property="og:site_name" content="Ex·咖喱棒">
+<meta property="og:description" content="手艺人，勤能补拙，打磨匠心。">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ex·咖喱棒">
+<meta name="twitter:description" content="手艺人，勤能补拙，打磨匠心。">
+
+
+
+
+
 
   <link rel="canonical" href="http://crossingmay.github.io/"/>
 
 
 
-
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Ex·咖喱棒</title>
   
@@ -129,18 +140,46 @@
 
 
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70792175-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-70792175-1', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-70792175-1');
 </script>
 
 
 
 
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
@@ -151,7 +190,7 @@
     
   
 
-  <div class="container sidebar-position-right 
+  <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -161,19 +200,21 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Ex·咖喱棒</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">断剑重铸之日，骑士归来之时</p>
       
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -181,76 +222,69 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home menu-item-active">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
 
+      
       
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
         </li>
       
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -285,12 +319,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -303,6 +345,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -312,7 +356,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crossing May">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="手艺人，勤能补拙，打磨匠心。">
       <meta itemprop="image" content="http://static.lokiimay.com/x-head1.jpg">
     </span>
 
@@ -327,25 +371,40 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/14/nodejsfromzero5/" itemprop="url">Node.js从零开始-Stream(下)</a></h1>
+                <a class="post-title-link" href="/2017/10/14/nodejsfromzero5/" itemprop="url">
+                  Node.js从零开始-Stream(下)
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T20:48:44+08:00">
-                2017-10-14
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2017-10-14 20:48:44 / Modified: 23:06:22" itemprop="dateCreated datePublished" datetime="2017-10-14T20:48:44+08:00">2017-10-14</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -358,14 +417,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NodeJs/" itemprop="url" rel="index">
-                    <span itemprop="name">NodeJs</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NodeJs/" itemprop="url" rel="index"><span itemprop="name">NodeJs</span></a></span>
 
                 
                 
@@ -381,6 +436,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/10/14/nodejsfromzero5/#comments" itemprop="discussionUrl">
+                
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2017/10/14/nodejsfromzero5/" itemprop="commentCount"></span>
                 </a>
@@ -396,7 +452,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -426,13 +482,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/14/nodejsfromzero5/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -444,7 +503,6 @@
     
 
     <footer class="post-footer">
-      
       
 
       
@@ -472,6 +530,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -481,7 +541,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crossing May">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="手艺人，勤能补拙，打磨匠心。">
       <meta itemprop="image" content="http://static.lokiimay.com/x-head1.jpg">
     </span>
 
@@ -496,25 +556,52 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/23/nodejsfromzero4/" itemprop="url">Node.js从零开始-Stream(中)</a></h1>
+                <a class="post-title-link" href="/2017/09/23/nodejsfromzero4/" itemprop="url">
+                  Node.js从零开始-Stream(中)
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-23T11:04:05+08:00">
-                2017-09-23
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2017-09-23 11:04:05" itemprop="dateCreated datePublished" datetime="2017-09-23T11:04:05+08:00">2017-09-23</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2017-09-24 03:50:35" itemprop="dateModified" datetime="2017-09-24T03:50:35+08:00">2017-09-24</time>
+              
             
           </span>
 
@@ -527,14 +614,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NodeJs/" itemprop="url" rel="index">
-                    <span itemprop="name">NodeJs</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NodeJs/" itemprop="url" rel="index"><span itemprop="name">NodeJs</span></a></span>
 
                 
                 
@@ -550,6 +633,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/09/23/nodejsfromzero4/#comments" itemprop="discussionUrl">
+                
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2017/09/23/nodejsfromzero4/" itemprop="commentCount"></span>
                 </a>
@@ -565,7 +649,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -595,13 +679,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/09/23/nodejsfromzero4/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -613,7 +700,6 @@
     
 
     <footer class="post-footer">
-      
       
 
       
@@ -641,6 +727,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -650,7 +738,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crossing May">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="手艺人，勤能补拙，打磨匠心。">
       <meta itemprop="image" content="http://static.lokiimay.com/x-head1.jpg">
     </span>
 
@@ -665,25 +753,52 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/16/nodejsfromzero3/" itemprop="url">Node.js从零开始-Stream(上)</a></h1>
+                <a class="post-title-link" href="/2017/09/16/nodejsfromzero3/" itemprop="url">
+                  Node.js从零开始-Stream(上)
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-16T23:34:04+08:00">
-                2017-09-16
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2017-09-16 23:34:04" itemprop="dateCreated datePublished" datetime="2017-09-16T23:34:04+08:00">2017-09-16</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2017-09-17 02:51:23" itemprop="dateModified" datetime="2017-09-17T02:51:23+08:00">2017-09-17</time>
+              
             
           </span>
 
@@ -696,14 +811,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NodeJs/" itemprop="url" rel="index">
-                    <span itemprop="name">NodeJs</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NodeJs/" itemprop="url" rel="index"><span itemprop="name">NodeJs</span></a></span>
 
                 
                 
@@ -719,6 +830,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/09/16/nodejsfromzero3/#comments" itemprop="discussionUrl">
+                
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2017/09/16/nodejsfromzero3/" itemprop="commentCount"></span>
                 </a>
@@ -734,7 +846,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -764,13 +876,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/09/16/nodejsfromzero3/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -782,7 +897,6 @@
     
 
     <footer class="post-footer">
-      
       
 
       
@@ -810,6 +924,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -819,7 +935,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crossing May">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="手艺人，勤能补拙，打磨匠心。">
       <meta itemprop="image" content="http://static.lokiimay.com/x-head1.jpg">
     </span>
 
@@ -834,25 +950,40 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/10/nodejsfromzero2/" itemprop="url">Node.js从零开始-事件系统</a></h1>
+                <a class="post-title-link" href="/2017/09/10/nodejsfromzero2/" itemprop="url">
+                  Node.js从零开始-事件系统
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-10T09:49:29+08:00">
-                2017-09-10
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2017-09-10 09:49:29 / Modified: 14:21:44" itemprop="dateCreated datePublished" datetime="2017-09-10T09:49:29+08:00">2017-09-10</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -865,14 +996,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NodeJs/" itemprop="url" rel="index">
-                    <span itemprop="name">NodeJs</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NodeJs/" itemprop="url" rel="index"><span itemprop="name">NodeJs</span></a></span>
 
                 
                 
@@ -888,6 +1015,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/09/10/nodejsfromzero2/#comments" itemprop="discussionUrl">
+                
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2017/09/10/nodejsfromzero2/" itemprop="commentCount"></span>
                 </a>
@@ -903,7 +1031,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -933,13 +1061,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/09/10/nodejsfromzero2/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -951,7 +1082,6 @@
     
 
     <footer class="post-footer">
-      
       
 
       
@@ -979,6 +1109,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -988,7 +1120,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crossing May">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="手艺人，勤能补拙，打磨匠心。">
       <meta itemprop="image" content="http://static.lokiimay.com/x-head1.jpg">
     </span>
 
@@ -1003,25 +1135,52 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/19/nodejsfromzero1/" itemprop="url">Node.js从零开始-模块加载</a></h1>
+                <a class="post-title-link" href="/2017/08/19/nodejsfromzero1/" itemprop="url">
+                  Node.js从零开始-模块加载
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-19T23:04:09+08:00">
-                2017-08-19
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2017-08-19 23:04:09" itemprop="dateCreated datePublished" datetime="2017-08-19T23:04:09+08:00">2017-08-19</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2017-08-20 01:57:02" itemprop="dateModified" datetime="2017-08-20T01:57:02+08:00">2017-08-20</time>
+              
             
           </span>
 
@@ -1034,14 +1193,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NodeJs/" itemprop="url" rel="index">
-                    <span itemprop="name">NodeJs</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NodeJs/" itemprop="url" rel="index"><span itemprop="name">NodeJs</span></a></span>
 
                 
                 
@@ -1057,6 +1212,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/08/19/nodejsfromzero1/#comments" itemprop="discussionUrl">
+                
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2017/08/19/nodejsfromzero1/" itemprop="commentCount"></span>
                 </a>
@@ -1072,7 +1228,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1102,13 +1258,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/19/nodejsfromzero1/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1120,7 +1279,6 @@
     
 
     <footer class="post-footer">
-      
       
 
       
@@ -1148,6 +1306,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1157,7 +1317,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crossing May">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="手艺人，勤能补拙，打磨匠心。">
       <meta itemprop="image" content="http://static.lokiimay.com/x-head1.jpg">
     </span>
 
@@ -1172,25 +1332,40 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/12/nodejsfromzero0/" itemprop="url">Node.js从零开始-REPL</a></h1>
+                <a class="post-title-link" href="/2017/08/12/nodejsfromzero0/" itemprop="url">
+                  Node.js从零开始-REPL
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-12T12:15:28+08:00">
-                2017-08-12
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2017-08-12 12:15:28 / Modified: 18:08:10" itemprop="dateCreated datePublished" datetime="2017-08-12T12:15:28+08:00">2017-08-12</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1203,14 +1378,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NodeJs/" itemprop="url" rel="index">
-                    <span itemprop="name">NodeJs</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NodeJs/" itemprop="url" rel="index"><span itemprop="name">NodeJs</span></a></span>
 
                 
                 
@@ -1226,6 +1397,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/08/12/nodejsfromzero0/#comments" itemprop="discussionUrl">
+                
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2017/08/12/nodejsfromzero0/" itemprop="commentCount"></span>
                 </a>
@@ -1241,7 +1413,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1271,13 +1443,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/12/nodejsfromzero0/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1289,7 +1464,6 @@
     
 
     <footer class="post-footer">
-      
       
 
       
@@ -1317,6 +1491,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1326,7 +1502,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crossing May">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="手艺人，勤能补拙，打磨匠心。">
       <meta itemprop="image" content="http://static.lokiimay.com/x-head1.jpg">
     </span>
 
@@ -1341,25 +1517,40 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/19/memo2016/" itemprop="url">2017都要过了一半，你还回顾2016？</a></h1>
+                <a class="post-title-link" href="/2017/05/19/memo2016/" itemprop="url">
+                  2017都要过了一半，你还回顾2016？
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T01:14:15+08:00">
-                2017-05-19
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2017-05-19 01:14:15 / Modified: 02:47:12" itemprop="dateCreated datePublished" datetime="2017-05-19T01:14:15+08:00">2017-05-19</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1372,14 +1563,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/唠唠叨叨/" itemprop="url" rel="index">
-                    <span itemprop="name">唠唠叨叨</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/唠唠叨叨/" itemprop="url" rel="index"><span itemprop="name">唠唠叨叨</span></a></span>
 
                 
                 
@@ -1395,6 +1582,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/05/19/memo2016/#comments" itemprop="discussionUrl">
+                
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2017/05/19/memo2016/" itemprop="commentCount"></span>
                 </a>
@@ -1410,7 +1598,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1440,13 +1628,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/19/memo2016/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1458,7 +1649,6 @@
     
 
     <footer class="post-footer">
-      
       
 
       
@@ -1486,6 +1676,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1495,7 +1687,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crossing May">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="手艺人，勤能补拙，打磨匠心。">
       <meta itemprop="image" content="http://static.lokiimay.com/x-head1.jpg">
     </span>
 
@@ -1510,25 +1702,52 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/10/laraveldevinit/" itemprop="url">Laravel学习</a></h1>
+                <a class="post-title-link" href="/2017/05/10/laraveldevinit/" itemprop="url">
+                  Laravel学习
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-10T10:38:25+08:00">
-                2017-05-10
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2017-05-10 10:38:25" itemprop="dateCreated datePublished" datetime="2017-05-10T10:38:25+08:00">2017-05-10</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-08 17:49:14" itemprop="dateModified" datetime="2018-09-08T17:49:14+08:00">2018-09-08</time>
+              
             
           </span>
 
@@ -1541,14 +1760,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/后端/" itemprop="url" rel="index">
-                    <span itemprop="name">后端</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后端/" itemprop="url" rel="index"><span itemprop="name">后端</span></a></span>
 
                 
                 
@@ -1564,6 +1779,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/05/10/laraveldevinit/#comments" itemprop="discussionUrl">
+                
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2017/05/10/laraveldevinit/" itemprop="commentCount"></span>
                 </a>
@@ -1579,7 +1795,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1609,13 +1825,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/10/laraveldevinit/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1627,7 +1846,6 @@
     
 
     <footer class="post-footer">
-      
       
 
       
@@ -1655,6 +1873,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1664,7 +1884,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crossing May">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="手艺人，勤能补拙，打磨匠心。">
       <meta itemprop="image" content="http://static.lokiimay.com/x-head1.jpg">
     </span>
 
@@ -1679,25 +1899,40 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/01/26/resourcepack/" itemprop="url">个人收藏夹收拾整理——归纳学习资源</a></h1>
+                <a class="post-title-link" href="/2017/01/26/resourcepack/" itemprop="url">
+                  个人收藏夹收拾整理——归纳学习资源
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-26T16:14:54+08:00">
-                2017-01-26
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2017-01-26 16:14:54 / Modified: 16:55:28" itemprop="dateCreated datePublished" datetime="2017-01-26T16:14:54+08:00">2017-01-26</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1710,14 +1945,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web前端/" itemprop="url" rel="index">
-                    <span itemprop="name">Web前端</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web前端/" itemprop="url" rel="index"><span itemprop="name">Web前端</span></a></span>
 
                 
                 
@@ -1733,6 +1964,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/01/26/resourcepack/#comments" itemprop="discussionUrl">
+                
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2017/01/26/resourcepack/" itemprop="commentCount"></span>
                 </a>
@@ -1748,7 +1980,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1778,13 +2010,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/01/26/resourcepack/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1796,7 +2031,6 @@
     
 
     <footer class="post-footer">
-      
       
 
       
@@ -1824,6 +2058,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1833,7 +2069,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Crossing May">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="手艺人，勤能补拙，打磨匠心。">
       <meta itemprop="image" content="http://static.lokiimay.com/x-head1.jpg">
     </span>
 
@@ -1848,25 +2084,40 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/01/25/standardjs/" itemprop="url">StandardJs团队推广</a></h1>
+                <a class="post-title-link" href="/2017/01/25/standardjs/" itemprop="url">
+                  StandardJs团队推广
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-25T14:50:11+08:00">
-                2017-01-25
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2017-01-25 14:50:11 / Modified: 16:09:20" itemprop="dateCreated datePublished" datetime="2017-01-25T14:50:11+08:00">2017-01-25</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1879,14 +2130,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web前端/" itemprop="url" rel="index">
-                    <span itemprop="name">Web前端</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web前端/" itemprop="url" rel="index"><span itemprop="name">Web前端</span></a></span>
 
                 
                 
@@ -1902,6 +2149,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/01/25/standardjs/#comments" itemprop="discussionUrl">
+                
                   <span class="post-comments-count disqus-comment-count"
                         data-disqus-identifier="2017/01/25/standardjs/" itemprop="commentCount"></span>
                 </a>
@@ -1917,7 +2165,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1947,13 +2195,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/01/25/standardjs/#more" rel="contents">
-              阅读全文 &raquo;
+              Read more &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1965,7 +2216,6 @@
     
 
     <footer class="post-footer">
-      
       
 
       
@@ -1989,15 +2239,12 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -2032,72 +2279,188 @@
               <p class="site-description motion-element" itemprop="description">手艺人，勤能补拙，打磨匠心。</p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">47</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">49</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
 
           
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/crossingmay" target="_blank" title="github">
-                      
-                        <i class="fa fa-fw fa-globe"></i>github</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://twitter.com/crossingmay" target="_blank" title="twitter">
-                      
-                        <i class="fa fa-fw fa-globe"></i>twitter</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://weibo.com/crossingmay" target="_blank" title="weibo">
-                      
-                        <i class="fa fa-fw fa-globe"></i>weibo</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.zhihu.com/people/crossingmay" target="_blank" title="zhihu">
-                      
-                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
-                  </span>
-                
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/crossingmay" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/crossingmay" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://zhihu.com/crossingmay" target="_blank" title="Zhihu"><i class="fa fa-fw iconfont icon-zhihu"></i>Zhihu</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
             </div>
           
 
@@ -2105,22 +2468,8 @@
           
 
           
+            
           
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://ixiusama.com/" title="ixiusama" target="_blank">ixiusama</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
           
 
         </div>
@@ -2141,16 +2490,20 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Crossing May</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -2158,7 +2511,9 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
+  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共55.1k字</span></div>
+
 
 
 
@@ -2167,6 +2522,16 @@
 
 
 
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65999720";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -2183,7 +2548,18 @@
     
 
     
+	
+    
 
+    
+      <div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b92ab1f02fa730e" async = "async" ></script>
+</div>
+
+      </div>
+    
   </div>
 
   
@@ -2202,7 +2578,11 @@
 
 
 
-  
+
+
+
+
+
 
 
 
@@ -2222,16 +2602,6 @@
 
   
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
     <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
@@ -2240,65 +2610,35 @@
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
 
 
 
   
   
 
+  
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+  
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
 
 
 
   
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
+    <script id="dsq-count-scr" src="https://crossingmay.disqus.com/count.js" async></script>
   
 
-
   
-
-    
-      <script id="dsq-count-scr" src="https://crossingmay.disqus.com/count.js" async></script>
-    
-
-    
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
 
 
 
@@ -2326,18 +2666,16 @@
   <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
   
 
-  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+  <script src="/js/src/algolia-search.js?v=6.4.1"></script>
 
 
 
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("bqNohkzVOAk8UGwQVHTdezsz-9Nh9j0Va", "XwNVMhbOkdjtj37OHu4KqoB9");</script>
   <script>
+    
     function showTime(Counter) {
-      var query = new AV.Query(Counter);
       var entries = [];
       var $visitors = $(".leancloud_visitors");
 
@@ -2345,9 +2683,8 @@
         entries.push( $(this).attr("id").trim() );
       });
 
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
+        .done(function ({ results }) {
           var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
 
           if (results.length === 0) {
@@ -2357,8 +2694,8 @@
 
           for (var i = 0; i < results.length; i++) {
             var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
+            var url = item.url;
+            var time = item.time;
             var element = document.getElementById(url);
 
             $(element).find(COUNT_CONTAINER_REF).text(time);
@@ -2372,68 +2709,33 @@
             }
           }
         })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
+        .fail(function ({ responseJSON }) {
+          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
         });
     }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
+    
 
     $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "bqNohkzVOAk8UGwQVHTdezsz-9Nh9j0Va")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "bqNohkzVOAk8UGwQVHTdezsz-9Nh9j0Va",
+                'X-LC-Key': "XwNVMhbOkdjtj37OHu4KqoB9",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          if ($('.post-title-link').length >= 1) {
+            showTime(Counter);
+          }
+          
+        })
     });
   </script>
 
@@ -2444,6 +2746,12 @@
   
 
   
+
+  
+  
+
+  
+
   
 
   
