@@ -493,7 +493,7 @@
 <p>google了一下没找到答案，感觉应该是环境配置没读到的原因。<code>$ nvm ls</code>没问题，尝试source了一下配置文件：<code>$ source ~/.zshrc</code>和<code>$ source ~/.zshenv</code>，node命令果然重新起作用了。</p>
 <p>但是我在重启终端之后，奇怪的事情又发生了，node再次失效。“不做二”的原则推动下，决定重新看看配置文件，找找到底是哪里不对。</p>
 <p>想起之前配置SublimeText3的liveload插件的时候曾经修改过配置文件，新增加的<code>.zshenv</code>文件，把原本在<code>.zshrc</code>里的这段剪切过去了：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">export</span> NVM_DIR=~/.nvm</div><div class="line">[ <span class="_">-s</span> <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; . <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> <span class="comment"># This loads nvm</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=~/.nvm</span><br><span class="line">[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; . &quot;$NVM_DIR/nvm.sh&quot; # This loads nvm</span><br></pre></td></tr></table></figure>
 <p>重新在<code>.zshrc</code>里添加这段之后，重启终端，果然解决了。</p>
 <p>也许问题就是出在更新之后无法直接读取<code>.zshenv</code>吧？（不太确定～）</p>
 <p>总之问题解决，继续愉快的撸码去！</p>
@@ -645,7 +645,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -783,7 +783,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">49</span>
+                      
+                    
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -871,7 +873,7 @@
 
 
   <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
-  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共55.1k字</span></div>
+  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共55.5k字</span></div>
 
 
 

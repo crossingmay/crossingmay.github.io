@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Ex·咖喱棒">
 <meta property="og:description" content="这次开始看NodeJs的又一个核心——Stream的概念。比较冗长，而且概念性的东西很多，这次先看看流基本概念和写入流部分。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-16T18:51:23.000Z">
+<meta property="og:updated_time" content="2017-10-15T02:10:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js从零开始-Stream(上)">
 <meta name="twitter:description" content="这次开始看NodeJs的又一个核心——Stream的概念。比较冗长，而且概念性的东西很多，这次先看看流基本概念和写入流部分。">
@@ -412,7 +412,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2017-09-17 02:51:23" itemprop="dateModified" datetime="2017-09-17T02:51:23+08:00">2017-09-17</time>
+                <time title="Modified: 2017-10-15 10:10:36" itemprop="dateModified" datetime="2017-10-15T10:10:36+08:00">2017-10-15</time>
               
             
           </span>
@@ -490,13 +490,19 @@
 <p>Node.js提供了非常多的流对象，比如说HTTP的服务请求、<code>process.stdout</code>都是实例。</p>
 <p>流是可读写的，所有流都是<code>EventEmitter</code>的实例。</p>
 <p>流模块的访问方式：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> stream = <span class="built_in">require</span>(<span class="string">'stream'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> stream = <span class="built_in">require</span>(<span class="string">'stream'</span>)</span><br></pre></td></tr></table></figure>
 <p>了解流如何工作很重要，但是如果要创建新类型的流实例的话，流模块本身是最有用的，普通开发者一般很少直接使用流模块。</p>
 <p>也就是说在做底层封装的时候会用到，如果是上层业务开发一般是用不到这玩意儿的。当然，我们还是要有梦想的，先从普通的了解开始。</p>
 <h3 id="流的类型"><a href="#流的类型" class="headerlink" title="流的类型"></a>流的类型</h3><blockquote>
 <p>可读：如<code>fs.createReadStream()</code></p>
+</blockquote>
+<blockquote>
 <p>可写：如<code>fs.createWriteStream()</code></p>
+</blockquote>
+<blockquote>
 <p>双工流（Duplex）：如<code>net.Socket</code></p>
+</blockquote>
+<blockquote>
 <p>双工转换流（Transform）：可同时读写，并且可以转换数据类型，如<code>zlib.createDeflate()</code></p>
 </blockquote>
 <h3 id="对象模式"><a href="#对象模式" class="headerlink" title="对象模式"></a>对象模式</h3><p>由Node.js创建的所有流都专用于字符串和<code>Buffer(or Unit8Array)</code>对象。在对象模式下，可以实现其他类型的js值和流一起工作。</p>
@@ -513,7 +519,7 @@
 <p>例如<code>net.Socket</code>实例就是<code>Duplex</code>流，它的可读端允许消耗从<code>socket</code>接收的数据，可写端则允许将数据写入<code>socket</code>。</p>
 <p>因为数据写入到<code>socket</code>可能比接收更快或者更慢，因此<code>write</code>端和<code>read</code>读独立操作是非常重要的。</p>
 <h3 id="流消耗者API"><a href="#流消耗者API" class="headerlink" title="流消耗者API"></a>流消耗者API</h3><p>几乎所有的Node.js应用程序都以某种方式使用流。比如下面的<code>HTTP</code>服务。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</div><div class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">let</span> body = <span class="string">''</span></div><div class="line">  req.setEncoding(<span class="string">'utf8'</span>)</div><div class="line">  req.on(<span class="string">'data'</span>, (chunk) =&gt; &#123;</div><div class="line">    body += chunk</div><div class="line">  &#125;)</div><div class="line">  req.on(<span class="string">'end'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      <span class="keyword">const</span> data = <span class="built_in">JSON</span>.parse(body)</div><div class="line">      res.write(<span class="keyword">typeof</span> data)</div><div class="line">      res.end()</div><div class="line">    &#125; <span class="keyword">catch</span> &#123;</div><div class="line">      res.statusCode = <span class="number">400</span></div><div class="line">      <span class="keyword">return</span> res.end(<span class="string">`error: <span class="subst">$&#123;er.message&#125;</span>`</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;)</div><div class="line">server.listen(<span class="number">1337</span>)</div><div class="line"><span class="comment">// $ curl localhost:1337 -d "&#123;&#125;"</span></div><div class="line"><span class="comment">// object</span></div><div class="line"><span class="comment">// $ curl localhost:1337 -d "\"foo\""</span></div><div class="line"><span class="comment">// string</span></div><div class="line"><span class="comment">// $ curl localhost:1337 -d "not json"</span></div><div class="line"><span class="comment">// error: Unexpected token o in JSON at position 1</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> body = <span class="string">''</span></span><br><span class="line">  req.setEncoding(<span class="string">'utf8'</span>)</span><br><span class="line">  req.on(<span class="string">'data'</span>, (chunk) =&gt; &#123;</span><br><span class="line">    body += chunk</span><br><span class="line">  &#125;)</span><br><span class="line">  req.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> data = <span class="built_in">JSON</span>.parse(body)</span><br><span class="line">      res.write(<span class="keyword">typeof</span> data)</span><br><span class="line">      res.end()</span><br><span class="line">    &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">      res.statusCode = <span class="number">400</span></span><br><span class="line">      <span class="keyword">return</span> res.end(<span class="string">`error: <span class="subst">$&#123;er.message&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">server.listen(<span class="number">1337</span>)</span><br><span class="line"><span class="comment">// $ curl localhost:1337 -d "&#123;&#125;"</span></span><br><span class="line"><span class="comment">// object</span></span><br><span class="line"><span class="comment">// $ curl localhost:1337 -d "\"foo\""</span></span><br><span class="line"><span class="comment">// string</span></span><br><span class="line"><span class="comment">// $ curl localhost:1337 -d "not json"</span></span><br><span class="line"><span class="comment">// error: Unexpected token o in JSON at position 1</span></span><br></pre></td></tr></table></figure>
 <p><code>Writable</code>流，如这个例子里的<code>res</code>，暴露了将数据写入流的方法<code>write()</code>和<code>end()</code>。</p>
 <p><code>Readable</code>流可以使用<code>EventEmitter API</code>来通知应用程序代码，当数据可以从流中读取的时候，可以从流中以多种方式读取可用数据。</p>
 <p><code>Writable</code>和<code>Readable</code>流都以各种方式使用<code>EventEmitter API</code>来交流流的当前状态。</p>
@@ -521,7 +527,7 @@
 <h3 id="Writable流"><a href="#Writable流" class="headerlink" title="Writable流"></a><code>Writable</code>流</h3><p>常见例子<br>    <code>HTTP requests</code>，客户端<br>    <code>HTTP responses</code>， 服务端<br>    <code>fs</code>写入流<br>    <code>zlib</code><br>    <code>crypto</code><br>    <code>TCP sockets</code><br>    <code>child process stdin</code><br>    <code>process.stdout, process.stderr</code></p>
 <p>所有<code>WritAble</code>流通过<code>stream.Writable</code>类实现接口定义</p>
 <p>当<code>WritAble</code>流的特定实例可能以各种方式不同，但所有可写流都遵循相同的基本使用模式，如下例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> myStream = getWritableStreamShomehow()</div><div class="line">myStream.write(<span class="string">'some data'</span>)</div><div class="line">myStream.write(<span class="string">'some more data'</span>)</div><div class="line">mystream.end(<span class="string">'done writing data'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myStream = getWritableStreamShomehow()</span><br><span class="line">myStream.write(<span class="string">'some data'</span>)</span><br><span class="line">myStream.write(<span class="string">'some more data'</span>)</span><br><span class="line">mystream.end(<span class="string">'done writing data'</span>)</span><br></pre></td></tr></table></figure>
 <h4 id="stream-Writable类"><a href="#stream-Writable类" class="headerlink" title="stream.Writable类"></a><code>stream.Writable</code>类</h4><blockquote>
 <p>Event: ‘close’</p>
 </blockquote>
@@ -530,7 +536,7 @@
 <p>Event: ‘drain’</p>
 </blockquote>
 <p>调用<code>stream.write(chunk)</code>返回<code>false</code>时触发。适当的时候将<code>drain</code>事件发送到数据流中。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">writeOneMillionTimes</span>(<span class="params">writer, data, encoding, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> i = <span class="number">1000000</span></div><div class="line">  write()</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">write</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> ok = <span class="literal">true</span></div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">      i--</div><div class="line">      <span class="keyword">if</span> (i === <span class="number">0</span>) &#123;</div><div class="line">        writer.write(data, encoding, callback)</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        ok = writer.write(data, encoding)</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">while</span> (i &gt; <span class="number">0</span> &amp;&amp; ok)</div><div class="line">    <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</div><div class="line">      writer.once(<span class="string">'drain'</span>, write)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">writeOneMillionTimes</span>(<span class="params">writer, data, encoding, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">1000000</span></span><br><span class="line">  write()</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">write</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ok = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">      i--</span><br><span class="line">      <span class="keyword">if</span> (i === <span class="number">0</span>) &#123;</span><br><span class="line">        writer.write(data, encoding, callback)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ok = writer.write(data, encoding)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">while</span> (i &gt; <span class="number">0</span> &amp;&amp; ok)</span><br><span class="line">    <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      writer.once(<span class="string">'drain'</span>, write)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Event: ‘error’</p>
 </blockquote>
@@ -540,17 +546,17 @@
 <p>Event: ‘finish’</p>
 </blockquote>
 <p><code>stream.end()</code>调用后触发。所有数据都会被刷新到底层系统（这句不是很明白）。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> writer = getWritableStreamSomehow()</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">  writer.write(<span class="string">`hello, #<span class="subst">$&#123;i&#125;</span>!\n`</span>)</div><div class="line">&#125;</div><div class="line">writer.end(<span class="string">'This is the end\n'</span>)</div><div class="line">writer.on(<span class="string">'finish'</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.error(<span class="string">'All writes are now complete'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> writer = getWritableStreamSomehow()</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">  writer.write(<span class="string">`hello, #<span class="subst">$&#123;i&#125;</span>!\n`</span>)</span><br><span class="line">&#125;</span><br><span class="line">writer.end(<span class="string">'This is the end\n'</span>)</span><br><span class="line">writer.on(<span class="string">'finish'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">'All writes are now complete'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Event: ‘pipe’</p>
 </blockquote>
 <p>可读流调用<code>stream.pipe()</code>时触发。写入目标集。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> writer = getWritableStreamSomehow()</div><div class="line"><span class="keyword">const</span> reader = getReadableStreamSomehow()</div><div class="line">writer.on(<span class="string">'pipe'</span>, (src) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.error(<span class="string">'something is piping into the writer'</span>)</div><div class="line">  assert.equal(src, reader)</div><div class="line">&#125;)</div><div class="line">reader.pipe(writer)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> writer = getWritableStreamSomehow()</span><br><span class="line"><span class="keyword">const</span> reader = getReadableStreamSomehow()</span><br><span class="line">writer.on(<span class="string">'pipe'</span>, (src) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">'something is piping into the writer'</span>)</span><br><span class="line">  assert.equal(src, reader)</span><br><span class="line">&#125;)</span><br><span class="line">reader.pipe(writer)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Evnet: ‘unpipe’</p>
 </blockquote>
 <p><code>stream.unpipe()</code>调用时触发，从目标集中移除此<code>Writable</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> writer = getWritableStreamSomehow()</div><div class="line"><span class="keyword">const</span> reader = getReadableStreamSomehow()</div><div class="line">writer.on(<span class="string">'unpipe'</span>, (src) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.error(<span class="string">'Something has stopped piping into the writer.'</span>)</div><div class="line">  assert.equal(src, reader)</div><div class="line">&#125;)</div><div class="line">reader.pipe(writer)</div><div class="line">reader.unpipe(writer)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> writer = getWritableStreamSomehow()</span><br><span class="line"><span class="keyword">const</span> reader = getReadableStreamSomehow()</span><br><span class="line">writer.on(<span class="string">'unpipe'</span>, (src) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">'Something has stopped piping into the writer.'</span>)</span><br><span class="line">  assert.equal(src, reader)</span><br><span class="line">&#125;)</span><br><span class="line">reader.pipe(writer)</span><br><span class="line">reader.unpipe(writer)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>writable.cork()</code></p>
 </blockquote>
@@ -560,7 +566,7 @@
 <p><code>writable.end()</code></p>
 </blockquote>
 <p>直接看官方例子，秒懂。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// write 'hello, ' and then end with 'world!'</span></div><div class="line"><span class="keyword">const</span> file = fs.createWriteStream(<span class="string">'example.txt'</span>);</div><div class="line">file.write(<span class="string">'hello, '</span>);</div><div class="line">file.end(<span class="string">'world!'</span>);</div><div class="line"><span class="comment">// writing more now is not allowed!</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// write 'hello, ' and then end with 'world!'</span></span><br><span class="line"><span class="keyword">const</span> file = fs.createWriteStream(<span class="string">'example.txt'</span>);</span><br><span class="line">file.write(<span class="string">'hello, '</span>);</span><br><span class="line">file.end(<span class="string">'world!'</span>);</span><br><span class="line"><span class="comment">// writing more now is not allowed!</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>writable.write(chunk[, encoding][, callback])</code></p>
 </blockquote>
@@ -568,7 +574,7 @@
 <p>如果发生错误，回调可能会被调用，也可能不会以错误为第一个参数来调用。为了可靠地检测写错误，直接添加一个<code>error</code>事件的监听器是更好的做法。</p>
 <p>低于<code>highWaterMark</code>配置时，返回<code>true</code>，否则<code>false</code>时，将进一步尝试写入数据直到触发<code>drain</code>事件。</p>
 <p>这一段官方文档非常啰嗦，但总体意思其实就是围绕着触发<code>drain</code>避免内存问题来描述的。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">write</span> (<span class="params">data, cb</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!stream.write(data)) &#123;</div><div class="line">    stream.once(<span class="string">'drain'</span>, cb)</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    process.nextTick(cb)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">write(<span class="string">'hello'</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'write complated, do more writes now'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">write</span> (<span class="params">data, cb</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!stream.write(data)) &#123;</span><br><span class="line">    stream.once(<span class="string">'drain'</span>, cb)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    process.nextTick(cb)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">write(<span class="string">'hello'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'write complated, do more writes now'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>如果是对象模式的话，将总会忽略<code>encoding</code>这个参数</p>
 <blockquote>
 <p>writable.destroy([error])</p>
@@ -729,7 +735,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -867,7 +873,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">49</span>
+                      
+                    
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -971,7 +979,7 @@
 
 
   <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
-  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共55.1k字</span></div>
+  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共55.5k字</span></div>
 
 
 

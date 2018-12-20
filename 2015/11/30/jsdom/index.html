@@ -490,7 +490,7 @@
 <p>原本都习惯纸和笔，但是久而久之记得东西多了，不方便再次查看，也不方便携带，所以同步到网络上才是最好的。在网络允许的情况下，加上搜索和目录索引基本就足够让我便利的查看和复用啦！做笔记的同时也会让自己的思维慢下来，让自己对知识点有更清晰的认识，也能有更深入的理解。好处多多！</p>
 <p>说了这么多废话就是希望每个新人在学习初期如果有需要，请尽可能的做一些笔记！</p>
 <a id="more"></a>
-<h2 id="编程习惯："><a href="#编程习惯：" class="headerlink" title="编程习惯："></a>编程习惯：</h2><figure class="highlight basic"><table><tr><td class="code"><pre><div class="line"><span class="symbol">1 </span>每条语句末尾加上一个分号——让代码易读，每条语句独占一行能更容易跟踪JS脚本的执行顺序。</div><div class="line"></div><div class="line"><span class="symbol">2 </span>用//来注释单行，/*  */注释多行。</div><div class="line"></div><div class="line"><span class="symbol">3 </span>variable变量，使用var 提前声明变量。</div><div class="line"></div><div class="line"><span class="symbol">4 </span>变量命名规范，区分大小写，不允许包涵空格或标点符号（不包括$），允许包含字母，数字，$和下划线，首字母不能是数字，使用下划线来分隔各个单词。</div><div class="line"></div><div class="line"><span class="symbol">5 </span>一般，驼峰格式是函数名、方法名和对象属性名的首选格式。</div><div class="line"></div><div class="line"><span class="symbol">6 </span>保持风格一致，缩进、引号、空格、括号换行等。</div><div class="line"></div><div class="line"><span class="symbol">7 </span>时刻牢记，从<span class="number">0</span>开始。</div><div class="line"></div><div class="line"><span class="symbol">8 </span>函数先定义再调用。</div></pre></td></tr></table></figure>
+<h2 id="编程习惯："><a href="#编程习惯：" class="headerlink" title="编程习惯："></a>编程习惯：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1 每条语句末尾加上一个分号——让代码易读，每条语句独占一行能更容易跟踪JS脚本的执行顺序。</span><br><span class="line"></span><br><span class="line">2 用//来注释单行，/*  */注释多行。</span><br><span class="line"></span><br><span class="line">3 variable变量，使用var 提前声明变量。</span><br><span class="line"></span><br><span class="line">4 变量命名规范，区分大小写，不允许包涵空格或标点符号（不包括$），允许包含字母，数字，$和下划线，首字母不能是数字，使用下划线来分隔各个单词。</span><br><span class="line"></span><br><span class="line">5 一般，驼峰格式是函数名、方法名和对象属性名的首选格式。</span><br><span class="line"></span><br><span class="line">6 保持风格一致，缩进、引号、空格、括号换行等。</span><br><span class="line"></span><br><span class="line">7 时刻牢记，从0开始。</span><br><span class="line"></span><br><span class="line">8 函数先定义再调用。</span><br></pre></td></tr></table></figure>
 <h2 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h2><h3 id="JavaScript语法"><a href="#JavaScript语法" class="headerlink" title="JavaScript语法"></a>JavaScript语法</h3><ul>
 <li>创建对象、数组的方法。</li>
 <li><p>操作符：</p>
@@ -507,23 +507,23 @@
 <li><p>条件语句：</p>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition) &#123;    </div><div class="line">    statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;    </span><br><span class="line">    statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>循环语句：</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">while</span> (condition) &#123;</div><div class="line">     statements;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">     statements;</div><div class="line">&#125; <span class="keyword">while</span> (condition);</div><div class="line"></div><div class="line"></div><div class="line">initialize;</div><div class="line"><span class="keyword">while</span> (condition) &#123;</div><div class="line">     statements;</div><div class="line">     increment;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">for</span> (initial condition; test condition; alter condition) &#123;</div><div class="line">     statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (condition) &#123;</span><br><span class="line">     statements;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">     statements;</span><br><span class="line">&#125; <span class="keyword">while</span> (condition);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">initialize;</span><br><span class="line"><span class="keyword">while</span> (condition) &#123;</span><br><span class="line">     statements;</span><br><span class="line">     increment;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (initial condition; test condition; alter condition) &#123;</span><br><span class="line">     statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>传递给函数的数据称为参数（argument）。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span> (<span class="params">arguments</span>) </span>&#123;</div><div class="line">     statements;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span> (<span class="params">arguments</span>) </span>&#123;</span><br><span class="line">     statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>函数不仅能够（以参数的形式）接收数据，同时也能返回数据。可以返回一个值、字符串、数组、布尔值等。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">num1,num2</span>) </span>&#123;</div><div class="line">     <span class="keyword">var</span> total = num1*num2;</div><div class="line">     <span class="keyword">return</span> total;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertToCelsius</span>(<span class="params">temp</span>) </span>&#123;</div><div class="line">     <span class="keyword">var</span>  result = temp <span class="number">-32</span>;</div><div class="line">     result = result / <span class="number">1.8</span>;</div><div class="line">     <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">num1,num2</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">var</span> total = num1*num2;</span><br><span class="line">     <span class="keyword">return</span> total;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertToCelsius</span>(<span class="params">temp</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">var</span>  result = temp <span class="number">-32</span>;</span><br><span class="line">     result = result / <span class="number">1.8</span>;</span><br><span class="line">     <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>可以把函数座位一种数据类型使用，即可把一个函数的调用结果赋给一个变量。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> temp_fahrenheit = <span class="number">95</span>;</div><div class="line"><span class="keyword">var</span> temp_celsius = convertToCelsius(temp_fahrenheit);</div><div class="line">alert(temp_celsius);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> temp_fahrenheit = <span class="number">95</span>;</span><br><span class="line"><span class="keyword">var</span> temp_celsius = convertToCelsius(temp_fahrenheit);</span><br><span class="line">alert(temp_celsius);</span><br></pre></td></tr></table></figure>
 <ul>
 <li>如果在某个函数中使用了var，那个变量就将被视为一个局部变量，它只存在于这个函数的上下文中；反之，如果没有使用var，那个变量就将被视为一个全局变量，如果脚本里已经存在了一个同名的全局变量，这个函数就会改变那个全局变量的值。</li>
 <li>在定义一个函数的时，一定要把内部的变量全都明确的声明为局部变量。如果总是在函数里使用var关键字来定义变量，就能避免任何形式的二义性隐患。</li>
@@ -537,7 +537,7 @@
 <li>每一个节点都是一个对象。</li>
 <li>获取和设置属性：getAttribute,setAttribute</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">object.getAttribute(attribute);</div><div class="line"></div><div class="line">object.setAttribute(attribute,value);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">object.getAttribute(attribute);</span><br><span class="line"></span><br><span class="line">object.setAttribute(attribute,value);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -695,7 +695,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -833,7 +833,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">49</span>
+                      
+                    
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -937,7 +939,7 @@
 
 
   <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
-  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共55.1k字</span></div>
+  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共55.5k字</span></div>
 
 
 

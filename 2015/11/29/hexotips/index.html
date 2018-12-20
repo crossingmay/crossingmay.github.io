@@ -505,29 +505,29 @@
 <li><p>新建layout－photo.md</p>
 </li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><div class="line"><span class="attr">title:</span> &#123;&#123; title &#125;&#125;</div><div class="line"><span class="attr">date:</span> &#123;&#123; date &#125;&#125;</div><div class="line"><span class="attr">categories:</span></div><div class="line"><span class="attr">tags:</span></div><div class="line"><span class="attr">description:</span> <span class="comment">#描述 </span></div><div class="line"><span class="attr">photos:</span> </div><div class="line"><span class="bullet">-</span> <span class="comment">#http://xxx.com/xxx.jpg</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">categories:</span><br><span class="line">tags:</span><br><span class="line">description: #描述 </span><br><span class="line">photos: </span><br><span class="line">- #http://xxx.com/xxx.jpg</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 <p>之后我们就可以使用<code>hexo new photo &lt;article name&gt;</code>新建照片文章了</p>
 <ul>
 <li><p>如何设置read more(文章摘要)？</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">以上是文章摘要</div><div class="line"><span class="comment">&lt;!-- more --&gt;</span></div><div class="line">以下是余下全文</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">以上是文章摘要</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">以下是余下全文</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加多个tag:中括号内用逗号分开</p>
-<figure class="highlight subunit"><table><tr><td class="code"><pre><div class="line">title: &#123;&#123; title &#125;&#125;</div><div class="line">date: &#123;&#123; date &#125;&#125;</div><div class="line"><span class="keyword">tags:</span> [tag1,tag2,tag3]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags: [tag1,tag2,tag3]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>删除hexo无用的分类和标签：<code>hexo clean</code>之后重新生成一次</p>
 </li>
 <li><p>删除代码块的行号：_config.yml中的highlight block</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><div class="line"><span class="attr">highlight:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  line_number:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  auto_detect:</span> <span class="literal">false</span></div><div class="line"><span class="attr">  tab_replace:</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br><span class="line">  line_number: false</span><br><span class="line">  auto_detect: false</span><br><span class="line">  tab_replace:</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>首页部署只显示最新一章：在github上有遇到类似情况的同学蛮多的，基本上判定是NexT的bug无误了。<br>这个时候只要我们在<code>hexo clean</code>之后，生成新的一份文档<code>hexo g</code>，再查看<code>hexo s</code>是否正常。多次<code>hexo g</code>之后文档没有再变化了(如下显示)，</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo g</div><div class="line">INFO  Files loaded <span class="keyword">in</span> 1.03 s</div><div class="line">INFO  0 files generated <span class="keyword">in</span> 808 ms</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">INFO  Files loaded <span class="keyword">in</span> 1.03 s</span><br><span class="line">INFO  0 files generated <span class="keyword">in</span> 808 ms</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>index.html的大小也没有再发生变化了，那此时再<code>hexo d</code>就是正常的了。</p>
-<h2 id="Ref-Links"><a href="#Ref-Links" class="headerlink" title="Ref Links"></a>Ref Links</h2><p><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a></p>
-<p><a href="http://blog.sunnyxx.com/2014/03/07/hexo_customize/" target="_blank" rel="external">hexo的私人订制</a></p>
-<p><a href="https://hexo.io/docs/" target="_blank" rel="external">Hexo官方文档</a></p>
-<p><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT使用文档</a></p>
+<h2 id="Ref-Links"><a href="#Ref-Links" class="headerlink" title="Ref Links"></a>Ref Links</h2><p><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="noopener">hexo你的博客</a></p>
+<p><a href="http://blog.sunnyxx.com/2014/03/07/hexo_customize/" target="_blank" rel="noopener">hexo的私人订制</a></p>
+<p><a href="https://hexo.io/docs/" target="_blank" rel="noopener">Hexo官方文档</a></p>
+<p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT使用文档</a></p>
 <h2 id="About-More-and-More"><a href="#About-More-and-More" class="headerlink" title="About More and More"></a>About More and More</h2><p>因为还处于学习中，所以会不断往文章里添加新东西的哟。毕竟学习中也会遇到各种各样的问题。</p>
 <p>我使用的是Next.mist的主题。个人感觉还是相当清爽不错的，很有KISS风范。</p>
 <p>图床用的七牛，数据分析用的Google Analytics。评论直接用的disqus，试用了一下多说，不太喜欢，我比较喜欢disqus的风格。没有添加分享，感觉有点突兀不自然。</p>
@@ -687,7 +687,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -825,7 +825,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">49</span>
+                      
+                    
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -929,7 +931,7 @@
 
 
   <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
-  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共55.1k字</span></div>
+  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共55.5k字</span></div>
 
 
 

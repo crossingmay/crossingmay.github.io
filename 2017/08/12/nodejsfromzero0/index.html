@@ -481,44 +481,58 @@
 <p>所以REPL是第一步。</p>
 <h2 id="REPL"><a href="#REPL" class="headerlink" title="REPL"></a>REPL</h2><p>意即Read-Eval-Print Loop</p>
 <p>Demo 0:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ node</div><div class="line">&gt; .editor</div><div class="line"><span class="keyword">function</span> welcome(name) &#123;</div><div class="line">    <span class="built_in">return</span> `Hello <span class="variable">$&#123;name&#125;</span>`</div><div class="line">&#125;</div><div class="line">welcome(<span class="string">'Mainto'</span>)</div><div class="line"><span class="comment"># ⌃D</span></div><div class="line"><span class="string">'Hello Mainto'</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ node</span><br><span class="line">&gt; .editor</span><br><span class="line"><span class="keyword">function</span> welcome(name) &#123;</span><br><span class="line">    <span class="built_in">return</span> `Hello <span class="variable">$&#123;name&#125;</span>`</span><br><span class="line">&#125;</span><br><span class="line">welcome(<span class="string">'Mainto'</span>)</span><br><span class="line"><span class="comment"># ⌃D</span></span><br><span class="line"><span class="string">'Hello Mainto'</span></span><br></pre></td></tr></table></figure>
 <h3 id="Special-keys"><a href="#Special-keys" class="headerlink" title="Special keys"></a>Special keys</h3><p>⌃D to finish</p>
 <p>⌃C to cancel</p>
 <h3 id="Commonds"><a href="#Commonds" class="headerlink" title="Commonds"></a>Commonds</h3><blockquote>
 <p><code>.exit</code> exit REPL</p>
+</blockquote>
+<blockquote>
 <p><code>.editor</code> editor mdoe</p>
+</blockquote>
+<blockquote>
 <p><code>.clear</code> reset REPL context, will emit ‘reset’ event</p>
+</blockquote>
+<blockquote>
 <p><code>.help</code> show the commonds list</p>
+</blockquote>
+<blockquote>
 <p><code>.save</code> save the current REPL session to a file: &gt; .save ./file/to/save.js</p>
+</blockquote>
+<blockquote>
 <p><code>.load</code> load a file into the current REPL session: &gt; .load ./file/to/load.js</p>
 </blockquote>
 <h2 id="Default-Evaluation"><a href="#Default-Evaluation" class="headerlink" title="Default Evaluation"></a>Default Evaluation</h2><blockquote>
 <p>支持js表达式输入<br>global scope &amp; local scope // 这里要有一个context的概念，通常译为执行上下文</p>
 </blockquote>
 <p>创建一个repl_test.js的文件，写入下面的内容</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> repl = <span class="built_in">require</span>(<span class="string">'repl'</span>)</div><div class="line"><span class="keyword">const</span> msg = <span class="string">'hello world'</span></div><div class="line">repl.start(<span class="string">'&gt; '</span>).context.m = msg</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> repl = <span class="built_in">require</span>(<span class="string">'repl'</span>)</span><br><span class="line"><span class="keyword">const</span> msg = <span class="string">'hello world'</span></span><br><span class="line">repl.start(<span class="string">'&gt; '</span>).context.m = msg</span><br></pre></td></tr></table></figure>
 <p>然后在终端里运行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ node repl_test.js</div><div class="line">&gt; m</div><div class="line"><span class="string">'hello world'</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ node repl_test.js</span><br><span class="line">&gt; m</span><br><span class="line"><span class="string">'hello world'</span></span><br></pre></td></tr></table></figure>
 <p>成功在当前的REPL中获取到了变量m</p>
 <p>通过这个demo，我们可以得知context的属性默认是可读写。可以通过<code>Object.defineProperty()</code>来限制只读。</p>
 <blockquote>
 <p>访问Node.js核心模块, 例如fs<br>指定变量<code>_</code>, 这个<code>_</code>默认把最近一次的输入值赋给<code>_</code>，除非明确设置了<code>_</code></p>
+</blockquote>
+<blockquote>
 <p>Custom Evaluation Functions 自定义配置<br>prompt，translator配置<br>Recoverable Errors这点主要是为了支持多行输入。(略过)<br>在repl中回车的时候都是默认输入当前行的内容到<code>eval</code>函数，为了支持多行输入，返回的<code>repl.Recoverable</code>实例会提供回调</p>
+</blockquote>
+<blockquote>
 <p>Customizing REPL Output 自定义输出(略过)</p>
 </blockquote>
 <h2 id="Class-REPLServer"><a href="#Class-REPLServer" class="headerlink" title="Class:REPLServer"></a>Class:REPLServer</h2><blockquote>
 <p>repl类的服务有<code>exit</code>, <code>reset</code>两种事件。<br>都可以监听，并且在里面搞点事情。下面的例子是在<code>.exit</code>和<code>.clear</code>时触发</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// demo3</span></div><div class="line"><span class="keyword">const</span> repl = <span class="built_in">require</span>(<span class="string">'repl'</span>);</div><div class="line"><span class="keyword">const</span> r = repl.start(&#123; <span class="attr">prompt</span>: <span class="string">'(●′ω`●) '</span>, <span class="attr">eval</span>: myEval &#125;)</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myEval</span>(<span class="params">cmd, context, filename, callback</span>) </span>&#123;</div><div class="line">  callback(<span class="literal">null</span>, cmd);</div><div class="line">&#125;</div><div class="line">r.on(<span class="string">'exit'</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'bye bye'</span>)</div><div class="line">&#125;)</div><div class="line">r.on(<span class="string">'reset'</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'welcome'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demo3</span></span><br><span class="line"><span class="keyword">const</span> repl = <span class="built_in">require</span>(<span class="string">'repl'</span>);</span><br><span class="line"><span class="keyword">const</span> r = repl.start(&#123; <span class="attr">prompt</span>: <span class="string">'(●′ω`●) '</span>, <span class="attr">eval</span>: myEval &#125;)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myEval</span>(<span class="params">cmd, context, filename, callback</span>) </span>&#123;</span><br><span class="line">  callback(<span class="literal">null</span>, cmd);</span><br><span class="line">&#125;</span><br><span class="line">r.on(<span class="string">'exit'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'bye bye'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">r.on(<span class="string">'reset'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'welcome'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>replServer.defineCommand(keyword, cmd) 自定义命令。</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// demo4</span></div><div class="line"><span class="keyword">const</span> repl = <span class="built_in">require</span>(<span class="string">'repl'</span>)</div><div class="line"><span class="keyword">const</span> r = repl.start()</div><div class="line">replServer.defineCommand(<span class="string">'sayhello'</span>, &#123;</div><div class="line">  <span class="attr">help</span>: <span class="string">'Say hello'</span>,</div><div class="line">  action(name) &#123;</div><div class="line">    <span class="keyword">this</span>.bufferedCommand = <span class="string">''</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>!`</span>)</div><div class="line">    <span class="keyword">this</span>.displayPrompt()</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">replServer.defineCommand(<span class="string">'saybye'</span>, <span class="function"><span class="keyword">function</span> <span class="title">saybye</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Goodbye!'</span>)</div><div class="line">  <span class="keyword">this</span>.close()</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// demo4</span></span><br><span class="line"><span class="keyword">const</span> repl = <span class="built_in">require</span>(<span class="string">'repl'</span>)</span><br><span class="line"><span class="keyword">const</span> r = repl.start()</span><br><span class="line">replServer.defineCommand(<span class="string">'sayhello'</span>, &#123;</span><br><span class="line">  help: <span class="string">'Say hello'</span>,</span><br><span class="line">  action(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.bufferedCommand = <span class="string">''</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>!`</span>)</span><br><span class="line">    <span class="keyword">this</span>.displayPrompt()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">replServer.defineCommand(<span class="string">'saybye'</span>, <span class="function"><span class="keyword">function</span> <span class="title">saybye</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Goodbye!'</span>)</span><br><span class="line">  <span class="keyword">this</span>.close()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>通过<code>.sayhello maintobest</code>, <code>.saybye</code>可执行</p>
 <blockquote>
 <p>replServer.displayPrompt([preserveCursor]) 主要用于自定义命令中，效果是打印出ouput里的内容，恢复input</p>
 </blockquote>
-<h2 id="REF"><a href="#REF" class="headerlink" title="REF"></a>REF</h2><p><a href="https://nodejs.org/api/repl.html" target="_blank" rel="external">官方文档REPL</a></p>
+<h2 id="REF"><a href="#REF" class="headerlink" title="REF"></a>REF</h2><p><a href="https://nodejs.org/api/repl.html" target="_blank" rel="noopener">官方文档REPL</a></p>
 
       
     </div>
@@ -672,7 +686,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -810,7 +824,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">49</span>
+                      
+                    
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -914,7 +930,7 @@
 
 
   <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
-  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共55.1k字</span></div>
+  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共55.5k字</span></div>
 
 
 
