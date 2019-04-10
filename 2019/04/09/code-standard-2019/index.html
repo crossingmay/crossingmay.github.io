@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '8XOS9FBECN',
+      apiKey: 'dc88abe91b31bead2842a14be1fbd88d',
+      indexName: 'search',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。">
+<meta name="keywords" content="前端编码规范,团队建设">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端编码规范(web和小程序)-2019">
+<meta property="og:url" content="http://crossingmay.github.io/2019/04/09/code-standard-2019/index.html">
+<meta property="og:site_name" content="Ex·咖喱棒">
+<meta property="og:description" content="不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T07:31:52.508Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端编码规范(web和小程序)-2019">
+<meta name="twitter:description" content="不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://crossingmay.github.io/2019/04/09/code-standard-2019/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>前端编码规范(web和小程序)-2019 | Ex·咖喱棒</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70792175-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-70792175-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ex·咖喱棒</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">断剑重铸之日，骑士归来之时</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://crossingmay.github.io/2019/04/09/code-standard-2019/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Crossing May">
+      <meta itemprop="description" content="手艺人，勤能补拙，打磨匠心。">
+      <meta itemprop="image" content="http://static.lokiimay.com/x-head1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ex·咖喱棒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端编码规范(web和小程序)-2019
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-09 16:19:56" itemprop="dateCreated datePublished" datetime="2019-04-09T16:19:56+08:00">2019-04-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-10 15:31:52" itemprop="dateModified" datetime="2019-04-10T15:31:52+08:00">2019-04-10</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/09/code-standard-2019/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/09/code-standard-2019/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/09/code-standard-2019/" class="leancloud_visitors" data-flag-title="前端编码规范(web和小程序)-2019">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Views: </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>不管有多少人共同参与同一项目，一定要确保每一行代码都像是同一个人编写的。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="通用规范"><a href="#通用规范" class="headerlink" title="通用规范"></a>通用规范</h2><h3 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h3><h4 id="常见命名格式"><a href="#常见命名格式" class="headerlink" title="常见命名格式:"></a>常见命名格式:</h4><ul>
+<li>camelCase(驼峰命名、小驼峰)</li>
+<li>PascalCase(帕斯卡命名、大驼峰)</li>
+<li>snake_case(蛇形命名、下划线命名)</li>
+<li>kebab-case(脊柱命名、中划线命名)</li>
+<li>StUdLyCaPs(匈牙利命名)</li>
+<li>lowercase(纯小写命名)</li>
+<li>UPPERCASE(纯大写命名)</li>
+</ul>
+<h4 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h4><ol start="0">
+<li>文件夹的命名: 纯小写(如果不能, 就采用小驼峰)</li>
+<li>普通文件: 小驼峰</li>
+<li>组件名、组件文件名: 大驼峰</li>
+<li>javascript里变量、方法名和view/page文件名: 小驼峰</li>
+<li>javascript里类、构造函数: 大驼峰</li>
+<li>javascript里的全局常量: 纯大写</li>
+<li>css中的class、id: 中划线命名</li>
+<li>图片资源: 下划线命名(强制), 同时尽量带上倍数(非强制), (例如: <a href="mailto:pop_icon_show@2x.png" target="_blank" rel="noopener">pop_icon_show@2x.png</a>)</li>
+<li>其它多媒体资源(音视频资源或其他资源): 下划线命名</li>
+</ol>
+<h3 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h3><p>所有类型文件统一采用2个space作为缩进</p>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h3 id="标签使用必须符合标签嵌套规则"><a href="#标签使用必须符合标签嵌套规则" class="headerlink" title="标签使用必须符合标签嵌套规则"></a>标签使用必须符合标签嵌套规则</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- good --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>hello wrold<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- avoid --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>hello wrold<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- avoid --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello wrold<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span>&gt;</span>hello wrold<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>hello wrold<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h4</span>&gt;</span>hello wrold<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="元素属性使用双引号语法"><a href="#元素属性使用双引号语法" class="headerlink" title="元素属性使用双引号语法"></a>元素属性使用双引号语法</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- good --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"label-name"</span>&gt;</span>hello wrold<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- avoid --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">'label-name'</span>&gt;</span>hello wrold<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="注释写法"><a href="#注释写法" class="headerlink" title="注释写法"></a>注释写法</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 代码注释 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello wrold<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="类型属性"><a href="#类型属性" class="headerlink" title="类型属性"></a>类型属性</h3><p>不需要为 CSS、JS 指定类型属性，HTML5 中默认已包含<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- good --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">""</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">""</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- avoid --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">""</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">""</span> &gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="JAVASCRIPT"><a href="#JAVASCRIPT" class="headerlink" title="JAVASCRIPT"></a>JAVASCRIPT</h2><h3 id="语言规范"><a href="#语言规范" class="headerlink" title="语言规范"></a>语言规范</h3><ul>
+<li>不可变动的引用采用 <code>const</code>, 否则使用 <code>let</code></li>
+<li>对象和数组, 使用字面量方式来创建</li>
+<li><p>使用对象方法的简写方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> item = &#123;</span><br><span class="line">  value: <span class="number">1</span>,</span><br><span class="line"></span><br><span class="line">  addValue (val) &#123;</span><br><span class="line">    <span class="keyword">return</span> item.value + val</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// avoid</span></span><br><span class="line"><span class="keyword">const</span> item = &#123;</span><br><span class="line">  value: <span class="number">1</span>,</span><br><span class="line"></span><br><span class="line">  addValue: <span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> item.value + val</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用对象属性值的简写方式</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> job = <span class="string">'FrontEnd'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> item = &#123;</span><br><span class="line">  job: job</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> item = &#123;</span><br><span class="line">  job</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对象属性值的简写方式要和声明式的方式分组</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> job = <span class="string">'FrontEnd'</span></span><br><span class="line"><span class="keyword">const</span> department = <span class="string">'JDC'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> item = &#123;</span><br><span class="line">  job,</span><br><span class="line">  department,</span><br><span class="line">  sex: <span class="string">'male'</span>,</span><br><span class="line">  age: <span class="number">25</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> item = &#123;</span><br><span class="line">  sex: <span class="string">'male'</span>,</span><br><span class="line">  job,</span><br><span class="line">  age: <span class="number">25</span>,</span><br><span class="line">  department</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用拓展运算符 <code>...</code> 复制数组</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">itemsCopy = [...items]</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> items = []</span><br><span class="line"><span class="keyword">const</span> itemsCopy = []</span><br><span class="line"><span class="keyword">const</span> len = items.length</span><br><span class="line"><span class="keyword">let</span> i</span><br><span class="line"></span><br><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">  itemsCopy[i] = items[i]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>解构赋值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">user</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; firstName, lastName &#125; = user</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;firstName&#125;</span> <span class="subst">$&#123;lastName&#125;</span>`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// avoid</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">user</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> firstName = user.firstName</span><br><span class="line">  <span class="keyword">const</span> lastName = user.lastName</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;firstName&#125;</span> <span class="subst">$&#123;lastName&#125;</span>`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>请使用函数声明，而不是函数表达式</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// avoid</span></span><br><span class="line"><span class="keyword">const</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>不要使用 <code>arguments</code> ，可以选择使用 <code>...</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> args.join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// avoid</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)</span><br><span class="line">  <span class="keyword">return</span> args.join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>禁止使用 <code>eval()</code>, <code>with()</code></li>
+</ul>
+<h3 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h3><p>基本遵循 <a href="https://standardjs.com/readme-zhcn.html" target="_blank" rel="noopener">StandardJS</a> 的规范<br>详情请参考 <a href="https://standardjs.com/rules-zhcn.html#javascript-standard-style" target="_blank" rel="noopener">StandardJS 细则</a><br>以下仅罗列最常见最重要的规范</p>
+<ul>
+<li>两个空格缩进</li>
+<li>无分号风格</li>
+<li>单引号</li>
+<li>使用严格等于 <code>===</code> <code>!==</code></li>
+<li>多行注释参考 <code>jsdoc</code>, 单行注释 <code>//</code></li>
+<li>逗号后面空格, 前面无空格; 逗号放置在当前行的末尾</li>
+<li>不要省去小数点前面的 <code>0</code></li>
+<li>检查 NaN 的正确姿势是使用 <code>isNaN()</code></li>
+<li>嵌套的代码块中禁止再定义函数</li>
+<li><p>避免在 <code>return</code> 语句中出现赋值语句</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// avoid</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> result = a + b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于三元运算符 ? 和 : 与他们所负责的代码处于同一行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> location = env.development ? <span class="string">'localhost'</span> : <span class="string">'www.api.com'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> location = env.development</span><br><span class="line">  ? <span class="string">'localhost'</span></span><br><span class="line">  : <span class="string">'www.api.com'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// avoid</span></span><br><span class="line"><span class="keyword">const</span> location = env.development ?</span><br><span class="line">  <span class="string">'localhost'</span> :</span><br><span class="line">  <span class="string">'www.api.com'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果有更好的实现，尽量不要使用三元表达式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">let</span> score = val || <span class="number">0</span></span><br><span class="line"><span class="comment">// avoid</span></span><br><span class="line"><span class="keyword">let</span> score = val ? val : <span class="number">0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>finally</code> 代码块中不要再改变程序执行流程</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// aovid</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">42</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数调用时, 禁止使用空格</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">fn()</span><br><span class="line"><span class="comment">// avoid</span></span><br><span class="line">fn ()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>禁止使用链式赋值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> c = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// avoid</span></span><br><span class="line"><span class="keyword">var</span> a = b = c = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一个声明只能有一个变量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">var</span> a</span><br><span class="line"><span class="keyword">var</span> b</span><br><span class="line"><span class="keyword">var</span> c</span><br><span class="line"></span><br><span class="line"><span class="comment">// avoid</span></span><br><span class="line"><span class="keyword">var</span> a, b, c</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要加空格的几种情况</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 代码块前要添加空格</span></span><br><span class="line"><span class="keyword">if</span> (a) &#123;</span><br><span class="line">  b()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数声明括号前要加空格</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 操作符前后都需要添加空格</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="number">1</span> + <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 关键字后面加空格</span></span><br><span class="line"><span class="keyword">if</span> (condition) &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h3 id="统一采用expand展开模式"><a href="#统一采用expand展开模式" class="headerlink" title="统一采用expand展开模式"></a>统一采用<code>expand</code>展开模式</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* good */</span></span><br><span class="line"><span class="selector-class">.dialog-wrap</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* avoid */</span></span><br><span class="line"><span class="selector-class">.dialog-wrap</span> &#123; <span class="attribute">display</span>: block; &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><ul>
+<li>不使用 ID 选择器</li>
+<li>控制选择器层级数, 选择器要尽可能短, 并且尽量限制组成选择器的元素个数, 建议不要超过 3</li>
+</ul>
+<h3 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h3><ul>
+<li>以组件为单位组织代码段</li>
+<li>每个属性声明末尾都要加分号;</li>
+<li><p>左括号与类名之间一个空格，冒号与属性值之间一个空格</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* good */</span></span><br><span class="line"><span class="selector-class">.dialog-wrap</span> &#123; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* avoid */</span></span><br><span class="line"><span class="selector-class">.dialog-wrap</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>逗号分隔的取值，逗号之后一个空格</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* good */</span></span><br><span class="line"><span class="selector-class">.dialog-wrap</span> &#123; </span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">1px</span> <span class="number">1px</span> <span class="number">1px</span> <span class="number">#333</span>, <span class="number">2px</span> <span class="number">2px</span> <span class="number">2px</span> <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* avoid */</span></span><br><span class="line"><span class="selector-class">.dialog-wrap</span>&#123;</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">1px</span> <span class="number">1px</span> <span class="number">1px</span> <span class="number">#333</span>,<span class="number">2px</span> <span class="number">2px</span> <span class="number">2px</span> <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为单个css选择器或新申明开启新行</p>
+</li>
+<li><p>属性值十六进制数值能用简写的尽量用简写</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* good */</span></span><br><span class="line"><span class="selector-class">.dialog-header</span>,</span><br><span class="line"><span class="selector-class">.dialog-body</span>,</span><br><span class="line"><span class="selector-class">.dialog-bottom</span> &#123; </span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* avoid */</span></span><br><span class="line"><span class="selector-class">.dialog-header</span>, <span class="selector-class">.dialog-body</span>, <span class="selector-class">.dialog-bottom</span> &#123; </span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#ffffff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不要为 <code>0</code> 指明单位</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* good */</span></span><br><span class="line"><span class="selector-class">.dialog-body</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* avoid */</span></span><br><span class="line"><span class="selector-class">.dialog-body</span> &#123;</span><br><span class="line">  margin 0px 20px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性值引号: css属性值需要用到引号时，统一使用单引号</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* good */</span></span><br><span class="line"><span class="selector-class">.dialog-body</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">'Hiragino Sans GB'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* avoid */</span></span><br><span class="line"><span class="selector-class">.dialog-body</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"Hiragino Sans GB"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="推荐属性书写顺序"><a href="#推荐属性书写顺序" class="headerlink" title="推荐属性书写顺序"></a>推荐属性书写顺序</h3><ol>
+<li>布局定位属性：display / position / float / clear / visibility / overflow</li>
+<li>自身属性：width / height / margin / padding / border / background</li>
+<li>文本属性：color / font / text-decoration / text-align / vertical-align / white- space / break-word</li>
+<li>其他属性（CSS3）：content / cursor / border-radius / box-shadow / text-shadow / background:linear-gradient …</li>
+</ol>
+<h3 id="CSS3浏览器私有前缀写法"><a href="#CSS3浏览器私有前缀写法" class="headerlink" title="CSS3浏览器私有前缀写法"></a>CSS3浏览器私有前缀写法</h3><p>浏览器私有前缀在前，标准前缀在后</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.dialog-wrap</span> &#123;</span><br><span class="line">  <span class="attribute">-webkit-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">-moz-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">-o-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">-ms-border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注释规范"><a href="#注释规范" class="headerlink" title="注释规范"></a>注释规范</h3><ul>
+<li>注释以字符 <code>/*</code> 开始，以字符 <code>*/</code> 结束</li>
+<li>注释内容第一个字符和最后一个字符都是一个空格字符，单独占一行，行与行之间相隔一行</li>
+</ul>
+<h3 id="SASS-amp-LESS"><a href="#SASS-amp-LESS" class="headerlink" title="SASS &amp; LESS"></a>SASS &amp; LESS</h3><p>遵循css的基础上,此外还有如下规范</p>
+<ul>
+<li><p>选择器嵌套避免层级过深、过于复杂, 从html的结构上开始精简, 合理规划html结构</p>
+</li>
+<li><p>变量 - 可复用属性尽量抽离为页面变量，易于统一维护</p>
+</li>
+</ul>
+<h2 id="小程序Taro-最佳实践"><a href="#小程序Taro-最佳实践" class="headerlink" title="小程序Taro-最佳实践"></a>小程序Taro-最佳实践</h2><p><a href="https://nervjs.github.io/taro/docs/spec-for-taro.html" target="_blank" rel="noopener">Taro 规范</a></p>
+<p><a href="https://nervjs.github.io/taro/docs/best-practice.html" target="_blank" rel="noopener">最佳实践</a></p>
+<p><a href="https://nervjs.github.io/taro/docs/optimized-practice.html" target="_blank" rel="noopener">性能优化实践</a></p>
+<ul>
+<li>遵循上述js规范</li>
+<li>JSX中采用单引号包裹属性, 如果出现双引号, 可能会导致编译错误</li>
+<li>组件传递函数属性名以 <code>on</code> 开头</li>
+<li>组件中不要在 <code>state</code> 与 <code>props</code> 上用同名的字段</li>
+<li><p>子类的构造器中一定要调用 super</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Mammal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> () &#123;</span><br><span class="line">    <span class="keyword">super</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// avoid</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> () &#123;</span><br><span class="line">    <span class="keyword">super</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 this 前请确保 super() 已调用</p>
+</li>
+<li><p>对齐方式-多个属性，多行书写，每个属性占用一行，标签结束另起一行</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">&lt;Foo</span><br><span class="line">  superLongParam=<span class="string">'bar'</span></span><br><span class="line">  anotherSuperLongParam=<span class="string">'baz'</span></span><br><span class="line">/&gt;</span><br><span class="line"><span class="comment">// avoid</span></span><br><span class="line">&lt;Foo superLongParam=<span class="string">'bar'</span></span><br><span class="line">     anotherSuperLongParam=<span class="string">'baz'</span> /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果组件的属性可以放在一行就保持在当前一行中</span></span><br><span class="line">&lt;Foo bar=<span class="string">'bar'</span> /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多行属性采用缩进</span></span><br><span class="line">&lt;Foo</span><br><span class="line">  superLongParam=<span class="string">'bar'</span></span><br><span class="line">  anotherSuperLongParam=<span class="string">'baz'</span></span><br><span class="line">&gt;</span><br><span class="line">  &lt;Quux /&gt;</span><br><span class="line">&lt;<span class="regexp">/Foo&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当标签没有子元素时，始终使用自闭合标签</p>
+</li>
+<li><p>终始在自闭合标签前面添加一个空格</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// good</span></span><br><span class="line">&lt;Foo className=<span class="string">'stuff'</span> /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// avoid</span></span><br><span class="line">&lt;Foo className=<span class="string">'stuff'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Foo</span>&gt;</span></span></span><br><span class="line">&lt;Foo className=<span class="string">'stuff'</span>/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性名称始终使用小驼峰</p>
+</li>
+<li>用括号包裹多行 <code>JSX</code> 标签</li>
+<li><code>map</code> 循环时请给元素加上 <code>key</code> 属性, 避免使用 <code>index</code>, 如果只有 <code>index</code> 可以这么使用 <code>String(index)</code></li>
+<li>避免在 <code>componentDidMount</code> 中调用 <code>this.setState</code>, 因为在 <code>componentDidMount</code> 中调用 <code>this.setState</code> 会导致触发更新</li>
+<li>不要在 <code>componentWillUpdate/componentDidUpdate/render</code> 中调用 <code>this.setState</code></li>
+<li><code>this.setState</code>能一次调用的, 就不要多次调用, 除非逻辑控制需要</li>
+<li>不要定义没有用到的 <code>state</code></li>
+<li><code>ScrollView</code> 里避免包裹 <code>Video/Canvas/Textarea/Map</code>, 涉及到层级问题</li>
+<li>书写顺序<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">在 Taro 组件中会包含类静态属性、类属性、生命周期等的类成员，其书写顺序最好遵循以下约定（顺序从上至下）</span><br><span class="line"></span><br><span class="line">1 static 静态方法</span><br><span class="line">2 constructor</span><br><span class="line">3 componentWillMount</span><br><span class="line">4 componentDidMount</span><br><span class="line">5 componentWillReceiveProps</span><br><span class="line">6 shouldComponentUpdate</span><br><span class="line">7 componentWillUpdate</span><br><span class="line">8 componentDidUpdate</span><br><span class="line">9 componentWillUnmount</span><br><span class="line">10 点击回调或者事件回调 比如 onClickSubmit() 或者 onChangeDescription()</span><br><span class="line">11 render</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><h3 id="格式选择"><a href="#格式选择" class="headerlink" title="格式选择"></a>格式选择</h3><ul>
+<li>GIF: 动图</li>
+<li>PNG8、PNG24: 带透明通道, 纯色块线条图标，优先考虑使用 PNG8 格式, 图像颜色丰富而且图片文件不太大的（40KB 以下）或有半透明效果的优先考虑 PNG24 格式</li>
+<li>JPEG: 大图, 用于展示内容的图, 图像颜色丰富而且文件比较大的（40KB - 200KB）优先考虑 JPEG 格式</li>
+<li>WEBP: 兼容性差, 仅条件允许时使用, 可带透明通道</li>
+</ul>
+<h3 id="大小限制"><a href="#大小限制" class="headerlink" title="大小限制"></a>大小限制</h3><ul>
+<li><p>PC平台单张的图片的大小不应大于 200KB。</p>
+</li>
+<li><p>移动平台单张的图片的大小不应大于 100KB。</p>
+</li>
+</ul>
+<h3 id="图片质量"><a href="#图片质量" class="headerlink" title="图片质量"></a>图片质量</h3><p>控制在60-80.</p>
+<h2 id="CODE-REVIEW"><a href="#CODE-REVIEW" class="headerlink" title="CODE REVIEW"></a>CODE REVIEW</h2><ul>
+<li>规则: 所有影响到以往流程的功能需求更改发版前都需要 code review</li>
+<li>执行者: 初级程序员可由中级程序员的执行 code review , 中级程序员可由高级程序员执行 code review, 以此类推</li>
+<li>反馈: 每次code review都需要有反馈，要对本次code review负责, 反馈内容基本如下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">功能：本次主要是修改了什么功能或者bug</span><br><span class="line">模块：本次发版影响的模块</span><br><span class="line">代码问题：code review 过程中发现的代码问题，比如代码性能，写法，代码风格等等</span><br><span class="line">业务问题：比如发现了某某影响到其他模块的逻辑问题，如果没有发现就写。无</span><br></pre></td></tr></table></figure>
+<h2 id="版本管理"><a href="#版本管理" class="headerlink" title="版本管理"></a>版本管理</h2><p><a href="https://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="noopener">git-flow 备忘清单</a><br>采用 <code>git-flow</code> 方式进行代码的版本管理<br><code>master</code>: 主分支, 线上生产环境跑的分支<br><code>develop</code>: 开发分支, 功能开发完毕后集成到此分支<br><code>feature</code>: 功能分支, 每个小功能单独开一个功能分支, 尽可能避免无依赖关系的功能在同一个分支上<br><code>release</code>: 发布分支, 功能开发完毕集成到develop分支之后, 从develop拉取的预发布分支, 在发布分支上进行测试, finish之后会同时合并到master分支和develop分支<br><code>hotfix</code>: 修复分支, 线上出现bug之后,拉取的修复分支,finish之后和release一样会同时合并到master分支和develop分支</p>
+<h2 id="REF-LINK"><a href="#REF-LINK" class="headerlink" title="REF LINK"></a>REF LINK</h2><p><a href="https://codeguide.bootcss.com/" target="_blank" rel="noopener">编码规范</a><br><a href="https://guide.aotu.io/docs/index.html" target="_blank" rel="noopener">凹凸实验室-前端代码规范</a><br><a href="https://juejin.im/post/5bac8a6a5188255c2f422440" target="_blank" rel="noopener">前端小团队建设（实用前端开发规范，推荐收藏）</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://static.lokiimay.com/prize.JPG" alt="Crossing May WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端编码规范/" rel="tag"># 前端编码规范</a>
+          
+            <a href="/tags/团队建设/" rel="tag"># 团队建设</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/31/summary-2018/" rel="next" title="复盘2018">
+                <i class="fa fa-chevron-left"></i> 复盘2018
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://static.lokiimay.com/x-head1.jpg" alt="Crossing May">
+            
+              <p class="site-author-name" itemprop="name">Crossing May</p>
+              <p class="site-description motion-element" itemprop="description">手艺人，勤能补拙，打磨匠心。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/crossingmay" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/crossingmay" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://zhihu.com/crossingmay" target="_blank" title="Zhihu"><i class="fa fa-fw iconfont icon-zhihu"></i>Zhihu</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#通用规范"><span class="nav-number">1.</span> <span class="nav-text">通用规范</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命名"><span class="nav-number">1.1.</span> <span class="nav-text">命名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见命名格式"><span class="nav-number">1.1.1.</span> <span class="nav-text">常见命名格式:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命名规范"><span class="nav-number">1.1.2.</span> <span class="nav-text">命名规范</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩进"><span class="nav-number">1.2.</span> <span class="nav-text">缩进</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML"><span class="nav-number">2.</span> <span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标签使用必须符合标签嵌套规则"><span class="nav-number">2.1.</span> <span class="nav-text">标签使用必须符合标签嵌套规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元素属性使用双引号语法"><span class="nav-number">2.2.</span> <span class="nav-text">元素属性使用双引号语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释写法"><span class="nav-number">2.3.</span> <span class="nav-text">注释写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型属性"><span class="nav-number">2.4.</span> <span class="nav-text">类型属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JAVASCRIPT"><span class="nav-number">3.</span> <span class="nav-text">JAVASCRIPT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语言规范"><span class="nav-number">3.1.</span> <span class="nav-text">语言规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码规范"><span class="nav-number">3.2.</span> <span class="nav-text">代码规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS"><span class="nav-number">4.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#统一采用expand展开模式"><span class="nav-number">4.1.</span> <span class="nav-text">统一采用expand展开模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择器"><span class="nav-number">4.2.</span> <span class="nav-text">选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码风格"><span class="nav-number">4.3.</span> <span class="nav-text">代码风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐属性书写顺序"><span class="nav-number">4.4.</span> <span class="nav-text">推荐属性书写顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3浏览器私有前缀写法"><span class="nav-number">4.5.</span> <span class="nav-text">CSS3浏览器私有前缀写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释规范"><span class="nav-number">4.6.</span> <span class="nav-text">注释规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SASS-amp-LESS"><span class="nav-number">4.7.</span> <span class="nav-text">SASS &amp; LESS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小程序Taro-最佳实践"><span class="nav-number">5.</span> <span class="nav-text">小程序Taro-最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片"><span class="nav-number">6.</span> <span class="nav-text">图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#格式选择"><span class="nav-number">6.1.</span> <span class="nav-text">格式选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大小限制"><span class="nav-number">6.2.</span> <span class="nav-text">大小限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片质量"><span class="nav-number">6.3.</span> <span class="nav-text">图片质量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CODE-REVIEW"><span class="nav-number">7.</span> <span class="nav-text">CODE REVIEW</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本管理"><span class="nav-number">8.</span> <span class="nav-text">版本管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REF-LINK"><span class="nav-number">9.</span> <span class="nav-text">REF LINK</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crossing May</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
+  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共59.9k字</span></div>
+
+
+
+
+
+        
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=65999720";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+      <div>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b92ab1f02fa730e" async="async"></script>
+</div>
+
+      </div>
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://crossingmay.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://crossingmay.github.io/2019/04/09/code-standard-2019/';
+        this.page.identifier = '2019/04/09/code-standard-2019/';
+        this.page.title = '前端编码规范(web和小程序)-2019';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://crossingmay.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              var scrollTop = document.documentElement.scrollTop;
+              if (scrollTop >= offsetTop) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.4.1"></script>
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "bqNohkzVOAk8UGwQVHTdezsz-9Nh9j0Va")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "bqNohkzVOAk8UGwQVHTdezsz-9Nh9j0Va",
+                'X-LC-Key': "XwNVMhbOkdjtj37OHu4KqoB9",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
