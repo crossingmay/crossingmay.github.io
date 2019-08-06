@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="每日小记，记一个小知识点。这是第一篇，简单说this。力争每篇都在10-20分钟写完，篇幅控制在500字内——言简意赅，突出重点。">
+  <meta name="description" content="每日小记，记一个小知识点。这是第一篇，简单说 this。力争每篇都在10-20分钟写完，篇幅控制在500字内——言简意赅，突出重点。">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简单说js-this">
 <meta property="og:url" content="http://crossingmay.github.io/2019/06/04/js-this-simple/index.html">
 <meta property="og:site_name" content="Ex·咖喱棒">
-<meta property="og:description" content="每日小记，记一个小知识点。这是第一篇，简单说this。力争每篇都在10-20分钟写完，篇幅控制在500字内——言简意赅，突出重点。">
+<meta property="og:description" content="每日小记，记一个小知识点。这是第一篇，简单说 this。力争每篇都在10-20分钟写完，篇幅控制在500字内——言简意赅，突出重点。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-04T15:02:28.836Z">
+<meta property="og:updated_time" content="2019-08-05T06:35:28.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单说js-this">
-<meta name="twitter:description" content="每日小记，记一个小知识点。这是第一篇，简单说this。力争每篇都在10-20分钟写完，篇幅控制在500字内——言简意赅，突出重点。">
+<meta name="twitter:description" content="每日小记，记一个小知识点。这是第一篇，简单说 this。力争每篇都在10-20分钟写完，篇幅控制在500字内——言简意赅，突出重点。">
 
 
 
@@ -395,12 +395,24 @@
                 
               
 
-              <time title="Created: 2019-06-04 22:37:27 / Modified: 23:02:28" itemprop="dateCreated datePublished" datetime="2019-06-04T22:37:27+08:00">2019-06-04</time>
+              <time title="Created: 2019-06-04 22:37:27" itemprop="dateCreated datePublished" datetime="2019-06-04T22:37:27+08:00">2019-06-04</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-05 14:35:28" itemprop="dateModified" datetime="2019-08-05T14:35:28+08:00">2019-08-05</time>
               
             
           </span>
@@ -473,18 +485,31 @@
       
 
       
-        <p>每日小记，记一个小知识点。这是第一篇，简单说this。力争每篇都在10-20分钟写完，篇幅控制在500字内——言简意赅，突出重点。<br><a id="more"></a></p>
+        <p>每日小记，记一个小知识点。这是第一篇，简单说 <code>this</code>。力争每篇都在10-20分钟写完，篇幅控制在500字内——言简意赅，突出重点。<br><a id="more"></a></p>
 <p>一句话总结——谁调用指向谁。</p>
+<p><code>this</code> 是指当前函数中正在执行的上下文环境</p>
 <p>然后记住以下几种具体情况：</p>
 <p>1 普通函数调用</p>
 <ul>
-<li>直接调用，指向全局对象（非严格模式）；</li>
-<li>上下文对象调用，绑定在该对象上；</li>
-<li>构造函数调用，绑定到新创建的对象上；</li>
+<li>直接调用，<code>method()</code>，指向全局对象（非严格模式）；</li>
+<li>方法调用，<code>obj.method()</code>，绑定在该对象上；</li>
+<li>构造函数调用，<code>const boo = new Obj()</code>，绑定到新创建的对象上；</li>
 </ul>
-<p>3 call、apply、bind 显式调用，绑定到指定对象上；</p>
-<p>4 箭头函数，根据外层的上下文绑定的this来指定。</p>
-
+<p>2 <code>call</code>、<code>apply</code> 间接函数调用，<code>bind</code> 绑定函数调用，都会绑定到指定对象上（传入的第一个参数）；</p>
+<ul>
+<li><code>call</code> 和 <code>apply</code> 的区别：作用是一样的，仅参数的区别，<code>call</code> 不定参数个数，<code>apply</code> 指定的第二个参数是数组。</li>
+<li><code>call、apply</code> 和 <code>bind</code> 的区别：前者立即执行，<code>bind</code> 返回一个新函数供延后调用。</li>
+</ul>
+<p>3 箭头函数，根据外层的上下文绑定的 <code>this</code> 来指定。</p>
+<p>本质：</p>
+<pre><code>JavaScript 中的函数既可以被当作普通函数执行，也可以作为对象的方法执行，这是导致 this 含义如此丰富的主要原因。
+一个函数被执行时，会创建一个执行环境（ExecutionContext），函数的所有的行为均发生在此执行环境中，构建该执行环境时，JavaScript 首先会创建arguments变量，其中包含调用函数时传入的参数。
+接下来创建作用域链。然后初始化变量，首先初始化函数的形参表，值为 arguments变量中对应的值，如果 arguments变量中没有对应值，则该形参初始化为 undefined。
+如果该函数中含有内部函数，则初始化这些内部函数。
+如果没有，继续初始化该函数内定义的局部变量，需要注意的是此时这些变量初始化为 undefined，其赋值操作在执行环境（ExecutionContext）创建成功后，函数执行时才会执行，这点对于我们理解 JavaScript 中的变量作用域非常重要，鉴于篇幅，我们先不在这里讨论这个话题。
+最后为 this变量赋值，如前所述，会根据函数调用方式的不同，赋给 this全局对象，当前对象等。
+至此函数的执行环境（ExecutionContext）创建成功，函数开始逐行执行，所需变量均从之前构建好的执行环境（ExecutionContext）中读取。
+</code></pre>
       
     </div>
 
@@ -854,7 +879,7 @@
 
 
   <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
-  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共60.1k字</span></div>
+  <div class="theme-info"><div class="powered-by"></div><span class="post-count">博客全站共60.6k字</span></div>
 
 
 
